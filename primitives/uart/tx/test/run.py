@@ -7,13 +7,13 @@ from cocotb_test.simulator import run
 ##########################################
 
 hdl_dir = abspath('../hdl')
-top = "uart_transceiver"
-modules = ["test_uart_transceiver"]
+top = "uart_transmitter"
+modules = ["test_uart_transmitter"]
 
 def test(top, test):
     run(
         verilog_sources=[
-            join(hdl_dir,"uart_transceiver.v")],
+            join(hdl_dir,"uart_transmitter.v")],
         toplevel=top,
         module=test
     )

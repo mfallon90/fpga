@@ -8,7 +8,7 @@ from cocotb_test.simulator import run
 
 hdl_dir = abspath('../hdl')
 top = "uart_receiver"
-modules = ["test_uart_rx"]
+modules = ["test_uart_receiver"]
 
 def test(top, test):
     run(

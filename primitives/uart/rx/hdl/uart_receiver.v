@@ -26,7 +26,7 @@ module uart_receiver # (
     parameter   integer P_CLK_FREQ  = 100,
     parameter   integer P_BAUD_RATE = 115200,
     parameter   integer P_NUM_STOP  = 2,
-    parameter   integer P_PARITY    = 2
+    parameter   integer P_PARITY    = 1
     )(
     input   wire                        clk,
     input   wire                        rst_n,

@@ -21,11 +21,12 @@ Additional Comments:
      sample point        = 434
 */
 
-module uart_transceiver # (
+module uart_transmitter # (
     parameter   integer P_NUM_BITS  = 8,
     parameter   integer P_CLK_FREQ  = 100,
     parameter   integer P_BAUD_RATE = 115200,
-    parameter   integer P_NUM_STOP  = 2
+    parameter   integer P_NUM_STOP  = 2,
+    parameter   integer P_PARITY    = 2
     )(
     input   wire                        clk,
     input   wire                        rst_n,
@@ -37,7 +38,7 @@ module uart_transceiver # (
 
     
     localparam  integer CLKS_PER_BIT    = P_CLK_FREQ*1000000/P_BAUD_RATE;
-    localparam  integer TX_BITS         = P_NUM_BITS+P_NUM_STOP+1;
+    localparam  integer TX_BITS = (P_PARITY == 0) ? P_NUM_BITS+P_NUM_STOP+1 : P_NUM_BITS+P_NUM_STOP+2;
 
     localparam  [1:0]   S_IDLE  = 1'b0;
     localparam  [1:0]   S_TX    = 1'b1;
@@ -45,7 +46,11 @@ module uart_transceiver # (
     function [TX_BITS-1:0] frame;
         input   [P_NUM_BITS-1:0] x;
         begin
-            frame = {{P_NUM_STOP{1'b1}}, x, 1'b0};
+            case (P_PARITY)
+                0: frame = {{P_NUM_STOP{1'b1}}, x, 1'b0};
+                1: frame = {{P_NUM_STOP{1'b1}}, ^x, x, 1'b0};
+                2: frame = {{P_NUM_STOP{1'b1}}, ~(^x), x, 1'b0};
+            endcase
         end
     endfunction
 
@@ -99,7 +104,7 @@ module uart_transceiver # (
 
 
     initial begin
-        $dumpfile("uart_transceiver.vcd");
+        $dumpfile("uart_transmitter.vcd");
         $dumpvars();
     end
     
