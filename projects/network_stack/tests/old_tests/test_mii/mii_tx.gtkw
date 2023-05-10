@@ -1,0 +1,87 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Thu Mar 02 17:52:15 2023
+[*]
+[dumpfile] "C:\Users\mfall\Documents\network_stack\tests\test_mii\sim_build\mii.vcd"
+[dumpfile_mtime] "Thu Mar 02 17:47:23 2023"
+[dumpfile_size] 999199
+[savefile] "C:\Users\mfall\Documents\network_stack\tests\test_mii\mii_tx.gtkw"
+[timestart] 7677
+[size] 1920 1017
+[pos] -1929 10
+*-8.033090 8738 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] mii.
+[sst_width] 197
+[signals_width] 266
+[sst_expanded] 1
+[sst_vpaned_height] 300
+@28
+send_packet.tx_clk
+send_packet.tx_rst_n
+send_packet.tx_state[2:0]
+send_packet.tx_sof
+send_packet.tx_eof
+send_packet.tx_en
+@22
+send_packet.tx_data[3:0]
+send_packet.tx_byte[7:0]
+@28
+send_packet.tx_byte_rdy
+send_packet.tx_byte_vld
+@22
+send_packet.tx_pkt_len[9:0]
+@24
+send_packet.tx_nibble_cnt[3:0]
+@28
+[color] 2
+send_packet.crc_eof
+[color] 2
+send_packet.crc_sof
+@23
+send_packet.crc_formatted[31:0]
+@c00022
+[color] 2
+send_packet.crc[31:0]
+@28
+(0)send_packet.crc[31:0]
+(1)send_packet.crc[31:0]
+(2)send_packet.crc[31:0]
+(3)send_packet.crc[31:0]
+(4)send_packet.crc[31:0]
+(5)send_packet.crc[31:0]
+(6)send_packet.crc[31:0]
+(7)send_packet.crc[31:0]
+(8)send_packet.crc[31:0]
+(9)send_packet.crc[31:0]
+(10)send_packet.crc[31:0]
+(11)send_packet.crc[31:0]
+(12)send_packet.crc[31:0]
+(13)send_packet.crc[31:0]
+(14)send_packet.crc[31:0]
+(15)send_packet.crc[31:0]
+(16)send_packet.crc[31:0]
+(17)send_packet.crc[31:0]
+(18)send_packet.crc[31:0]
+(19)send_packet.crc[31:0]
+(20)send_packet.crc[31:0]
+(21)send_packet.crc[31:0]
+(22)send_packet.crc[31:0]
+(23)send_packet.crc[31:0]
+(24)send_packet.crc[31:0]
+(25)send_packet.crc[31:0]
+(26)send_packet.crc[31:0]
+(27)send_packet.crc[31:0]
+(28)send_packet.crc[31:0]
+(29)send_packet.crc[31:0]
+(30)send_packet.crc[31:0]
+(31)send_packet.crc[31:0]
+@1401200
+-group_end
+@28
+[color] 2
+send_packet.crc_en
+@22
+[color] 2
+send_packet.tx_crc[27:0]
+[pattern_trace] 1
+[pattern_trace] 0

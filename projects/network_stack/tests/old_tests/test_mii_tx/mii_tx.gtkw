@@ -1,0 +1,121 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Thu Feb 16 18:53:58 2023
+[*]
+[dumpfile] "C:\Users\mfall\Documents\network_stack\tests\test_mii_tx\sim_build\mii_tx.vcd"
+[dumpfile_mtime] "Thu Feb 16 18:51:49 2023"
+[dumpfile_size] 49096
+[savefile] "C:\Users\mfall\Documents\network_stack\tests\test_mii_tx\mii_tx.gtkw"
+[timestart] 1722
+[size] 1920 1137
+[pos] -1 -1
+*-4.727320 1824 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] mii_tx.
+[sst_width] 197
+[signals_width] 311
+[sst_expanded] 1
+[sst_vpaned_height] 342
+@28
+mii_tx.tx_clk
+mii_tx.rst_n
+@22
+mii_tx.dst_mac[47:0]
+@28
+mii_tx.eth_eop
+mii_tx.eth_sop
+@22
+mii_tx.dst_mac_reg[47:0]
+mii_tx.dst_mac_rev[47:0]
+mii_tx.src_mac_rev[47:0]
+mii_tx.pad_cnt[31:0]
+mii_tx.eth_tx_byte[7:0]
+mii_tx.pkt_type[15:0]
+mii_tx.pkt_type_reg[15:0]
+mii_tx.pkt_type_rev[15:0]
+@28
+[color] 2
+mii_tx.rx_state[2:0]
+@22
+[color] 2
+mii_tx.rx_byte_cnt[9:0]
+@28
+[color] 2
+mii_tx.rx_byte_rdy
+[color] 2
+mii_tx.rx_byte_vld
+@22
+[color] 2
+mii_tx.rx_header[175:0]
+@28
+[color] 2
+mii_tx.rx_pkt_vld
+[color] 6
+mii_tx.tx_state[2:0]
+@29
+[color] 6
+mii_tx.tx_en
+@22
+[color] 6
+mii_tx.tx_byte_cnt[9:0]
+[color] 6
+mii_tx.tx_data[3:0]
+[color] 6
+mii_tx.tx_crc[27:0]
+[color] 6
+mii_tx.tx_preamble[63:0]
+[color] 6
+mii_tx.tx_nibble_cnt[10:0]
+[color] 6
+mii_tx.tx_pkt_len[9:0]
+[color] 6
+mii_tx.tx_header[111:0]
+@28
+[color] 6
+mii_tx.tx_pkt_rdy
+@22
+mii_tx.crc[31:0]
+@28
+mii_tx.crc_en
+mii_tx.crc_done
+mii_tx.crc_eof
+@22
+mii_tx.crc_reg[31:0]
+@28
+mii_tx.crc_sel
+mii_tx.crc_sof
+[color] 3
+mii_tx.tx_crc32.S_CRC
+[color] 3
+mii_tx.tx_crc32.S_IDLE
+[color] 3
+mii_tx.tx_crc32.clk
+@22
+[color] 3
+mii_tx.tx_crc32.crc_c[31:0]
+@28
+[color] 3
+mii_tx.tx_crc32.crc_done
+[color] 3
+mii_tx.tx_crc32.crc_en
+@22
+[color] 3
+mii_tx.tx_crc32.crc_out[31:0]
+[color] 3
+mii_tx.tx_crc32.crc_q[31:0]
+[color] 3
+mii_tx.tx_crc32.crc_reg[31:0]
+[color] 3
+mii_tx.tx_crc32.d_rev[3:0]
+[color] 3
+mii_tx.tx_crc32.data_in[3:0]
+@28
+[color] 3
+mii_tx.tx_crc32.eof
+[color] 3
+mii_tx.tx_crc32.rst_n
+[color] 3
+mii_tx.tx_crc32.sof
+[color] 3
+mii_tx.tx_crc32.state
+[pattern_trace] 1
+[pattern_trace] 0

@@ -1,0 +1,53 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Wed Feb 22 05:54:40 2023
+[*]
+[dumpfile] "C:\Users\mfall\Documents\network_stack\tests\test_mii_rx\sim_build\mii_rx.vcd"
+[dumpfile_mtime] "Wed Feb 22 05:54:25 2023"
+[dumpfile_size] 42491
+[savefile] "C:\Users\mfall\Documents\network_stack\tests\test_mii_rx\mii_rx.gtkw"
+[timestart] 1416
+[size] 1920 1017
+[pos] -1 -1
+*-3.549399 1453 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 197
+[signals_width] 314
+[sst_expanded] 1
+[sst_vpaned_height] 300
+@28
+mii_rx.rx_clk
+mii_rx.rx_rst_n
+@22
+mii_rx.crc[31:0]
+mii_rx.crc_data[3:0]
+@28
+mii_rx.crc_en
+@22
+mii_rx.crc_reg[31:0]
+@28
+mii_rx.crc_vld
+mii_rx.eth_eof
+mii_rx.eth_sof
+mii_rx.addr_vld
+@22
+mii_rx.mac_addr[47:0]
+@28
+[color] 2
+mii_rx.rx_state[1:0]
+@22
+mii_rx.rx_byte[7:0]
+@28
+mii_rx.rx_byte_vld
+@24
+mii_rx.rx_cnt[10:0]
+@22
+mii_rx.rx_data[3:0]
+@28
+mii_rx.rx_dv
+mii_rx.rx_er
+[color] 7
+mii_rx.rx_frm_dmp
+[color] 7
+mii_rx.rx_frm_vld
+[pattern_trace] 1
+[pattern_trace] 0

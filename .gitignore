@@ -1,6 +1,5 @@
 sim_build*
 __pycache__*
-*.gtkw
 vivado*
 vitis*
 vivado_old*

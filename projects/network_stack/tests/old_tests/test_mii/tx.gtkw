@@ -1,0 +1,125 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Sat Mar 04 22:47:41 2023
+[*]
+[dumpfile] "C:\Users\mfall\Documents\network_stack\tests\test_mii\sim_build\mii.vcd"
+[dumpfile_mtime] "Sat Mar 04 22:36:36 2023"
+[dumpfile_size] 1025003
+[savefile] "C:\Users\mfall\Documents\network_stack\tests\test_mii\tx.gtkw"
+[timestart] 3453
+[size] 1002 1008
+[pos] -8 -1
+*-5.968562 3541 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tx_fifo.
+[sst_width] 197
+[signals_width] 270
+[sst_expanded] 1
+[sst_vpaned_height] 298
+@28
+tx_fifo.control_unit.fifo_empty
+tx_fifo.control_unit.fifo_full
+@22
+tx_fifo.control_unit.upper_count[7:0]
+tx_fifo.control_unit.lower_count[7:0]
+@28
+tx_fifo.control_unit.rd_clk
+tx_fifo.control_unit.rd_sof
+tx_fifo.control_unit.rd_sof_ack
+tx_fifo.control_unit.rd_eof
+tx_fifo.control_unit.rd_rst_n
+tx_fifo.control_unit.rd_state[1:0]
+@22
+tx_fifo.control_unit.rd_byte_fifo[7:0]
+@28
+[color] 1
+tx_fifo.control_unit.rd_byte_rdy
+tx_fifo.control_unit.rd_byte_vld
+@24
+tx_fifo.control_unit.rd_cnt[10:0]
+tx_fifo.control_unit.rd_frm_len[10:0]
+@28
+tx_fifo.control_unit.rd_frm_toggle
+@24
+tx_fifo.control_unit.rd_ptr[12:0]
+tx_fifo.control_unit.rd_ptr_fifo[11:0]
+tx_fifo.control_unit.rd_ptr_reg[12:0]
+@28
+[color] 7
+tx_fifo.control_unit.wr_ptr_load
+@24
+[color] 7
+tx_fifo.control_unit.wr_ptr_sync[12:0]
+@28
+[color] 2
+tx_fifo.control_unit.wr_clk
+[color] 2
+tx_fifo.control_unit.wr_rst_n
+[color] 2
+tx_fifo.control_unit.wr_sof
+[color] 2
+tx_fifo.control_unit.wr_eof
+[color] 2
+tx_fifo.control_unit.wr_state[1:0]
+[color] 2
+tx_fifo.control_unit.wr_byte_vld
+[color] 2
+tx_fifo.control_unit.wr_byte_rdy
+@23
+[color] 2
+tx_fifo.control_unit.wr_byte[7:0]
+@22
+[color] 2
+tx_fifo.control_unit.wr_byte_fifo[7:0]
+@24
+[color] 2
+tx_fifo.control_unit.wr_cnt[10:0]
+@28
+[color] 2
+tx_fifo.control_unit.wr_en_fifo
+[color] 2
+tx_fifo.control_unit.wr_frm_toggle
+@24
+[color] 2
+tx_fifo.control_unit.wr_ptr[12:0]
+[color] 2
+tx_fifo.control_unit.wr_ptr_fifo[11:0]
+[color] 2
+tx_fifo.control_unit.wr_ptr_reg[12:0]
+@28
+[color] 3
+tx_fifo.control_unit.rd_ptr_load
+send_packet.tx_clk
+send_packet.tx_rst_n
+send_packet.tx_sof
+send_packet.tx_sof_ack
+send_packet.tx_eof
+send_packet.tx_state[2:0]
+@22
+send_packet.tx_byte[7:0]
+@28
+send_packet.tx_byte_rdy
+send_packet.tx_byte_vld
+@22
+send_packet.tx_data[3:0]
+@28
+send_packet.tx_en
+@22
+send_packet.tx_nibble_cnt[3:0]
+send_packet.tx_pkt_len[9:0]
+@28
+send_packet.tx_state_probe[2:0]
+@22
+send_packet.crc[31:0]
+@28
+send_packet.crc_en
+@22
+send_packet.crc_data[3:0]
+@28
+send_packet.crc_eof
+@22
+send_packet.crc_formatted[31:0]
+send_packet.tx_crc[27:0]
+@28
+send_packet.crc_sof
+[pattern_trace] 1
+[pattern_trace] 0

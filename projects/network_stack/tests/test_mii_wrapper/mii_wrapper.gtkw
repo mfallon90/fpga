@@ -1,0 +1,54 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Wed Mar 22 18:57:20 2023
+[*]
+[dumpfile] "C:\Users\mfall\Documents\network_stack\tests\test_mii_wrapper\sim_build\mii_wrapper.vcd"
+[dumpfile_mtime] "Wed Mar 22 18:51:39 2023"
+[dumpfile_size] 26685
+[savefile] "C:\Users\mfall\Documents\network_stack\tests\test_mii_wrapper\mii_wrapper.gtkw"
+[timestart] 0
+[size] 1920 1017
+[pos] -1 -1
+*-6.305867 455 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 197
+[signals_width] 158
+[sst_expanded] 1
+[sst_vpaned_height] 300
+@420
+mii_wrapper.P_MAC_ADDR
+mii_wrapper.P_NUM_BRAM
+@28
+mii_wrapper.mii_rx_clk
+mii_wrapper.mii_rx_rst_n
+mii_wrapper.mii_rx_col
+mii_wrapper.mii_rx_crs
+@22
+mii_wrapper.mii_rx_data[3:0]
+@29
+mii_wrapper.mii_rx_dv
+@28
+mii_wrapper.mii_rx_er
+mii_wrapper.mii_tx_clk
+mii_wrapper.mii_tx_rst_n
+@22
+mii_wrapper.mii_tx_data[3:0]
+@28
+mii_wrapper.mii_tx_en
+mii_wrapper.sys_clk
+mii_wrapper.sys_rst_n
+@22
+mii_wrapper.sys_rx_byte[7:0]
+@28
+mii_wrapper.sys_rx_byte_rdy
+mii_wrapper.sys_rx_byte_vld
+mii_wrapper.sys_rx_eof
+mii_wrapper.sys_rx_sof
+@22
+mii_wrapper.sys_tx_byte[7:0]
+@28
+mii_wrapper.sys_tx_byte_rdy
+mii_wrapper.sys_tx_byte_vld
+mii_wrapper.sys_tx_eof
+mii_wrapper.sys_tx_sof
+[pattern_trace] 1
+[pattern_trace] 0

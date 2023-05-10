@@ -1,0 +1,43 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Thu Mar 02 22:15:15 2023
+[*]
+[dumpfile] "C:\Users\mfall\Documents\network_stack\tests\test_mii\sim_build\mii.vcd"
+[dumpfile_mtime] "Thu Mar 02 22:12:51 2023"
+[dumpfile_size] 704329
+[savefile] "C:\Users\mfall\Documents\network_stack\tests\test_mii\in_out.gtkw"
+[timestart] 0
+[size] 1920 1017
+[pos] -2033 10
+*-11.746995 20890 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 197
+[signals_width] 158
+[sst_expanded] 1
+[sst_vpaned_height] 300
+@28
+mii.eth_rx_clk
+mii.eth_rx_rst_n
+@22
+mii.eth_rx_data[3:0]
+@28
+mii.eth_rx_dv
+[color] 2
+mii.eth_tx_clk
+[color] 2
+mii.eth_tx_rst_n
+[color] 2
+mii.eth_tx_sof
+[color] 2
+mii.eth_tx_eof
+[color] 2
+mii.eth_tx_byte_rdy
+[color] 2
+mii.eth_tx_byte_vld
+@22
+[color] 2
+mii.eth_tx_data[3:0]
+@28
+[color] 2
+mii.eth_tx_en
+[pattern_trace] 1
+[pattern_trace] 0

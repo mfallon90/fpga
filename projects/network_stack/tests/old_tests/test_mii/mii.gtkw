@@ -1,0 +1,95 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Thu Mar 02 01:47:13 2023
+[*]
+[dumpfile] "C:\Users\mfall\Documents\network_stack\tests\test_mii\sim_build\mii.vcd"
+[dumpfile_mtime] "Thu Mar 02 00:55:17 2023"
+[dumpfile_size] 616740
+[savefile] "C:\Users\mfall\Documents\network_stack\tests\test_mii\mii.gtkw"
+[timestart] 2387
+[size] 1920 1137
+[pos] -9 -113
+*-6.007478 2658 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] mii.
+[treeopen] mii.rx_fifo.
+[sst_width] 197
+[signals_width] 242
+[sst_expanded] 1
+[sst_vpaned_height] 342
+@28
+mii.rx_fifo.control_unit.fifo_empty
+mii.rx_fifo.control_unit.fifo_full
+@22
+mii.rx_fifo.control_unit.upper_count[7:0]
+mii.rx_fifo.control_unit.lower_count[7:0]
+@28
+mii.rx_fifo.control_unit.rd_clk
+mii.rx_fifo.control_unit.rd_rst_n
+mii.rx_fifo.control_unit.rd_sof
+mii.rx_fifo.control_unit.rd_eof
+mii.rx_fifo.control_unit.rd_state[1:0]
+@22
+mii.rx_fifo.control_unit.rd_byte_fifo[7:0]
+@28
+mii.rx_fifo.control_unit.rd_byte_rdy
+mii.rx_fifo.control_unit.rd_byte_vld
+@24
+mii.rx_fifo.control_unit.rd_cnt[10:0]
+mii.rx_fifo.control_unit.rd_frm_len[10:0]
+mii.rx_fifo.control_unit.rd_ptr[12:0]
+mii.rx_fifo.control_unit.rd_ptr_fifo[11:0]
+mii.rx_fifo.control_unit.rd_ptr_reg[12:0]
+@28
+[color] 7
+mii.rx_fifo.control_unit.wr_ptr_load
+@24
+[color] 7
+mii.rx_fifo.control_unit.wr_ptr_sync[12:0]
+@28
+mii.rx_fifo.control_unit.rd_frm_toggle
+[color] 2
+mii.rx_fifo.control_unit.wr_clk
+[color] 2
+mii.rx_fifo.control_unit.wr_rst_n
+[color] 2
+mii.rx_fifo.control_unit.wr_sof
+[color] 2
+mii.rx_fifo.control_unit.wr_eof
+[color] 2
+mii.rx_fifo.control_unit.wr_state[1:0]
+@22
+[color] 2
+mii.rx_fifo.control_unit.wr_byte[7:0]
+[color] 2
+mii.rx_fifo.control_unit.wr_byte_fifo[7:0]
+@28
+[color] 2
+mii.rx_fifo.control_unit.wr_byte_vld
+@24
+[color] 2
+mii.rx_fifo.control_unit.wr_cnt[10:0]
+@28
+[color] 2
+mii.rx_fifo.control_unit.wr_en_fifo
+[color] 2
+mii.rx_fifo.control_unit.wr_frm_toggle
+[color] 2
+mii.rx_fifo.control_unit.wr_frm_vld
+@29
+[color] 2
+mii.rx_fifo.control_unit.wr_frm_ack
+@24
+[color] 2
+mii.rx_fifo.control_unit.wr_ptr_fifo[11:0]
+[color] 2
+mii.rx_fifo.control_unit.wr_ptr[12:0]
+[color] 2
+mii.rx_fifo.control_unit.wr_ptr_reg[12:0]
+@28
+[color] 3
+mii.rx_fifo.control_unit.rd_ptr_load
+@24
+[color] 3
+mii.rx_fifo.control_unit.rd_ptr_sync[12:0]
+[pattern_trace] 1
+[pattern_trace] 0
