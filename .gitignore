@@ -8,3 +8,4 @@ vivado_no_axi*
 vitis_fsbl_test*
 vitis_qspi_flash*
 *.metadata
+
