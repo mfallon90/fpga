@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
-[*] Wed May 10 22:11:41 2023
+[*] Thu May 11 04:28:53 2023
 [*]
 [dumpfile] "C:\Users\mfall\Desktop\sandbox\primitives\uart\rx\test\sim_build\uart_receiver.vcd"
-[dumpfile_mtime] "Wed May 10 22:10:20 2023"
-[dumpfile_size] 1967480
+[dumpfile_mtime] "Thu May 11 04:28:24 2023"
+[dumpfile_size] 10130158
 [savefile] "C:\Users\mfall\Desktop\sandbox\primitives\uart\rx\test\uart_receiver.gtkw"
 [timestart] 0
-[size] 1920 1017
-[pos] -1929 10
-*-25.816229 383400000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[size] 1284 781
+[pos] -1 -1
+*-28.956564 273000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [sst_width] 197
 [signals_width] 193
 [sst_expanded] 1
@@ -31,10 +31,13 @@ uart_receiver.temp[7:0]
 uart_receiver.uart_word[7:0]
 @28
 uart_receiver.uart_word_vld
+@29
+uart_receiver.uart_word_rdy
+@28
 uart_receiver.uart_rx
 @22
 uart_receiver.bits[3:0]
-@29
+@28
 uart_receiver.sample_now
 [pattern_trace] 1
 [pattern_trace] 0

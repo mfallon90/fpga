@@ -31,6 +31,7 @@ class TB():
         self.log = logging.getLogger("cocotb.tb")
         self.log.setLevel(logging.DEBUG)
         self.sb = Queue()
+        self.dut.uart_word_rdy.value = 1
         
         cocotb.start_soon(Clock(dut.clk, CLK_PRD_ns, units='ns').start())
 
