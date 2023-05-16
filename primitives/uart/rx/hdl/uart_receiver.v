@@ -32,7 +32,8 @@ module uart_receiver # (
     input   wire                        rst_n,
     input   wire                        uart_rx,
     output  wire    [P_NUM_BITS-1:0]    uart_word,
-    output  wire                        uart_word_vld
+    output  wire                        uart_word_vld,
+    input   wire                        uart_word_rdy
     );
 
     function vote;
@@ -83,9 +84,15 @@ module uart_receiver # (
         end
 
         else begin
+
+            if (uart_word_rdy & done) begin
+                done    <= 0;
+                data    <= 0;
+            end
+
             case (state)
                 S_IDLE: begin
-                    done    <= 0;
+                    // done    <= 0;
                     if (~uart_rx) begin
                         state   <= S_START;
                         cnt     <= cnt+1;
