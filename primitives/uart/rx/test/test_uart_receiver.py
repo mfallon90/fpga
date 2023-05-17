@@ -2,7 +2,9 @@
 import random
 import cocotb
 import logging
-import uart
+import sys
+sys.path.append("../../../../..")
+import test_classes
 from cocotb.clock import Clock
 from cocotb.queue import Queue
 from cocotb.triggers import Timer, RisingEdge, ClockCycles, First, Combine
@@ -35,7 +37,7 @@ class TB():
         
         cocotb.start_soon(Clock(dut.clk, CLK_PRD_ns, units='ns').start())
 
-        self.uart_driver = uart.UartDriver(self.dut.clk, self.dut.uart_rx, BAUD_RATE, NUM_BITS, NUM_STOP, PARITY, self.sb)
+        self.uart_driver = test_classes.UartDriver(self.dut.clk, self.dut.uart_rx, BAUD_RATE, NUM_BITS, NUM_STOP, PARITY, self.sb)
 
     async def uart_check(self):
         '''

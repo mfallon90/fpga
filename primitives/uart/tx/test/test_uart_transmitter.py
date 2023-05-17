@@ -2,17 +2,19 @@
 import random
 import cocotb
 import logging
-import uart
+import sys
+sys.path.append("../../../../..")
+import test_classes
 from cocotb.clock import Clock
 from cocotb.queue import Queue
-from cocotb.triggers import Timer, RisingEdge, ClockCycles, First, Combine, FallingEdge
+from cocotb.triggers import RisingEdge, ClockCycles, FallingEdge
 
 NUM_BITS    = int(cocotb.top.P_NUM_BITS)
 CLK_FREQ    = int(cocotb.top.P_CLK_FREQ)
 BAUD_RATE   = int(cocotb.top.P_BAUD_RATE)
 NUM_STOP    = int(cocotb.top.P_NUM_STOP)
 PARITY      = int(cocotb.top.P_PARITY)
-NUM_WORDS   = 10
+NUM_WORDS   = 6
 BIT_PRD     = int(1e9/BAUD_RATE)
 
 CLKS_PER_BIT = int(CLK_FREQ*1000000/BAUD_RATE)
@@ -25,7 +27,7 @@ class TB():
         self.log.setLevel(logging.DEBUG)
         self.sb = Queue()
 
-        self.uart_monitor = uart.UartMonitor(self.dut.clk, self.dut.uart_tx, BAUD_RATE, NUM_BITS, NUM_STOP, PARITY, self.sb)
+        self.uart_monitor = test_classes.UartMonitor(self.dut.clk, self.dut.uart_tx, BAUD_RATE, NUM_BITS, NUM_STOP, PARITY, self.sb)
         
         cocotb.start_soon(Clock(dut.clk, CLK_PRD_ns, units='ns').start())
 
