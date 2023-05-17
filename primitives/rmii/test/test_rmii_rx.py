@@ -2,7 +2,9 @@
 import random
 import cocotb
 import logging
-import rmii
+import sys
+sys.path.append("../../../..")
+import test_classes
 from cocotb.clock import Clock
 from cocotb.queue import Queue
 from cocotb.triggers import Timer, RisingEdge, ClockCycles, First, Combine
@@ -31,7 +33,7 @@ class TB():
 
         self.clk = self.dut.rx_clk
 
-        self.rmii_driver = rmii.RmiiDriver(self.clk, self.dut.rx_data, self.dut.rx_dv)
+        self.rmii_driver = test_classes.RmiiDriver(self.clk, self.dut.rx_data, self.dut.rx_dv)
 
         cocotb.start_soon(Clock(self.clk, 10, units='ns').start())
 
