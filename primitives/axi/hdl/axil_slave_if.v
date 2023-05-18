@@ -47,13 +47,17 @@ module axil_slave_if #(
     localparam  [1:0]   C_SLV_ERR   = 2'b10;
     localparam  [1:0]   C_DEC_ERR   = 2'b11;
 
+    // Register addresses - not byte addressable
     localparam  integer RED_0_ADDR  = 0;
     localparam  integer RED_1_ADDR  = 1;
     localparam  integer RED_2_ADDR  = 2;
     localparam  integer RED_3_ADDR  = 3;
 
+    // Read/Write registers
     reg     [P_DATA_WIDTH-1:0]  reg_0;
     reg     [P_DATA_WIDTH-1:0]  reg_1;
+
+    // Read only registers
     wire    [P_DATA_WIDTH-1:0]  reg_2;
     wire    [P_DATA_WIDTH-1:0]  reg_3;
 
@@ -114,6 +118,8 @@ module axil_slave_if #(
                     read_resp   <= C_OKAY;
                     rd_data_vld <= 1'b1;
                     rd_en       <= 1'b0;
+                // Drop the two LSB's due to not being
+                // byte addressable
                 case (read_address[P_ADDR_WIDTH-1:2])
                     RED_0_ADDR: read_data   <= reg_0;
                     RED_1_ADDR: read_data   <= reg_1;
@@ -173,6 +179,8 @@ module axil_slave_if #(
                 write_valid     <= 1'b1;
                 wr_data_good    <= 1'b0;
                 wr_addr_good    <= 1'b0;
+                // Drop the two LSB's due to not being
+                // byte addressable
                 case (write_address[P_ADDR_WIDTH-1:2])
                     RED_0_ADDR: reg_0   <= write_data;
                     RED_1_ADDR: reg_1   <= write_data;
