@@ -89,19 +89,31 @@ class RmiiDriver():
         '''
 
         # If no data is provided, randomize data
-        if data==None:
-            data_int = random.randint(0,15)
+        if isinstance(data, list):
+            data_list = data
+
+            for nibble in data_list:
+                self.tx_data_vld.value = 1
+                self.tx_data.value = nibble
+                await RisingEdge(self.clk)
+                self.tx_data_vld.value = 0
+                self.tx_data.value = 0
+
         else:
-            data_int = data
-        
-        data_reg = data_int
+            if data==None:
+                data_int = random.randint(0,15)
 
-        # Send start bit
-        self.tx_data_vld.value = 1
-        self.tx_data.value = data_reg
-        await RisingEdge(self.clk)
-        self.tx_data_vld.value = 0
-        self.tx_data.value = 0
+            else:
+                data_int = data
 
-        print(data_reg)
+            data_reg = data_int
+
+            # Send start bit
+            self.tx_data_vld.value = 1
+            self.tx_data.value = data_reg
+            await RisingEdge(self.clk)
+            self.tx_data_vld.value = 0
+            self.tx_data.value = 0
+
+            print(data_reg)
         
