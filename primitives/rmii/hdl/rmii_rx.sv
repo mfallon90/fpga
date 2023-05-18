@@ -35,6 +35,7 @@ module rmii_rx
 
     // Byte out interface
     output  logic           rx_byte_vld,
+    output  logic           rx_data_vld,
     output  logic   [7:0]   rx_byte
     );
 
@@ -45,8 +46,9 @@ module rmii_rx
     logic   [3:0]       rx_data_reg;
     logic               byte_vld;
 
-    assign rx_byte  = {rx_data, rx_data_reg};
+    assign rx_byte      = (state==S_RX) ? {rx_data, rx_data_reg} : 0;
     assign rx_byte_vld  = byte_vld;
+    assign rx_data_vld  = state;
 
     always_ff @(posedge rx_clk) begin
         if (~rx_rst_n) begin
@@ -63,10 +65,10 @@ module rmii_rx
                     rx_data_reg <= 0;
                     byte_vld    <= ~byte_vld;
 
-                    if (rx_dv) begin
+                    if ((rx_dv == 1'b1) && (rx_data == 4'hD)) begin
                         state       <= S_RX;
                         rx_data_reg <= rx_data;
-                        byte_vld    <= 1'b1;
+                        byte_vld    <= 1'b0;
                     end
                 end
 

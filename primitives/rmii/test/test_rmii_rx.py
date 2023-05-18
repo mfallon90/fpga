@@ -68,10 +68,12 @@ async def test_rmii_rx(dut):
 
     await ClockCycles(tb.clk, 99)
 
-    print('get ready')
+    message = [0x5,0x5,0x5,0x5,0x5,0xd]
+
+    await tb.rmii_driver.send(message)
+
     for _ in range(NUM_WORDS):
         await tb.rmii_driver.send()
-    print('done')
 
     await ClockCycles(tb.clk, 100)
     dut._log.info('Test done')
