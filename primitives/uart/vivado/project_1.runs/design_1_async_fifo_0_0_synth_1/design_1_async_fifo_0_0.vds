@@ -1,0 +1,261 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Thu May 11 17:20:39 2023
+# Process ID: 12332
+# Current directory: C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.runs/design_1_async_fifo_0_0_synth_1
+# Command line: vivado.exe -log design_1_async_fifo_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_async_fifo_0_0.tcl
+# Log file: C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.runs/design_1_async_fifo_0_0_synth_1/design_1_async_fifo_0_0.vds
+# Journal file: C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.runs/design_1_async_fifo_0_0_synth_1\vivado.jou
+#-----------------------------------------------------------
+source design_1_async_fifo_0_0.tcl -notrace
+Command: synth_design -top design_1_async_fifo_0_0 -part xc7a35ticsg324-1L -mode out_of_context
+Starting synth_design
+WARNING: [IP_Flow 19-3571] IP 'design_1_async_fifo_0_0' is restricted:
+* Module reference is stale and needs refreshing.
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35ti'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35ti'
+INFO: [Device 21-403] Loading part xc7a35ticsg324-1L
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 10468
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1110.004 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'design_1_async_fifo_0_0' [c:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.gen/sources_1/bd/design_1/ip/design_1_async_fifo_0_0/synth/design_1_async_fifo_0_0.v:58]
+INFO: [Synth 8-6157] synthesizing module 'async_fifo' [C:/Users/mfall/Desktop/sandbox/primitives/async_fifo/hdl/async_fifo.v:55]
+	Parameter P_DEPTH bound to: 1024 - type: integer 
+	Parameter P_WIDTH bound to: 8 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'fifo_bram' [C:/Users/mfall/Desktop/sandbox/primitives/async_fifo/hdl/fifo_bram.v:23]
+	Parameter P_DEPTH bound to: 1024 - type: integer 
+	Parameter P_WIDTH bound to: 8 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'fifo_bram' (1#1) [C:/Users/mfall/Desktop/sandbox/primitives/async_fifo/hdl/fifo_bram.v:23]
+INFO: [Synth 8-6157] synthesizing module 'bin_gry_ctr' [C:/Users/mfall/Desktop/sandbox/primitives/async_fifo/hdl/bin_gry_ctr.v:35]
+	Parameter P_NUM_BITS bound to: 11 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'bin_gry_ctr' (2#1) [C:/Users/mfall/Desktop/sandbox/primitives/async_fifo/hdl/bin_gry_ctr.v:35]
+WARNING: [Synth 8-7071] port 'bin_cnt_comb' of module 'bin_gry_ctr' is unconnected for instance 'wr_ptr_calc' [C:/Users/mfall/Desktop/sandbox/primitives/async_fifo/hdl/async_fifo.v:162]
+WARNING: [Synth 8-7023] instance 'wr_ptr_calc' of module 'bin_gry_ctr' has 6 connections declared, but only 5 given [C:/Users/mfall/Desktop/sandbox/primitives/async_fifo/hdl/async_fifo.v:162]
+WARNING: [Synth 8-7071] port 'bin_cnt_reg' of module 'bin_gry_ctr' is unconnected for instance 'rd_ptr_calc' [C:/Users/mfall/Desktop/sandbox/primitives/async_fifo/hdl/async_fifo.v:176]
+WARNING: [Synth 8-7023] instance 'rd_ptr_calc' of module 'bin_gry_ctr' has 6 connections declared, but only 5 given [C:/Users/mfall/Desktop/sandbox/primitives/async_fifo/hdl/async_fifo.v:176]
+INFO: [Synth 8-6155] done synthesizing module 'async_fifo' (3#1) [C:/Users/mfall/Desktop/sandbox/primitives/async_fifo/hdl/async_fifo.v:55]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_async_fifo_0_0' (4#1) [c:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.gen/sources_1/bd/design_1/ip/design_1_async_fifo_0_0/synth/design_1_async_fifo_0_0.v:58]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1133.328 ; gain = 23.324
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1133.328 ; gain = 23.324
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1133.328 ; gain = 23.324
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1133.328 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1224.789 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.022 . Memory (MB): peak = 1224.812 ; gain = 0.023
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1224.812 ; gain = 114.809
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35ticsg324-1L
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1224.812 ; gain = 114.809
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1224.812 ; gain = 114.809
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1224.812 ; gain = 114.809
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   11 Bit       Adders := 4     
++---XORs : 
+	   2 Input      1 Bit         XORs := 20    
++---Registers : 
+	               11 Bit    Registers := 6     
+	                8 Bit    Registers := 1     
++---RAMs : 
+	               8K Bit	(1024 X 8 bit)          RAMs := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1224.812 ; gain = 114.809
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Preliminary Mapping	Report (see note below)
++------------------------+---------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name             | RTL Object                | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++------------------------+---------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|design_1_async_fifo_0_0 | inst/fifo_module/bram_reg | 1 K x 8(NO_CHANGE)     | W |   | 1 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
++------------------------+---------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1224.812 ; gain = 114.809
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1224.812 ; gain = 114.809
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping	Report
++------------------------+---------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name             | RTL Object                | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++------------------------+---------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|design_1_async_fifo_0_0 | inst/fifo_module/bram_reg | 1 K x 8(NO_CHANGE)     | W |   | 1 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
++------------------------+---------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance inst/fifo_module/bram_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1239.312 ; gain = 129.309
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1245.141 ; gain = 135.137
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1245.141 ; gain = 135.137
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1245.141 ; gain = 135.137
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1245.141 ; gain = 135.137
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1245.141 ; gain = 135.137
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1245.141 ; gain = 135.137
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |CARRY4   |    11|
+|2     |LUT1     |     2|
+|3     |LUT2     |    21|
+|4     |LUT3     |     4|
+|5     |LUT4     |     8|
+|6     |LUT5     |     6|
+|7     |RAMB18E1 |     1|
+|8     |FDRE     |    66|
++------+---------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1245.141 ; gain = 135.137
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:11 ; elapsed = 00:00:16 . Memory (MB): peak = 1245.141 ; gain = 43.652
+Synthesis Optimization Complete : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1245.141 ; gain = 135.137
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1257.156 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 12 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1260.297 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+23 Infos, 5 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:20 ; elapsed = 00:00:22 . Memory (MB): peak = 1260.297 ; gain = 150.293
+INFO: [Common 17-1381] The checkpoint 'C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.runs/design_1_async_fifo_0_0_synth_1/design_1_async_fifo_0_0.dcp' has been generated.
+WARNING: [Common 17-576] 'use_project_ipc' is deprecated. This option is deprecated and no longer used.
+INFO: [Coretcl 2-1174] Renamed 4 cell refs.
+INFO: [Common 17-1381] The checkpoint 'C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.runs/design_1_async_fifo_0_0_synth_1/design_1_async_fifo_0_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file design_1_async_fifo_0_0_utilization_synth.rpt -pb design_1_async_fifo_0_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Thu May 11 17:21:07 2023...

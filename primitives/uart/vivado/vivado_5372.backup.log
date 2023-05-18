@@ -1,0 +1,289 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Thu May 11 17:18:44 2023
+# Process ID: 5372
+# Current directory: C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent7636 C:\Users\mfall\Desktop\sandbox\primitives\uart\vivado\project_1.xpr
+# Log file: C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/vivado.log
+# Journal file: C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2020.2/data/ip'.
+open_project: Time (s): cpu = 00:00:16 ; elapsed = 00:00:09 . Memory (MB): peak = 1091.309 ; gain = 0.000
+update_compile_order -fileset sources_1
+open_bd_design {C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.srcs/sources_1/bd/design_1/design_1.bd}
+Reading block design file <C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.srcs/sources_1/bd/design_1/design_1.bd>...
+Adding component instance block -- xilinx.com:ip:proc_sys_reset:5.0 - clk_1_reset
+Adding component instance block -- xilinx.com:ip:clk_wiz:6.0 - clk_wiz_0
+Adding component instance block -- xilinx.com:module_ref:uart_transmitter:1.0 - clk_2_uart_tx
+Adding component instance block -- xilinx.com:module_ref:uart_receiver:1.0 - clk_1_uart_rx
+Adding component instance block -- xilinx.com:module_ref:async_fifo:1.0 - async_fifo_0
+Adding component instance block -- xilinx.com:ip:proc_sys_reset:5.0 - clk_2_reset
+Successfully read diagram <design_1> from block design file <C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.srcs/sources_1/bd/design_1/design_1.bd>
+open_bd_design: Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 1091.309 ; gain = 0.000
+update_module_reference design_1_async_fifo_0_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'rd_rst_n' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'wr_rst_n' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'rd_clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'wr_clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-4728] Bus Interface 'rd_rst_n': Added interface parameter 'POLARITY' with value 'ACTIVE_LOW'.
+INFO: [IP_Flow 19-4728] Bus Interface 'wr_rst_n': Added interface parameter 'POLARITY' with value 'ACTIVE_LOW'.
+INFO: [IP_Flow 19-4728] Bus Interface 'rd_clk': Added interface parameter 'ASSOCIATED_RESET' with value 'rd_rst_n'.
+INFO: [IP_Flow 19-4728] Bus Interface 'wr_clk': Added interface parameter 'ASSOCIATED_RESET' with value 'wr_rst_n'.
+WARNING: [IP_Flow 19-3157] Bus Interface 'rd_rst_n': Bus parameter POLARITY is ACTIVE_LOW but port 'rd_rst_n' is not *resetn - please double check the POLARITY setting.
+WARNING: [IP_Flow 19-3157] Bus Interface 'wr_rst_n': Bus parameter POLARITY is ACTIVE_LOW but port 'wr_rst_n' is not *resetn - please double check the POLARITY setting.
+WARNING: [IP_Flow 19-5661] Bus Interface 'rd_clk' does not have any bus interfaces associated with it.
+WARNING: [IP_Flow 19-5661] Bus Interface 'wr_clk' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+Upgrading 'C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.srcs/sources_1/bd/design_1/design_1.bd'
+INFO: [IP_Flow 19-1972] Upgraded design_1_async_fifo_0_0 from async_fifo_v1_0 1.0 to async_fifo_v1_0 1.0
+Wrote  : <C:\Users\mfall\Desktop\sandbox\primitives\uart\vivado\project_1.srcs\sources_1\bd\design_1\design_1.bd> 
+Wrote  : <C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.srcs/sources_1/bd/design_1/ui/bd_1f5defd0.ui> 
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+INFO: [xilinx.com:ip:clk_wiz:6.0-1] /clk_wiz_0 clk_wiz propagate
+Wrote  : <C:\Users\mfall\Desktop\sandbox\primitives\uart\vivado\project_1.srcs\sources_1\bd\design_1\design_1.bd> 
+VHDL Output written to : c:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.gen/sources_1/bd/design_1/synth/design_1.v
+VHDL Output written to : c:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.gen/sources_1/bd/design_1/sim/design_1.v
+VHDL Output written to : c:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.gen/sources_1/bd/design_1/hdl/design_1_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block async_fifo_0 .
+Exporting to file c:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.gen/sources_1/bd/design_1/hw_handoff/design_1.hwh
+Generated Block Design Tcl file c:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.gen/sources_1/bd/design_1/hw_handoff/design_1_bd.tcl
+Generated Hardware Definition File c:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.gen/sources_1/bd/design_1/synth/design_1.hwdef
+[Thu May 11 17:20:37 2023] Launched design_1_async_fifo_0_0_synth_1, synth_1...
+Run output will be captured here:
+design_1_async_fifo_0_0_synth_1: C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.runs/design_1_async_fifo_0_0_synth_1/runme.log
+synth_1: C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.runs/synth_1/runme.log
+[Thu May 11 17:20:37 2023] Launched impl_1...
+Run output will be captured here: C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:03 ; elapsed = 00:00:11 . Memory (MB): peak = 1423.609 ; gain = 141.402
+open_run impl_1
+INFO: [Device 21-403] Loading part xc7a35ticsg324-1L
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1470.809 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 13 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2020.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.043 . Memory (MB): peak = 2135.922 ; gain = 0.000
+Restored from archive | CPU: 1.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.043 . Memory (MB): peak = 2135.922 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2135.922 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+open_run: Time (s): cpu = 00:00:17 ; elapsed = 00:00:12 . Memory (MB): peak = 2254.902 ; gain = 831.293
+open_hw_manager
+connect_hw_server -allow_non_jtag
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2020.2
+  **** Build date : Nov 18 2020 at 10:01:48
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+
+INFO: [Labtools 27-3415] Connecting to cs_server url TCP:localhost:3042
+INFO: [Labtools 27-3417] Launching cs_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+
+******** Xilinx cs_server v2020.2
+  ****** Build date   : Nov 03 2020-13:02:56
+    **** Build number : 2020.2.1604437376
+      ** Copyright 2017-2020 Xilinx, Inc. All Rights Reserved.
+
+
+
+connect_hw_server: Time (s): cpu = 00:00:01 ; elapsed = 00:00:08 . Memory (MB): peak = 2337.891 ; gain = 13.570
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210319A43888A
+set_property PROGRAM.FILE {C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.runs/impl_1/design_1_wrapper.bit} [get_hw_devices xc7a35t_0]
+current_hw_device [get_hw_devices xc7a35t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a35t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.runs/impl_1/design_1_wrapper.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+open_bd_design {C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.srcs/sources_1/bd/design_1/design_1.bd}
+startgroup
+set_property -dict [list CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {200} CONFIG.CLKOUT2_REQUESTED_OUT_FREQ {200} CONFIG.MMCM_CLKFBOUT_MULT_F {10.000} CONFIG.MMCM_CLKOUT0_DIVIDE_F {5.000} CONFIG.MMCM_CLKOUT1_DIVIDE {5} CONFIG.CLKOUT1_JITTER {114.829} CONFIG.CLKOUT1_PHASE_ERROR {98.575} CONFIG.CLKOUT2_JITTER {114.829} CONFIG.CLKOUT2_PHASE_ERROR {98.575}] [get_bd_cells clk_wiz_0]
+endgroup
+startgroup
+set_property -dict [list CONFIG.P_CLK_FREQ {200}] [get_bd_cells clk_1_uart_rx]
+endgroup
+startgroup
+set_property -dict [list CONFIG.P_CLK_FREQ {200}] [get_bd_cells clk_2_uart_tx]
+endgroup
+save_bd_design
+Wrote  : <C:\Users\mfall\Desktop\sandbox\primitives\uart\vivado\project_1.srcs\sources_1\bd\design_1\design_1.bd> 
+reset_run design_1_uart_transmitter_0_0_synth_1
+reset_run design_1_uart_receiver_0_0_synth_1
+reset_run design_1_clk_wiz_0_1_synth_1
+reset_run synth_1
+launch_runs impl_1 -jobs 4
+INFO: [xilinx.com:ip:clk_wiz:6.0-1] /clk_wiz_0 clk_wiz propagate
+Wrote  : <C:\Users\mfall\Desktop\sandbox\primitives\uart\vivado\project_1.srcs\sources_1\bd\design_1\design_1.bd> 
+VHDL Output written to : c:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.gen/sources_1/bd/design_1/synth/design_1.v
+VHDL Output written to : c:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.gen/sources_1/bd/design_1/sim/design_1.v
+VHDL Output written to : c:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.gen/sources_1/bd/design_1/hdl/design_1_wrapper.v
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_3eg:part0:1.0 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-3eg/B.0/board.xml as part xczu3eg-sfvc784-1-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_3eg:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-3eg/D.0/board.xml as part xczu3eg-sfvc784-1-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_5ev:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-5ev/C.0/board.xml as part xczu5ev-sfvc784-1-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_3eg:part0:1.0 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-3eg/B.0/board.xml as part xczu3eg-sfvc784-1-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_3eg:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-3eg/D.0/board.xml as part xczu3eg-sfvc784-1-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_5ev:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-5ev/C.0/board.xml as part xczu5ev-sfvc784-1-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_3eg:part0:1.0 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-3eg/B.0/board.xml as part xczu3eg-sfvc784-1-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_3eg:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-3eg/D.0/board.xml as part xczu3eg-sfvc784-1-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_5ev:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-5ev/C.0/board.xml as part xczu5ev-sfvc784-1-e specified in board_part file is either invalid or not available
+INFO: [BD 41-1029] Generation completed for the IP Integrator block clk_1_reset .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block clk_wiz_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block clk_2_uart_tx .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block clk_1_uart_rx .
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_3eg:part0:1.0 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-3eg/B.0/board.xml as part xczu3eg-sfvc784-1-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_3eg:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-3eg/D.0/board.xml as part xczu3eg-sfvc784-1-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_5ev:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-5ev/C.0/board.xml as part xczu5ev-sfvc784-1-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_3eg:part0:1.0 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-3eg/B.0/board.xml as part xczu3eg-sfvc784-1-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_3eg:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-3eg/D.0/board.xml as part xczu3eg-sfvc784-1-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_5ev:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-5ev/C.0/board.xml as part xczu5ev-sfvc784-1-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_3eg:part0:1.0 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-3eg/B.0/board.xml as part xczu3eg-sfvc784-1-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_3eg:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-3eg/D.0/board.xml as part xczu3eg-sfvc784-1-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_5ev:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-5ev/C.0/board.xml as part xczu5ev-sfvc784-1-e specified in board_part file is either invalid or not available
+INFO: [BD 41-1029] Generation completed for the IP Integrator block clk_2_reset .
+Exporting to file c:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.gen/sources_1/bd/design_1/hw_handoff/design_1.hwh
+Generated Block Design Tcl file c:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.gen/sources_1/bd/design_1/hw_handoff/design_1_bd.tcl
+Generated Hardware Definition File c:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.gen/sources_1/bd/design_1/synth/design_1.hwdef
+INFO: [IP_Flow 19-7066] Running IP cache check for IP design_1_clk_wiz_0_1
+INFO: [IP_Flow 19-7066] Running IP cache check for IP design_1_proc_sys_reset_0_0
+INFO: [IP_Flow 19-7066] Running IP cache check for IP design_1_proc_sys_reset_0_1
+[Thu May 11 17:25:23 2023] Launched design_1_uart_transmitter_0_0_synth_1, design_1_uart_receiver_0_0_synth_1, design_1_clk_wiz_0_1_synth_1, design_1_proc_sys_reset_0_0_synth_1, design_1_proc_sys_reset_0_1_synth_1, synth_1...
+Run output will be captured here:
+design_1_uart_transmitter_0_0_synth_1: C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.runs/design_1_uart_transmitter_0_0_synth_1/runme.log
+design_1_uart_receiver_0_0_synth_1: C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.runs/design_1_uart_receiver_0_0_synth_1/runme.log
+design_1_clk_wiz_0_1_synth_1: C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.runs/design_1_clk_wiz_0_1_synth_1/runme.log
+design_1_proc_sys_reset_0_0_synth_1: C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.runs/design_1_proc_sys_reset_0_0_synth_1/runme.log
+design_1_proc_sys_reset_0_1_synth_1: C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.runs/design_1_proc_sys_reset_0_1_synth_1/runme.log
+synth_1: C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.runs/synth_1/runme.log
+[Thu May 11 17:25:23 2023] Launched impl_1...
+Run output will be captured here: C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:02 ; elapsed = 00:00:10 . Memory (MB): peak = 3961.648 ; gain = 2.926
+create_ip_run [get_files -of_objects [get_fileset sources_1] C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.srcs/sources_1/bd/design_1/design_1.bd]
+refresh_design
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 3974.672 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 13 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2020.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.044 . Memory (MB): peak = 3974.672 ; gain = 0.000
+Restored from archive | CPU: 0.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.045 . Memory (MB): peak = 3974.672 ; gain = 0.000
+CRITICAL WARNING: [Timing 38-282] The design failed to meet the timing requirements. Please see the timing summary report for details on the timing violations.
+open_bd_design {C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.srcs/sources_1/bd/design_1/design_1.bd}
+startgroup
+set_property -dict [list CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {175} CONFIG.CLKOUT2_REQUESTED_OUT_FREQ {175} CONFIG.MMCM_DIVCLK_DIVIDE {1} CONFIG.MMCM_CLKFBOUT_MULT_F {10.500} CONFIG.MMCM_CLKOUT0_DIVIDE_F {6.000} CONFIG.MMCM_CLKOUT1_DIVIDE {6} CONFIG.CLKOUT1_JITTER {113.523} CONFIG.CLKOUT1_PHASE_ERROR {94.994} CONFIG.CLKOUT2_JITTER {113.523} CONFIG.CLKOUT2_PHASE_ERROR {94.994}] [get_bd_cells clk_wiz_0]
+endgroup
+startgroup
+set_property -dict [list CONFIG.P_CLK_FREQ {175}] [get_bd_cells clk_1_uart_rx]
+endgroup
+startgroup
+set_property -dict [list CONFIG.P_CLK_FREQ {175}] [get_bd_cells clk_2_uart_tx]
+endgroup
+reset_run design_1_uart_transmitter_0_0_synth_1
+reset_run design_1_uart_receiver_0_0_synth_1
+reset_run design_1_clk_wiz_0_1_synth_1
+reset_run synth_1
+save_bd_design
+Wrote  : <C:\Users\mfall\Desktop\sandbox\primitives\uart\vivado\project_1.srcs\sources_1\bd\design_1\design_1.bd> 
+Wrote  : <C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.srcs/sources_1/bd/design_1/ui/bd_1f5defd0.ui> 
+launch_runs impl_1 -jobs 4
+INFO: [xilinx.com:ip:clk_wiz:6.0-1] /clk_wiz_0 clk_wiz propagate
+Wrote  : <C:\Users\mfall\Desktop\sandbox\primitives\uart\vivado\project_1.srcs\sources_1\bd\design_1\design_1.bd> 
+VHDL Output written to : c:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.gen/sources_1/bd/design_1/synth/design_1.v
+VHDL Output written to : c:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.gen/sources_1/bd/design_1/sim/design_1.v
+VHDL Output written to : c:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.gen/sources_1/bd/design_1/hdl/design_1_wrapper.v
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_3eg:part0:1.0 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-3eg/B.0/board.xml as part xczu3eg-sfvc784-1-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_3eg:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-3eg/D.0/board.xml as part xczu3eg-sfvc784-1-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_5ev:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-5ev/C.0/board.xml as part xczu5ev-sfvc784-1-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_3eg:part0:1.0 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-3eg/B.0/board.xml as part xczu3eg-sfvc784-1-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_3eg:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-3eg/D.0/board.xml as part xczu3eg-sfvc784-1-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_5ev:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-5ev/C.0/board.xml as part xczu5ev-sfvc784-1-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_3eg:part0:1.0 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-3eg/B.0/board.xml as part xczu3eg-sfvc784-1-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_3eg:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-3eg/D.0/board.xml as part xczu3eg-sfvc784-1-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_5ev:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-5ev/C.0/board.xml as part xczu5ev-sfvc784-1-e specified in board_part file is either invalid or not available
+INFO: [BD 41-1029] Generation completed for the IP Integrator block clk_1_reset .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block clk_wiz_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block clk_2_uart_tx .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block clk_1_uart_rx .
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_3eg:part0:1.0 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-3eg/B.0/board.xml as part xczu3eg-sfvc784-1-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_3eg:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-3eg/D.0/board.xml as part xczu3eg-sfvc784-1-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_5ev:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-5ev/C.0/board.xml as part xczu5ev-sfvc784-1-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_3eg:part0:1.0 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-3eg/B.0/board.xml as part xczu3eg-sfvc784-1-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_3eg:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-3eg/D.0/board.xml as part xczu3eg-sfvc784-1-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_5ev:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-5ev/C.0/board.xml as part xczu5ev-sfvc784-1-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_3eg:part0:1.0 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-3eg/B.0/board.xml as part xczu3eg-sfvc784-1-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_3eg:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-3eg/D.0/board.xml as part xczu3eg-sfvc784-1-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:gzu_5ev:part0:1.1 available at C:/Xilinx/Vivado/2020.2/data/boards/board_files/genesys-zu-5ev/C.0/board.xml as part xczu5ev-sfvc784-1-e specified in board_part file is either invalid or not available
+INFO: [BD 41-1029] Generation completed for the IP Integrator block clk_2_reset .
+Exporting to file c:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.gen/sources_1/bd/design_1/hw_handoff/design_1.hwh
+Generated Block Design Tcl file c:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.gen/sources_1/bd/design_1/hw_handoff/design_1_bd.tcl
+Generated Hardware Definition File c:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.gen/sources_1/bd/design_1/synth/design_1.hwdef
+INFO: [IP_Flow 19-7066] Running IP cache check for IP design_1_clk_wiz_0_1
+INFO: [IP_Flow 19-7066] Running IP cache check for IP design_1_proc_sys_reset_0_0
+INFO: [IP_Flow 19-7066] Running IP cache check for IP design_1_proc_sys_reset_0_1
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP design_1_proc_sys_reset_0_0, cache-ID = a28adf98d63c1150; cache size = 1.593 MB.
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP design_1_proc_sys_reset_0_1, cache-ID = a28adf98d63c1150; cache size = 1.593 MB.
+[Thu May 11 17:43:56 2023] Launched design_1_uart_transmitter_0_0_synth_1, design_1_uart_receiver_0_0_synth_1, design_1_clk_wiz_0_1_synth_1, synth_1...
+Run output will be captured here:
+design_1_uart_transmitter_0_0_synth_1: C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.runs/design_1_uart_transmitter_0_0_synth_1/runme.log
+design_1_uart_receiver_0_0_synth_1: C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.runs/design_1_uart_receiver_0_0_synth_1/runme.log
+design_1_clk_wiz_0_1_synth_1: C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.runs/design_1_clk_wiz_0_1_synth_1/runme.log
+synth_1: C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.runs/synth_1/runme.log
+[Thu May 11 17:43:56 2023] Launched impl_1...
+Run output will be captured here: C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:03 ; elapsed = 00:00:10 . Memory (MB): peak = 4187.668 ; gain = 0.000
+create_ip_run [get_files -of_objects [get_fileset sources_1] C:/Users/mfall/Desktop/sandbox/primitives/uart/vivado/project_1.srcs/sources_1/bd/design_1/design_1.bd]
+refresh_design
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 4199.121 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 13 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2020.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.151 . Memory (MB): peak = 4199.121 ; gain = 0.000
+Restored from archive | CPU: 0.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.151 . Memory (MB): peak = 4199.121 ; gain = 0.000
+CRITICAL WARNING: [Timing 38-282] The design failed to meet the timing requirements. Please see the timing summary report for details on the timing violations.
+exit
+INFO: [Common 17-206] Exiting Vivado at Thu May 11 17:53:45 2023...

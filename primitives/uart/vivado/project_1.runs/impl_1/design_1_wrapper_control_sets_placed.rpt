@@ -1,0 +1,93 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
+| Date         : Thu May 11 17:45:52 2023
+| Host         : LAPTOP-DJJCMLUK running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file design_1_wrapper_control_sets_placed.rpt
+| Design       : design_1_wrapper
+| Device       : xc7a35ti
+---------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    15 |
+|    Minimum number of control sets                        |    15 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |    61 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    15 |
+| >= 0 to < 4        |     0 |
+| >= 4 to < 6        |     3 |
+| >= 6 to < 8        |     3 |
+| >= 8 to < 10       |     3 |
+| >= 10 to < 12      |     2 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     0 |
+| >= 16              |     4 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              52 |           12 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |              80 |           23 |
+| Yes          | No                    | No                     |               8 |            3 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |              55 |           15 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++-------------------------------------+-----------------------------------------------+-------------------------------------------------+------------------+----------------+--------------+
+|             Clock Signal            |                 Enable Signal                 |                 Set/Reset Signal                | Slice Load Count | Bel Load Count | Bels / Slice |
++-------------------------------------+-----------------------------------------------+-------------------------------------------------+------------------+----------------+--------------+
+|  design_1_i/clk_wiz_0/inst/clk_out1 |                                               | design_1_i/clk_1_reset/U0/EXT_LPF/lpf_int       |                2 |              4 |         2.00 |
+|  design_1_i/clk_wiz_0/inst/clk_out2 |                                               | design_1_i/clk_2_reset/U0/EXT_LPF/lpf_int       |                2 |              4 |         2.00 |
+|  design_1_i/clk_wiz_0/inst/clk_out2 | design_1_i/clk_2_uart_tx/inst/bits0           | design_1_i/clk_2_uart_tx/inst/bits[3]_i_1_n_0   |                1 |              4 |         4.00 |
+|  design_1_i/clk_wiz_0/inst/clk_out1 |                                               | design_1_i/clk_1_uart_rx/inst/data[7]_i_1_n_0   |                2 |              6 |         3.00 |
+|  design_1_i/clk_wiz_0/inst/clk_out1 | design_1_i/clk_1_reset/U0/SEQ/seq_cnt_en      | design_1_i/clk_1_reset/U0/SEQ/SEQ_COUNTER/clear |                1 |              6 |         6.00 |
+|  design_1_i/clk_wiz_0/inst/clk_out2 | design_1_i/clk_2_reset/U0/SEQ/seq_cnt_en      | design_1_i/clk_2_reset/U0/SEQ/SEQ_COUNTER/clear |                1 |              6 |         6.00 |
+|  design_1_i/clk_wiz_0/inst/clk_out1 | design_1_i/clk_1_uart_rx/inst/temp[7]_i_1_n_0 | design_1_i/clk_1_uart_rx/inst/data[7]_i_1_n_0   |                2 |              8 |         4.00 |
+|  design_1_i/clk_wiz_0/inst/clk_out2 | design_1_i/clk_2_uart_tx/inst/temp[8]_i_1_n_0 |                                                 |                3 |              8 |         2.67 |
+|  design_1_i/clk_wiz_0/inst/clk_out1 | design_1_i/clk_1_uart_rx/inst/data            | design_1_i/clk_1_uart_rx/inst/data[7]_i_1_n_0   |                2 |              9 |         4.50 |
+|  design_1_i/clk_wiz_0/inst/clk_out1 | design_1_i/clk_1_uart_rx/inst/cnt[10]_i_1_n_0 | design_1_i/clk_1_uart_rx/inst/data[7]_i_1_n_0   |                4 |             11 |         2.75 |
+|  design_1_i/clk_wiz_0/inst/clk_out2 | design_1_i/clk_2_uart_tx/inst/state_reg_n_0   | design_1_i/clk_2_uart_tx/inst/p_0_in            |                4 |             11 |         2.75 |
+|  design_1_i/clk_wiz_0/inst/clk_out1 |                                               |                                                 |                7 |             26 |         3.71 |
+|  design_1_i/clk_wiz_0/inst/clk_out2 |                                               |                                                 |                7 |             28 |         4.00 |
+|  design_1_i/clk_wiz_0/inst/clk_out1 |                                               | design_1_i/async_fifo_0/inst/wr_ptr_calc/SR[0]  |                8 |             33 |         4.12 |
+|  design_1_i/clk_wiz_0/inst/clk_out2 |                                               | design_1_i/async_fifo_0/inst/rd_ptr_calc/SR[0]  |                9 |             33 |         3.67 |
++-------------------------------------+-----------------------------------------------+-------------------------------------------------+------------------+----------------+--------------+
+
+

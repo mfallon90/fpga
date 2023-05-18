@@ -1,6 +1,5 @@
 sim_build*
 __pycache__*
-vivado*
 vitis*
 vivado_old*
 vivado_no_axi*

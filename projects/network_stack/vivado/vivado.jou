@@ -1,0 +1,15 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Wed May 17 14:15:49 2023
+# Process ID: 15640
+# Current directory: C:/Users/mfall/Desktop/sandbox/projects/network_stack/vivado
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent3224 C:\Users\mfall\Desktop\sandbox\projects\network_stack\vivado\network_stack.xpr
+# Log file: C:/Users/mfall/Desktop/sandbox/projects/network_stack/vivado/vivado.log
+# Journal file: C:/Users/mfall/Desktop/sandbox/projects/network_stack/vivado\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/mfall/Desktop/sandbox/projects/network_stack/vivado/network_stack.xpr
+update_compile_order -fileset sources_1
+open_bd_design {C:/Users/mfall/Desktop/sandbox/projects/network_stack/vivado/network_stack.srcs/sources_1/bd/block_design/block_design.bd}
