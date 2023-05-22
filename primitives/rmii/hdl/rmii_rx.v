@@ -25,32 +25,30 @@
 module rmii_rx
     (
     // RX signals
-    input   logic           rx_clk,
-    input   logic           rx_rst_n,
-    input   logic   [3:0]   rx_data,
-    input   logic           rx_dv,
-    input   logic           rx_er,
-    input   logic           crs,
-    input   logic           col,
+    input   wire            rx_clk,
+    input   wire            rx_rst_n,
+    input   wire    [3:0]   rx_data,
+    input   wire            rx_dv,
+    input   wire            rx_er,
+    input   wire            crs,
+    input   wire            col,
 
     // Byte out interface
-    output  logic           rx_byte_vld,
-    output  logic           rx_data_vld,
-    output  logic   [7:0]   rx_byte
+    output  wire    [8:0]   rx_byte,
+    output  wire            rx_byte_vld
     );
 
     localparam          S_IDLE  = 1'b0;
     localparam          S_RX    = 1'b1;
 
-    logic               state;
-    logic   [3:0]       rx_data_reg;
-    logic               byte_vld;
+    reg                 state;
+    reg     [3:0]       rx_data_reg;
+    reg                 byte_vld;
 
-    assign rx_byte      = (state==S_RX) ? {rx_data, rx_data_reg} : 0;
+    assign rx_byte      = (state==S_RX) ? {state, rx_data, rx_data_reg} : 0;
     assign rx_byte_vld  = byte_vld;
-    assign rx_data_vld  = state;
 
-    always_ff @(posedge rx_clk) begin
+    always @(posedge rx_clk) begin
         if (~rx_rst_n) begin
             state           <= S_IDLE;
             rx_data_reg     <= 0;
@@ -87,10 +85,10 @@ module rmii_rx
         end
     end
 
-    initial begin
-        $dumpfile("rmii_rx.vcd");
-        $dumpvars();
-    end
+    // initial begin
+    //     $dumpfile("rmii_rx.vcd");
+    //     $dumpvars();
+    // end
 
 
 endmodule
