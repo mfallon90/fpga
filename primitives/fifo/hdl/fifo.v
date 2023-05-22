@@ -148,10 +148,10 @@ module fifo #(
             .cnt_cmb    (rd_ptr_cmb)
         );
 
-    initial begin
-        $dumpfile("fifo.vcd");
-        $dumpvars();
-    end
+    // initial begin
+    //     $dumpfile("fifo.vcd");
+    //     $dumpvars();
+    // end
 
 
 endmodule

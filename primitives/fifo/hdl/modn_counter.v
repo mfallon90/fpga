@@ -41,22 +41,25 @@ module modn_counter #(
     input   wire                        rst_n,
     input   wire                        en,
     output  wire    [P_NUM_BITS-1:0]    cnt_cmb,
-    output  reg     [P_NUM_BITS-1:0]    cnt_reg
+    output  wire    [P_NUM_BITS-1:0]    cnt_reg
     );
 
-    wire    [P_NUM_BITS-1:0]    cnt_nxt;
+    wire    [P_NUM_BITS-1:0]    cnt_next;
+    reg     [P_NUM_BITS-1:0]    cnt_curr;
 
-    assign cnt_nxt = cnt_reg + {{P_NUM_BITS-1{1'b0}}, en};
-    assign cnt_cmb = cnt_nxt;
+    assign cnt_next = cnt_curr + {{P_NUM_BITS-1{1'b0}}, en};
+
+    assign cnt_cmb = cnt_next;
+    assign cnt_reg = cnt_curr;
 
 
     always @(posedge clk) begin
         if (~rst_n) begin
-            cnt_reg     <= 0;
+            cnt_curr    <= 0;
         end
 
         else begin
-            cnt_reg     <= cnt_nxt;
+            cnt_curr    <= cnt_next;
         end
     end
 endmodule

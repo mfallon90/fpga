@@ -45,6 +45,7 @@ class TB():
     async def write_mult(self, num=1):
         for _ in range(num):
             await self.write_fifo()
+            await ClockCycles(self.dut.clk, 1)
 
     # This method calls the write_fifo method
     # in order to fill the FIFO
@@ -140,12 +141,12 @@ async def test_fifo(dut):
     # Wait some arbitrary time
     await ClockCycles(dut.clk, 100)
 
-    write_task = cocotb.start_soon(tb.write_mult_delay(NUM_LOOPS))
-    read_task = cocotb.start_soon(tb.read_mult_delay(NUM_LOOPS))
+    # write_task = cocotb.start_soon(tb.write_mult_delay(NUM_LOOPS))
+    # read_task = cocotb.start_soon(tb.read_mult_delay(NUM_LOOPS))
+    # done = Combine(write_task, read_task)
+    # await First(done, Timer(50, 'us'))
 
-    done = Combine(write_task, read_task)
-
-    await First(done, Timer(50, 'us'))
+    await tb.write_mult(50)
 
     await ClockCycles(dut.clk, 100)
     dut._log.info('Test done')

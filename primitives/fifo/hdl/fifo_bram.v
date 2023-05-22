@@ -35,11 +35,11 @@ module fifo_bram #(
     );
 
 
-    reg [P_WIDTH-1:0] bram [0:(P_DEPTH)-1];
+    reg [P_WIDTH-1:0] bram [0:P_DEPTH-1];
     integer i;
 
     initial begin
-        for (i=0; i<P_DEPTH-1; i=i+1) begin
+        for (i=0; i<P_DEPTH; i=i+1) begin
             bram[i] = 0;
         end
     end
