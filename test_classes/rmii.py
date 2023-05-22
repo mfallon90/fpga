@@ -3,71 +3,37 @@
 import random
 import cocotb
 import logging
+import zlib
 from cocotb.clock import Clock
 from cocotb.queue import Queue
 from cocotb.triggers import Timer, RisingEdge, ClockCycles, First, Combine, FallingEdge
 
-class RmiiMonitor():
-    def __init__(self, clk, rx, baud=9600, bits=8, stop=1, parity=None, sb=None):
-        '''
-        Initializes Monitor
+'''
+This is a known working frame with a correct CRC
+to be used for testing purposes
 
-        :param clk: dut clock
-        :param tx: dut uart_rx signal
-        :param baud: Desired baud rate. Default is 9600
-        :param bits: number of bits in word. Default is 8
-        :param stop: number of stop bits. Default is 1
-        :param parity: parity bit, 1 for even, 2 for odd. Default is none
-        :param sb: scoreboard object (cocotb.queue.Queue()) Default is none
-        '''
-        self.clk = clk
-        self.rx = rx
-        self.baud = baud
-        self.bits =bits
-        self.stop = stop
-        self.parity = parity
-        self.sb = sb
-        self.bit_prd = int(1e9/self.baud)
+DEST    = b'\x01\x00\x5E\x28\x64\x01'
+SRC     = b'\x2C\xFA\xA2\xA7\x4F\x81'
+TYPE    = b'\x08\x00'
+DATA1   = b'\x46\xC0\x00\x20\xC6\xC9\x00\x00'
+DATA2   = b'\x01\x02\xF4\xE6\x82\xBF\xA0\xFE'
+DATA3   = b'\xE0\xA8\x64\x01\x94\x04\x00\x00'
+DATA4   = b'\x11\x0A\xAA\x4B\xE0\xA8\x64\x01'
+DATA5   = b'\x00\x00\x00\x00\x00\x00\x00\x00'
+DATA6   = b'\x00\x00\x00\x00\x00\x00'
+CRC     = b'\xD0\x1D\x41\x1B'
+'''
 
-    async def uart_get(self):
-        data = 0
-
-        # Wait for start bit to begin
-        if self.rx != 0:
-            await FallingEdge(self.rx)
-            
-        # Wait for start bit to end
-        await Timer(self.bit_prd, units='ns')
-
-        for i in range(self.bits):
-            # Wait till halfway through bit
-            await Timer(self.bit_prd/2, units='ns')
-            if self.rx == 1: 
-                data = ((2**i)) + data
-            await Timer(self.bit_prd/2, units='ns')
-
-        if self.parity == 1:
-            # Wait till halfway through bit
-            await Timer(self.bit_prd/2, units='ns')
-            if (self.rx != even_parity(data)):
-                self.log.info(f'Parity error on word {word}')
-            await Timer(self.bit_prd/2, units='ns')
-        elif self.parity == 2:
-            await Timer(self.bit_prd/2, units='ns')
-            if (self.rx != odd_parity(data)):
-                self.log.info(f'Parity error on word {word}')
-            await Timer(self.bit_prd/2, units='ns')
-
-        # Wait for stop bit to end
-        for _ in range(self.stop):
-            await Timer(self.bit_prd, units='ns')
-
-        return data
-
+class EtherFrame():
+    def __init__(self, dst=None, src=None, type=None, payload=None):
+        self.dest_mac = dst
+        self.src_mac = src
+        self.type = type
+        self.payload = payload
 
 
 class RmiiDriver():
-    def __init__(self, clk, tx_data, tx_data_vld):
+    def __init__(self, tb, dut):
         '''
         Initializes Driver
 
@@ -75,45 +41,81 @@ class RmiiDriver():
         :param tx_data: dut rmii rx signal
         :param tx_data_vld: dut rmii rx valid signal
         '''
-        self.clk = clk
-        self.tx_data = tx_data
-        self.tx_data_vld = tx_data_vld
+        self.rmii_rx_clk = dut.rmii_rx_clk
+        self.rmii_rx_data = dut.rmii_rx_data
+        self.rmii_rx_dv = dut.rmii_rx_dv
+        self.rmii_rx_er = dut.rmii_rx_er
+        self.rmii_col = dut.rmii_col
+        self.rmii_crs = dut.rmii_crs
 
-        self.tx_data_vld.value = 0
-        self.tx_data.value = 0
+        self.rmii_rx_data.value = 0
+        self.rmii_rx_dv.value = 0
+        self.rmii_rx_er.value = 0
+        self.rmii_col.value = 0
+        self.rmii_crs.value = 0
 
-    async def send(self, data=None):
-        '''
-        Method to send RMII data
-        :param data: accepts single word or list. Default is single random
-        '''
+        self.preamble = b'\x55\x55\x55\x55\x55\x55\x55\xD5'
+        self.broadcast = b'\xFF\xFF\xFF\xFF\xFF\xFF'
+        self.sb = tb.sb
+        self.ifg = 96
+        self.bytes_sent = 0
+        self.tb = tb
 
-        # If no data is provided, randomize data
-        if isinstance(data, list):
-            data_list = data
+    async def gen_frame_bytes(self, max_size=1500, dst=None, src=None, type=None, data=None):
 
-            for nibble in data_list:
-                self.tx_data_vld.value = 1
-                self.tx_data.value = nibble
-                await RisingEdge(self.clk)
-                self.tx_data_vld.value = 0
-                self.tx_data.value = 0
+        pkt_len = random.randint(46,max_size)
 
-        else:
-            if data==None:
-                data_int = random.randint(0,15)
+        dst_mac = b'\xFF\xFF\xFF\xFF\xFF\xFF' if dst==None else dst
+        src_mac = random.randbytes(6) if src==None else src
+        type_len = random.randbytes(2) if type==None else type
+        data_pkt = random.randbytes(pkt_len) if data==None else data
 
+        crc_bytes = dst_mac+src_mac+type_len+data_pkt
+               
+        crc_32 = (zlib.crc32(crc_bytes)).to_bytes(4, 'little')
+
+        frame = crc_bytes+crc_32
+
+        self.bytes_sent = len(data_pkt)
+
+        if (self.sb != None):
+            for byte in data_pkt:
+                await self.sb.put(byte)
+
+        return frame
+
+    async def send_frame(self, max_size=1500, dst=None, src=None, type=None, data=None):
+
+        frame = await self.gen_frame_bytes(max_size, dst, src, type, data)
+        self.tb.bytes_sent += self.bytes_sent
+
+        self.rmii_rx_dv.value = 1
+        tx_frame = self.preamble+frame
+
+        for byte in tx_frame:
+
+            msn = byte >> 4
+            lsn = byte & 0x0F
+
+            await cocotb.triggers.RisingEdge(self.rmii_rx_clk)
+            self.rmii_rx_data.value = lsn
+
+            await cocotb.triggers.RisingEdge(self.rmii_rx_clk)
+            self.rmii_rx_data.value = msn
+
+        await RisingEdge(self.rmii_rx_clk)
+        self.rmii_rx_dv.value = 0
+        self.rmii_rx_data.value = 0
+
+    async def send_rand_frames(self, num_frames=1, max_size=1500, max_delay=None):
+        for _ in range(num_frames):
+            if max_delay <= self.ifg:
+                ifg = self.ifg
             else:
-                data_int = data
+                ifg = random.randint(self.ifg, max_delay)
 
-            data_reg = data_int
+            await self.send_frame(max_size)
+            await Timer(ifg, units='ns')
+            await RisingEdge(self.rmii_rx_clk)
 
-            # Send start bit
-            self.tx_data_vld.value = 1
-            self.tx_data.value = data_reg
-            await RisingEdge(self.clk)
-            self.tx_data_vld.value = 0
-            self.tx_data.value = 0
-
-            print(data_reg)
-        
+        self.tb.send_done = True
