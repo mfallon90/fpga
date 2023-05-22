@@ -92,10 +92,10 @@ module crc_8 #(
         crc_d[31] = crc_q[23] ^ crc_q[29] ^ data[5];
     end
     
-    initial begin
-        $dumpfile("crc_8.vcd");
-        $dumpvars();
-    end
+    // initial begin
+    //     $dumpfile("crc_8.vcd");
+    //     $dumpvars();
+    // end
 
 
 endmodule
