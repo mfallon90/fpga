@@ -1,9 +1,8 @@
 sim_build*
 __pycache__*
 vitis*
-vivado_old*
-vivado_no_axi*
 vitis_fsbl_test*
 vitis_qspi_flash*
 *.metadata
+vivado*
 
