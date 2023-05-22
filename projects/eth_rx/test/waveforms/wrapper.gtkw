@@ -1,0 +1,107 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Sun May 21 20:34:06 2023
+[*]
+[dumpfile] "C:\Users\mfall\Desktop\sandbox\projects\rmii_rx\test\sim_build\wrapper.vcd"
+[dumpfile_mtime] "Sun May 21 20:26:35 2023"
+[dumpfile_size] 11592767
+[savefile] "C:\Users\mfall\Desktop\sandbox\projects\rmii_rx\test\waveforms\wrapper.gtkw"
+[timestart] 94983680
+[size] 1920 1017
+[pos] -1 -1
+*-12.210733 94993840 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] wrapper.
+[sst_width] 197
+[signals_width] 298
+[sst_expanded] 1
+[sst_vpaned_height] 414
+@200
+-RMII IN
+@28
+wrapper.rmii_rx_clk
+wrapper.rmii_rx_rst_n
+@22
+wrapper.rmii_rx_data[3:0]
+@28
+wrapper.rmii_rx_dv
+@200
+-
+-RMII RX TO ASYNC FIFO
+@28
+wrapper.rmii_rx_clk
+wrapper.rx_byte_vld
+wrapper.rx_data_vld
+@22
+wrapper.rx_byte[7:0]
+@200
+-
+-
+-ASYNC FIFO TO CRC/DELAY
+@28
+wrapper.sys_clk
+wrapper.sys_byte_vld
+wrapper.sys_data_vld
+@22
+wrapper.sys_byte[7:0]
+@200
+-
+-CRC/DELAY TO FSM
+@28
+wrapper.sys_clk
+wrapper.sys_data_vld_del
+@22
+wrapper.sys_byte_del[7:0]
+@28
+wrapper.crc_vld
+@200
+-
+-FSM TO DATA/CONTROL FIFOS
+@28
+wrapper.sys_clk
+@22
+wrapper.data_out[7:0]
+@28
+wrapper.data_out_vld
+@22
+wrapper.ctrl[123:0]
+@28
+wrapper.ctrl_vld
+@200
+-
+-DATA FIFO TO FIFO CONTROL
+@28
+wrapper.sys_clk
+wrapper.data_rdy
+wrapper.data_vld
+@22
+wrapper.data[7:0]
+@200
+-
+-CONTROL FIFO TO FIFO CONTROL
+@28
+wrapper.sys_clk
+@22
+wrapper.cnt[10:0]
+@28
+wrapper.ctrl_out_vld
+wrapper.ctrl_out_rdy
+@200
+-
+-CONTROL FIFO TO DEMUX
+@28
+wrapper.sys_clk
+wrapper.ctrl_out_vld
+@23
+wrapper.ctrl_less_cnt[112:0]
+@200
+-
+-Output of Demultiplexer
+@22
+wrapper.data_broadcast[8:0]
+wrapper.data_drop[8:0]
+wrapper.data_for_me[8:0]
+wrapper.data_not_for_me[8:0]
+@200
+-
+[pattern_trace] 1
+[pattern_trace] 0

@@ -1,0 +1,51 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Sun May 21 23:36:11 2023
+[*]
+[dumpfile] "C:\Users\mfall\Desktop\sandbox\projects\rmii_rx\test\sim_build\wrapper.vcd"
+[dumpfile_mtime] "Sun May 21 20:26:35 2023"
+[dumpfile_size] 11592767
+[savefile] "C:\Users\mfall\Desktop\sandbox\projects\rmii_rx\test\waveforms\decoder.gtkw"
+[timestart] 92261000
+[size] 1920 1137
+[pos] -61 -61
+*-19.501993 95932000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] wrapper.
+[sst_width] 197
+[signals_width] 190
+[sst_expanded] 1
+[sst_vpaned_height] 342
+@420
+wrapper.demultiplexer.C_BROADCAST
+wrapper.demultiplexer.C_DROP_FRAME
+wrapper.demultiplexer.C_FOR_ME
+wrapper.demultiplexer.C_NOT_FOR_ME
+wrapper.demultiplexer.P_MY_MAC
+@28
+wrapper.demultiplexer.clk
+wrapper.demultiplexer.rst_n
+@200
+-
+-Inputs
+@22
+wrapper.demultiplexer.data_in[8:0]
+@23
+wrapper.demultiplexer.ctrl[112:0]
+@28
+wrapper.demultiplexer.ctrl_vld
+@200
+-
+-Internal
+@28
+wrapper.demultiplexer.ctrl_next[1:0]
+wrapper.demultiplexer.ctrl_sel[1:0]
+@200
+-
+-Outputs
+@22
+wrapper.demultiplexer.data_broadcast[8:0]
+wrapper.demultiplexer.data_drop[8:0]
+wrapper.demultiplexer.data_for_me[8:0]
+wrapper.demultiplexer.data_not_for_me[8:0]
+[pattern_trace] 1
+[pattern_trace] 0
