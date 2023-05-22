@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed May 17 17:12:50 2023" VIVADOVERSION="2020.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun May 21 19:42:58 2023" VIVADOVERSION="2020.2">
 
   <SYSTEMINFO ARCH="artix7" BOARD="digilentinc.com:arty-a7-35:part0:1.1" DEVICE="7a35ti" NAME="design_1" PACKAGE="csg324" SPEEDGRADE="-1L"/>
 
@@ -9,60 +9,51 @@
         <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_in1"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" NAME="sys_byte_vld" SIGIS="undef" SIGNAME="wrapper_0_sys_byte_vld">
+    <PORT DIR="O" NAME="data_vld" SIGIS="undef" SIGNAME="eth_rx_wrapper_0_data_for_me_vld">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="wrapper_0" PORT="sys_byte_vld"/>
+        <CONNECTION INSTANCE="eth_rx_wrapper_0" PORT="data_for_me_vld"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" LEFT="7" NAME="sys_byte" RIGHT="0" SIGIS="undef" SIGNAME="wrapper_0_sys_byte">
+    <PORT DIR="O" LEFT="7" NAME="data" RIGHT="0" SIGIS="undef" SIGNAME="eth_rx_wrapper_0_data_for_me_vld">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="wrapper_0" PORT="sys_byte"/>
+        <CONNECTION INSTANCE="eth_rx_wrapper_0" PORT="data_for_me_vld"/>
       </CONNECTIONS>
     </PORT>
     <PORT CLKFREQUENCY="100000000" DIR="I" NAME="rmii_rx_clk" SIGIS="clk" SIGNAME="External_Ports_rmii_rx_clk">
       <CONNECTIONS>
         <CONNECTION INSTANCE="proc_sys_reset_1" PORT="slowest_sync_clk"/>
-        <CONNECTION INSTANCE="wrapper_0" PORT="rmii_rx_clk"/>
+        <CONNECTION INSTANCE="rmii_rx" PORT="rx_clk"/>
+        <CONNECTION INSTANCE="eth_rx_wrapper_0" PORT="phy_clk"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" LEFT="3" NAME="rmii_rx_data" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_rmii_rx_data">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="wrapper_0" PORT="rmii_rx_data"/>
+        <CONNECTION INSTANCE="rmii_rx" PORT="rx_data"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" NAME="rmii_rx_dv" SIGIS="undef" SIGNAME="External_Ports_rmii_rx_dv">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="wrapper_0" PORT="rmii_rx_dv"/>
+        <CONNECTION INSTANCE="rmii_rx" PORT="rx_dv"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" NAME="rmii_rx_er" SIGIS="undef" SIGNAME="External_Ports_rmii_rx_er">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="wrapper_0" PORT="rmii_rx_er"/>
+        <CONNECTION INSTANCE="rmii_rx" PORT="rx_er"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" NAME="rmii_crs" SIGIS="undef" SIGNAME="External_Ports_rmii_crs">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="wrapper_0" PORT="rmii_crs"/>
+        <CONNECTION INSTANCE="rmii_rx" PORT="crs"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" NAME="rmii_col" SIGIS="undef" SIGNAME="External_Ports_rmii_col">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="wrapper_0" PORT="rmii_col"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT CLKFREQUENCY="25000000" DIR="O" NAME="rmii_ref_clk" SIGIS="clk" SIGNAME="clk_wiz_0_clk_out1">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_out1"/>
+        <CONNECTION INSTANCE="rmii_rx" PORT="col"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="O" LEFT="0" NAME="rmii_rx_rstn" POLARITY="ACTIVE_LOW" RIGHT="0" SIGIS="rst" SIGNAME="proc_sys_reset_2_peripheral_aresetn">
       <CONNECTIONS>
         <CONNECTION INSTANCE="proc_sys_reset_2" PORT="peripheral_aresetn"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT CLKFREQUENCY="25000000" DIR="O" NAME="sys_clk_test" SIGIS="clk" SIGNAME="clk_wiz_0_clk_out1">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_out1"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_reset">
@@ -72,14 +63,14 @@
         <CONNECTION INSTANCE="proc_sys_reset_2" PORT="ext_reset_in"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" NAME="sys_data_vld" SIGIS="undef" SIGNAME="wrapper_0_sys_data_vld">
+    <PORT DIR="O" NAME="uart_tx" SIGIS="undef" SIGNAME="uart_wrapper_0_uart_tx">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="wrapper_0" PORT="sys_data_vld"/>
+        <CONNECTION INSTANCE="uart_wrapper_0" PORT="uart_tx"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" NAME="crc_vld" SIGIS="undef" SIGNAME="wrapper_0_crc_vld">
+    <PORT CLKFREQUENCY="25000000" DIR="O" NAME="rmii_ref_clk" SIGIS="clk" SIGNAME="clk_wiz_0_clk_out1">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="wrapper_0" PORT="crc_vld"/>
+        <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_out1"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -677,13 +668,75 @@
         </PORT>
         <PORT CLKFREQUENCY="25000000" DIR="O" NAME="clk_out1" SIGIS="clk" SIGNAME="clk_wiz_0_clk_out1">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="rmii_ref_clk"/>
             <CONNECTION INSTANCE="proc_sys_reset_2" PORT="slowest_sync_clk"/>
-            <CONNECTION INSTANCE="External_Ports" PORT="sys_clk_test"/>
-            <CONNECTION INSTANCE="wrapper_0" PORT="sys_clk"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="rmii_ref_clk"/>
+            <CONNECTION INSTANCE="eth_rx_wrapper_0" PORT="sys_clk"/>
+            <CONNECTION INSTANCE="uart_wrapper_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="locked" SIGIS="undef"/>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/eth_rx_wrapper_0" HWVERSION="1.0" INSTANCE="eth_rx_wrapper_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="eth_rx_wrapper" VLNV="xilinx.com:module_ref:eth_rx_wrapper:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="P_MY_MAC" VALUE="0x00183E02523A"/>
+        <PARAMETER NAME="P_DEPTH" VALUE="1024"/>
+        <PARAMETER NAME="P_WIDTH" VALUE="8"/>
+        <PARAMETER NAME="P_RESIDUE" VALUE="0xC704DD7B"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_eth_rx_wrapper_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="phy_clk" SIGIS="clk" SIGNAME="External_Ports_rmii_rx_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="rmii_rx_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="phy_rst_n" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="proc_sys_reset_1_peripheral_aresetn">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="proc_sys_reset_1" PORT="peripheral_aresetn"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="8" NAME="phy_data_in" RIGHT="0" SIGIS="undef" SIGNAME="rmii_rx_rx_byte">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="rmii_rx" PORT="rx_byte"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="phy_data_in_vld" SIGIS="undef" SIGNAME="rmii_rx_rx_byte_vld">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="rmii_rx" PORT="rx_byte_vld"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="25000000" DIR="I" NAME="sys_clk" SIGIS="clk" SIGNAME="clk_wiz_0_clk_out1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_out1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="sys_rst_n" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="proc_sys_reset_2_peripheral_aresetn">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="proc_sys_reset_2" PORT="peripheral_aresetn"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="data_drop" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="data_drop_vld" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="7" NAME="data_broadcast" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="data_broadcast_vld" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="7" NAME="data_for_me" RIGHT="0" SIGIS="undef" SIGNAME="eth_rx_wrapper_0_data_for_me">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="uart_wrapper_0" PORT="data_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="data_for_me_vld" SIGIS="undef" SIGNAME="eth_rx_wrapper_0_data_for_me_vld">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="data_vld"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="data"/>
+            <CONNECTION INSTANCE="uart_wrapper_0" PORT="data_in_vld"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="data_not_for_me" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="data_not_for_me_vld" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
@@ -726,7 +779,8 @@
         <PORT DIR="O" LEFT="0" NAME="interconnect_aresetn" POLARITY="ACTIVE_LOW" RIGHT="0" SIGIS="rst"/>
         <PORT DIR="O" LEFT="0" NAME="peripheral_aresetn" POLARITY="ACTIVE_LOW" RIGHT="0" SIGIS="rst" SIGNAME="proc_sys_reset_1_peripheral_aresetn">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="wrapper_0" PORT="rmii_rx_rst_n"/>
+            <CONNECTION INSTANCE="rmii_rx" PORT="rx_rst_n"/>
+            <CONNECTION INSTANCE="eth_rx_wrapper_0" PORT="phy_rst_n"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -772,85 +826,104 @@
         <PORT DIR="O" LEFT="0" NAME="peripheral_aresetn" POLARITY="ACTIVE_LOW" RIGHT="0" SIGIS="rst" SIGNAME="proc_sys_reset_2_peripheral_aresetn">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="rmii_rx_rstn"/>
-            <CONNECTION INSTANCE="wrapper_0" PORT="sys_rst_n"/>
+            <CONNECTION INSTANCE="eth_rx_wrapper_0" PORT="sys_rst_n"/>
+            <CONNECTION INSTANCE="uart_wrapper_0" PORT="rst_n"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/wrapper_0" HWVERSION="1.0" INSTANCE="wrapper_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="wrapper" VLNV="xilinx.com:module_ref:wrapper:1.0">
+    <MODULE COREREVISION="1" FULLNAME="/rmii_rx" HWVERSION="1.0" INSTANCE="rmii_rx" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="rmii_rx" VLNV="xilinx.com:module_ref:rmii_rx:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="P_DEPTH" VALUE="1024"/>
-        <PARAMETER NAME="P_WIDTH" VALUE="9"/>
-        <PARAMETER NAME="P_RESIDUE" VALUE="0xC704DD7B"/>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_wrapper_0_0"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_rmii_rx_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="rmii_rx_clk" SIGIS="clk" SIGNAME="External_Ports_rmii_rx_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="rx_clk" SIGIS="clk" SIGNAME="External_Ports_rmii_rx_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="rmii_rx_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rmii_rx_rst_n" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="proc_sys_reset_1_peripheral_aresetn">
+        <PORT DIR="I" NAME="rx_rst_n" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="proc_sys_reset_1_peripheral_aresetn">
           <CONNECTIONS>
             <CONNECTION INSTANCE="proc_sys_reset_1" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="3" NAME="rmii_rx_data" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_rmii_rx_data">
+        <PORT DIR="I" LEFT="3" NAME="rx_data" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_rmii_rx_data">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="rmii_rx_data"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rmii_rx_dv" SIGIS="undef" SIGNAME="External_Ports_rmii_rx_dv">
+        <PORT DIR="I" NAME="rx_dv" SIGIS="undef" SIGNAME="External_Ports_rmii_rx_dv">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="rmii_rx_dv"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rmii_rx_er" SIGIS="undef" SIGNAME="External_Ports_rmii_rx_er">
+        <PORT DIR="I" NAME="rx_er" SIGIS="undef" SIGNAME="External_Ports_rmii_rx_er">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="rmii_rx_er"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rmii_crs" SIGIS="undef" SIGNAME="External_Ports_rmii_crs">
+        <PORT DIR="I" NAME="crs" SIGIS="undef" SIGNAME="External_Ports_rmii_crs">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="rmii_crs"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rmii_col" SIGIS="undef" SIGNAME="External_Ports_rmii_col">
+        <PORT DIR="I" NAME="col" SIGIS="undef" SIGNAME="External_Ports_rmii_col">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="rmii_col"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="25000000" DIR="I" NAME="sys_clk" SIGIS="clk" SIGNAME="clk_wiz_0_clk_out1">
+        <PORT DIR="O" LEFT="8" NAME="rx_byte" RIGHT="0" SIGIS="undef" SIGNAME="rmii_rx_rx_byte">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eth_rx_wrapper_0" PORT="phy_data_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="rx_byte_vld" SIGIS="undef" SIGNAME="rmii_rx_rx_byte_vld">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eth_rx_wrapper_0" PORT="phy_data_in_vld"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/uart_wrapper_0" HWVERSION="1.0" INSTANCE="uart_wrapper_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="uart_wrapper" VLNV="xilinx.com:module_ref:uart_wrapper:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="P_DEPTH" VALUE="8192"/>
+        <PARAMETER NAME="P_WIDTH" VALUE="8"/>
+        <PARAMETER NAME="P_CLK_FREQ" VALUE="25"/>
+        <PARAMETER NAME="P_BAUD_RATE" VALUE="115200"/>
+        <PARAMETER NAME="P_NUM_STOP" VALUE="1"/>
+        <PARAMETER NAME="P_PARITY" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_uart_wrapper_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="25000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="clk_wiz_0_clk_out1">
           <CONNECTIONS>
             <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_out1"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="sys_rst_n" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="proc_sys_reset_2_peripheral_aresetn">
+        <PORT DIR="I" NAME="rst_n" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="proc_sys_reset_2_peripheral_aresetn">
           <CONNECTIONS>
             <CONNECTION INSTANCE="proc_sys_reset_2" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="sys_byte_vld" SIGIS="undef" SIGNAME="wrapper_0_sys_byte_vld">
+        <PORT DIR="I" LEFT="7" NAME="data_in" RIGHT="0" SIGIS="undef" SIGNAME="eth_rx_wrapper_0_data_for_me">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="sys_byte_vld"/>
+            <CONNECTION INSTANCE="eth_rx_wrapper_0" PORT="data_for_me"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="sys_data_vld" SIGIS="undef" SIGNAME="wrapper_0_sys_data_vld">
+        <PORT DIR="I" NAME="data_in_vld" SIGIS="undef" SIGNAME="eth_rx_wrapper_0_data_for_me_vld">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="sys_data_vld"/>
+            <CONNECTION INSTANCE="eth_rx_wrapper_0" PORT="data_for_me_vld"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="7" NAME="sys_byte" RIGHT="0" SIGIS="undef" SIGNAME="wrapper_0_sys_byte">
+        <PORT DIR="O" NAME="uart_tx" SIGIS="undef" SIGNAME="uart_wrapper_0_uart_tx">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="sys_byte"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="crc_vld" SIGIS="undef" SIGNAME="wrapper_0_crc_vld">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="crc_vld"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="uart_tx"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

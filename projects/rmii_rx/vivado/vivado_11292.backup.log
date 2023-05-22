@@ -1,0 +1,315 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Sun May 21 17:51:25 2023
+# Process ID: 11292
+# Current directory: C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent9268 C:\Users\mfall\Desktop\sandbox\projects\rmii_rx\vivado\project_1.xpr
+# Log file: C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/vivado.log
+# Journal file: C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2020.2/data/ip'.
+open_project: Time (s): cpu = 00:00:15 ; elapsed = 00:00:07 . Memory (MB): peak = 1109.227 ; gain = 0.000
+update_compile_order -fileset sources_1
+open_bd_design {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.srcs/sources_1/bd/design_1/design_1.bd}
+Reading block design file <C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.srcs/sources_1/bd/design_1/design_1.bd>...
+Adding component instance block -- xilinx.com:ip:proc_sys_reset:5.0 - proc_sys_reset_1
+Adding component instance block -- xilinx.com:ip:clk_wiz:6.0 - clk_wiz_0
+Adding component instance block -- xilinx.com:ip:proc_sys_reset:5.0 - proc_sys_reset_2
+Adding component instance block -- xilinx.com:ip:system_ila:1.1 - system_ila_0
+Adding component instance block -- xilinx.com:module_ref:wrapper:1.0 - wrapper_0
+Successfully read diagram <design_1> from block design file <C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.srcs/sources_1/bd/design_1/design_1.bd>
+open_bd_design: Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1134.402 ; gain = 25.176
+delete_bd_objs [get_bd_nets wrapper_0_count] [get_bd_nets wrapper_0_count_vld] [get_bd_cells system_ila_0]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:system_ila:1.1 system_ila_0
+endgroup
+set_property location {3.5 1062 454} [get_bd_cells system_ila_0]
+set_property -dict [list CONFIG.C_BRAM_CNT {0.5} CONFIG.C_DATA_DEPTH {2048} CONFIG.C_NUM_OF_PROBES {7} CONFIG.C_MON_TYPE {NATIVE}] [get_bd_cells system_ila_0]
+connect_bd_net [get_bd_ports sys_clk] [get_bd_pins system_ila_0/clk]
+connect_bd_net [get_bd_pins clk_wiz_0/clk_out1] [get_bd_pins system_ila_0/probe0]
+connect_bd_net [get_bd_pins wrapper_0/data_probe] [get_bd_pins system_ila_0/probe1]
+connect_bd_net [get_bd_pins wrapper_0/data_vld_probe] [get_bd_pins system_ila_0/probe2]
+connect_bd_net [get_bd_pins wrapper_0/dest_probe] [get_bd_pins system_ila_0/probe3]
+connect_bd_net [get_bd_ports rmii_rx_clk] [get_bd_pins system_ila_0/probe4]
+connect_bd_net [get_bd_ports rmii_rx_data] [get_bd_pins system_ila_0/probe5]
+connect_bd_net [get_bd_ports rmii_rx_dv] [get_bd_pins system_ila_0/probe6]
+save_bd_design
+Wrote  : <C:\Users\mfall\Desktop\sandbox\projects\rmii_rx\vivado\project_1.srcs\sources_1\bd\design_1\design_1.bd> 
+Wrote  : <C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.srcs/sources_1/bd/design_1/ui/bd_1f5defd0.ui> 
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+INFO: [xilinx.com:ip:clk_wiz:6.0-1] /clk_wiz_0 clk_wiz propagate
+Wrote  : <C:\Users\mfall\Desktop\sandbox\projects\rmii_rx\vivado\project_1.srcs\sources_1\bd\design_1\design_1.bd> 
+VHDL Output written to : c:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.gen/sources_1/bd/design_1/synth/design_1.v
+VHDL Output written to : c:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.gen/sources_1/bd/design_1/sim/design_1.v
+VHDL Output written to : c:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.gen/sources_1/bd/design_1/hdl/design_1_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block wrapper_0 .
+Exporting to file c:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.gen/sources_1/bd/design_1/ip/design_1_system_ila_0_1/bd_0/hw_handoff/design_1_system_ila_0_1.hwh
+Generated Block Design Tcl file c:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.gen/sources_1/bd/design_1/ip/design_1_system_ila_0_1/bd_0/hw_handoff/design_1_system_ila_0_1_bd.tcl
+Generated Hardware Definition File c:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.gen/sources_1/bd/design_1/ip/design_1_system_ila_0_1/bd_0/synth/design_1_system_ila_0_1.hwdef
+INFO: [BD 41-1029] Generation completed for the IP Integrator block system_ila_0 .
+Exporting to file c:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.gen/sources_1/bd/design_1/hw_handoff/design_1.hwh
+Generated Block Design Tcl file c:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.gen/sources_1/bd/design_1/hw_handoff/design_1_bd.tcl
+Generated Hardware Definition File c:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.gen/sources_1/bd/design_1/synth/design_1.hwdef
+[Sun May 21 17:53:48 2023] Launched design_1_wrapper_0_0_synth_1, design_1_system_ila_0_1_synth_1, synth_1...
+Run output will be captured here:
+design_1_wrapper_0_0_synth_1: C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/design_1_wrapper_0_0_synth_1/runme.log
+design_1_system_ila_0_1_synth_1: C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/design_1_system_ila_0_1_synth_1/runme.log
+synth_1: C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/synth_1/runme.log
+[Sun May 21 17:53:48 2023] Launched impl_1...
+Run output will be captured here: C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:07 ; elapsed = 00:00:19 . Memory (MB): peak = 1497.387 ; gain = 235.215
+reset_run design_1_system_ila_0_1_synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+[Sun May 21 17:55:16 2023] Launched design_1_system_ila_0_1_synth_1...
+Run output will be captured here: C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/design_1_system_ila_0_1_synth_1/runme.log
+[Sun May 21 17:55:16 2023] Launched synth_1...
+Run output will be captured here: C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 4
+[Sun May 21 17:57:15 2023] Launched impl_1...
+Run output will be captured here: C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+[Sun May 21 17:58:52 2023] Launched impl_1...
+Run output will be captured here: C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/impl_1/runme.log
+open_hw_manager
+connect_hw_server -allow_non_jtag
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2020.2
+  **** Build date : Nov 18 2020 at 10:01:48
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+
+INFO: [Labtools 27-3415] Connecting to cs_server url TCP:localhost:3042
+INFO: [Labtools 27-3417] Launching cs_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+
+******** Xilinx cs_server v2020.2
+  ****** Build date   : Nov 03 2020-13:02:56
+    **** Build number : 2020.2.1604437376
+      ** Copyright 2017-2020 Xilinx, Inc. All Rights Reserved.
+
+
+
+connect_hw_server: Time (s): cpu = 00:00:01 ; elapsed = 00:00:09 . Memory (MB): peak = 1510.645 ; gain = 5.059
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210319A43888A
+set_property PROGRAM.FILE {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/impl_1/design_1_wrapper.bit} [get_hw_devices xc7a35t_0]
+set_property PROBES.FILE {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/impl_1/design_1_wrapper.ltx} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/impl_1/design_1_wrapper.ltx} [get_hw_devices xc7a35t_0]
+current_hw_device [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+INFO: [Labtools 27-2302] Device xc7a35t (JTAG device index = 0) is programmed with a design that has 1 ILA core(s).
+WARNING: [Labtools 27-1973] Mismatch between the design programmed into the device xc7a35t (JTAG device index = 0) and the probes file(s) C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/impl_1/design_1_wrapper.ltx.
+ The device core at location uuid_CD4C83C823A6596D99AD09BE1335C6B0, has 9 ILA Input port(s), but the core in the probes file(s) have 7 ILA Input port(s).
+Resolution: 
+1. Reprogram device with the correct programming file and associated probes file(s) OR
+2. Goto device properties and associate the correct probes file(s) with the programming file already programmed in the device.
+set_property PROBES.FILE {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/impl_1/design_1_wrapper.ltx} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/impl_1/design_1_wrapper.ltx} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/impl_1/design_1_wrapper.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+INFO: [Labtools 27-2302] Device xc7a35t (JTAG device index = 0) is programmed with a design that has 1 ILA core(s).
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_1 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]]
+WARNING: Simulation object design_1_i/system_ila_0/inst/probe7_1 was not found in the design.
+WARNING: Simulation object design_1_i/system_ila_0/inst/probe8_1 was not found in the design.
+set_property TRIGGER_COMPARE_VALUE eq1'bF [get_hw_probes design_1_i/system_ila_0/inst/probe6_1 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_1' trigger was armed at 2023-May-21 18:00:34
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_1' triggered at 2023-May-21 18:00:35
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.hw/backup/hw_ila_data_1.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+add_wave -into {hw_ila_data_1.wcfg} -radix hex { {design_1_i/system_ila_0/inst/probe3_1} }
+set_property NAME.CUSTOM wrapper_0_dest_probe [get_hw_probes design_1_i/system_ila_0/inst/probe3_1] 
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_1' trigger was armed at 2023-May-21 18:00:55
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_1' triggered at 2023-May-21 18:00:56
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.hw/backup/hw_ila_data_1.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_1' trigger was armed at 2023-May-21 18:00:57
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_1' triggered at 2023-May-21 18:00:58
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.hw/backup/hw_ila_data_1.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_1' trigger was armed at 2023-May-21 18:01:18
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_1' triggered at 2023-May-21 18:01:19
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.hw/backup/hw_ila_data_1.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_1' trigger was armed at 2023-May-21 18:01:34
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_1' triggered at 2023-May-21 18:01:35
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.hw/backup/hw_ila_data_1.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_1' trigger was armed at 2023-May-21 18:01:38
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_1' triggered at 2023-May-21 18:01:39
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.hw/backup/hw_ila_data_1.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_1' trigger was armed at 2023-May-21 18:01:43
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_1' triggered at 2023-May-21 18:01:44
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.hw/backup/hw_ila_data_1.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_1' trigger was armed at 2023-May-21 18:01:49
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_1' triggered at 2023-May-21 18:01:51
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.hw/backup/hw_ila_data_1.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_1' trigger was armed at 2023-May-21 18:02:53
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_1' triggered at 2023-May-21 18:02:54
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.hw/backup/hw_ila_data_1.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_1' trigger was armed at 2023-May-21 18:03:06
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_1' triggered at 2023-May-21 18:03:07
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.hw/backup/hw_ila_data_1.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+set_property TRIGGER_COMPARE_VALUE eq1'bX [get_hw_probes design_1_i/system_ila_0/inst/probe6_1 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_1' trigger was armed at 2023-May-21 18:03:24
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_1' triggered at 2023-May-21 18:03:24
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.hw/backup/hw_ila_data_1.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+set_property TRIGGER_COMPARE_VALUE eq1'bR [get_hw_probes design_1_i/system_ila_0/inst/probe2_1 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_1' trigger was armed at 2023-May-21 18:03:29
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_1' triggered at 2023-May-21 18:03:33
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.hw/backup/hw_ila_data_1.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_1' trigger was armed at 2023-May-21 18:04:18
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7a35t_0] -filter {CELL_NAME=~"design_1_i/system_ila_0/inst/ila_lib"}]]
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_1' triggered at 2023-May-21 18:04:22
+INFO: [Labtools 27-3304] ILA Waveform data saved to file C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.hw/backup/hw_ila_data_1.ila. Use Tcl command 'read_hw_ila_data' or Vivado File->Import->Import ILA Data menu item to import the previously saved data.
+open_bd_design {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.srcs/sources_1/bd/design_1/design_1.bd}
+delete_bd_objs [get_bd_nets wrapper_0_dest_probe] [get_bd_cells system_ila_0]
+create_bd_cell -type module -reference fifo fifo_0
+ERROR: [filemgmt 56-190] Failed to uniquely resolve reference. Multiple different modules were found that match the name 'fifo'.
+ERROR: [BD 41-1690] Unable to resolve module-source based on inputs: fifo
+ERROR: [BD 5-7] Error: running create_bd_cell  -type module -reference fifo -name fifo_0 .
+ERROR: [Common 17-39] 'create_bd_cell' failed due to earlier errors.
+create_bd_cell -type module -reference fifo fifo_0
+ERROR: [filemgmt 56-190] Failed to uniquely resolve reference. Multiple different modules were found that match the name 'fifo'.
+ERROR: [BD 41-1690] Unable to resolve module-source based on inputs: fifo
+ERROR: [BD 5-7] Error: running create_bd_cell  -type module -reference fifo -name fifo_0 .
+ERROR: [Common 17-39] 'create_bd_cell' failed due to earlier errors.
+create_bd_cell -type module -reference fifo uart_fifo
+ERROR: [filemgmt 56-190] Failed to uniquely resolve reference. Multiple different modules were found that match the name 'fifo'.
+ERROR: [BD 41-1690] Unable to resolve module-source based on inputs: fifo
+ERROR: [BD 5-7] Error: running create_bd_cell  -type module -reference fifo -name uart_fifo .
+ERROR: [Common 17-39] 'create_bd_cell' failed due to earlier errors.
+ERROR: [Labtoolstcl 44-513] HW Target shutdown. Closing target: localhost:3121/xilinx_tcf/Digilent/210319A43888A
+add_files -norecurse {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/hdl/uart_wrapper.v C:/Users/mfall/Desktop/sandbox/primitives/uart/tx/hdl/uart_transmitter.v}
+update_compile_order -fileset sources_1
+update_module_reference design_1_wrapper_0_0
+ERROR: [filemgmt 56-190] Failed to uniquely resolve reference. Multiple different modules were found that match the name 'wrapper'.
+ERROR: [Common 17-39] 'update_module_reference' failed due to earlier errors.
+update_compile_order -fileset sources_1
+create_bd_cell -type module -reference uart_wrapper uart_wrapper_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'rst_n' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-4728] Bus Interface 'rst_n': Added interface parameter 'POLARITY' with value 'ACTIVE_LOW'.
+WARNING: [IP_Flow 19-3157] Bus Interface 'rst_n': Bus parameter POLARITY is ACTIVE_LOW but port 'rst_n' is not *resetn - please double check the POLARITY setting.
+WARNING: [IP_Flow 19-5661] Bus Interface 'clk' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+set_property location {3.5 1166 415} [get_bd_cells uart_wrapper_0]
+connect_bd_net [get_bd_pins wrapper_0/data_probe] [get_bd_pins uart_wrapper_0/data_in]
+connect_bd_net [get_bd_pins wrapper_0/data_vld_probe] [get_bd_pins uart_wrapper_0/data_in_vld]
+connect_bd_net [get_bd_pins clk_wiz_0/clk_out1] [get_bd_pins uart_wrapper_0/clk]
+connect_bd_net [get_bd_pins proc_sys_reset_2/peripheral_aresetn] [get_bd_pins uart_wrapper_0/rst_n]
+startgroup
+make_bd_pins_external  [get_bd_pins uart_wrapper_0/uart_tx]
+endgroup
+set_property name uart_tx [get_bd_ports uart_tx_0]
+update_module_reference design_1_wrapper_0_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'rmii_rx_rst_n' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'sys_rst_n' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'rmii_rx_clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'sys_clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-4728] Bus Interface 'rmii_rx_rst_n': Added interface parameter 'POLARITY' with value 'ACTIVE_LOW'.
+INFO: [IP_Flow 19-4728] Bus Interface 'sys_rst_n': Added interface parameter 'POLARITY' with value 'ACTIVE_LOW'.
+INFO: [IP_Flow 19-4728] Bus Interface 'rmii_rx_clk': Added interface parameter 'ASSOCIATED_RESET' with value 'rmii_rx_rst_n'.
+INFO: [IP_Flow 19-4728] Bus Interface 'sys_clk': Added interface parameter 'ASSOCIATED_RESET' with value 'sys_rst_n'.
+WARNING: [IP_Flow 19-3157] Bus Interface 'rmii_rx_rst_n': Bus parameter POLARITY is ACTIVE_LOW but port 'rmii_rx_rst_n' is not *resetn - please double check the POLARITY setting.
+WARNING: [IP_Flow 19-3157] Bus Interface 'sys_rst_n': Bus parameter POLARITY is ACTIVE_LOW but port 'sys_rst_n' is not *resetn - please double check the POLARITY setting.
+WARNING: [IP_Flow 19-5661] Bus Interface 'rmii_rx_clk' does not have any bus interfaces associated with it.
+WARNING: [IP_Flow 19-5661] Bus Interface 'sys_clk' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+Upgrading 'C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.srcs/sources_1/bd/design_1/design_1.bd'
+INFO: [IP_Flow 19-1972] Upgraded design_1_wrapper_0_0 from wrapper_v1_0 1.0 to wrapper_v1_0 1.0
+WARNING: [IP_Flow 19-4700] Upgrade has removed port 'dest_probe'
+WARNING: [IP_Flow 19-3298] Detected external port differences while upgrading 'design_1_wrapper_0_0'. These changes may impact your design.
+CRITICAL WARNING: [Coretcl 2-1280] The upgrade of 'design_1_wrapper_0_0' has identified issues that may require user intervention. Please verify that the instance is correctly configured, and review any upgrade messages.
+Wrote  : <C:\Users\mfall\Desktop\sandbox\projects\rmii_rx\vivado\project_1.srcs\sources_1\bd\design_1\design_1.bd> 
+Wrote  : <C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.srcs/sources_1/bd/design_1/ui/bd_1f5defd0.ui> 
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+INFO: [xilinx.com:ip:clk_wiz:6.0-1] /clk_wiz_0 clk_wiz propagate
+Wrote  : <C:\Users\mfall\Desktop\sandbox\projects\rmii_rx\vivado\project_1.srcs\sources_1\bd\design_1\design_1.bd> 
+Wrote  : <C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.srcs/sources_1/bd/design_1/ui/bd_1f5defd0.ui> 
+VHDL Output written to : c:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.gen/sources_1/bd/design_1/synth/design_1.v
+VHDL Output written to : c:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.gen/sources_1/bd/design_1/sim/design_1.v
+VHDL Output written to : c:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.gen/sources_1/bd/design_1/hdl/design_1_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block wrapper_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block uart_wrapper_0 .
+Exporting to file c:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.gen/sources_1/bd/design_1/hw_handoff/design_1.hwh
+Generated Block Design Tcl file c:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.gen/sources_1/bd/design_1/hw_handoff/design_1_bd.tcl
+Generated Hardware Definition File c:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.gen/sources_1/bd/design_1/synth/design_1.hwdef
+[Sun May 21 18:20:33 2023] Launched design_1_wrapper_0_0_synth_1, design_1_uart_wrapper_0_0_synth_1, synth_1...
+Run output will be captured here:
+design_1_wrapper_0_0_synth_1: C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/design_1_wrapper_0_0_synth_1/runme.log
+design_1_uart_wrapper_0_0_synth_1: C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/design_1_uart_wrapper_0_0_synth_1/runme.log
+synth_1: C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/synth_1/runme.log
+[Sun May 21 18:20:33 2023] Launched impl_1...
+Run output will be captured here: C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:00 ; elapsed = 00:00:06 . Memory (MB): peak = 3201.801 ; gain = 0.000
+reset_run design_1_wrapper_0_0_synth_1
+reset_run design_1_uart_wrapper_0_0_synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+[Sun May 21 18:21:05 2023] Launched design_1_wrapper_0_0_synth_1, design_1_uart_wrapper_0_0_synth_1...
+Run output will be captured here:
+design_1_wrapper_0_0_synth_1: C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/design_1_wrapper_0_0_synth_1/runme.log
+design_1_uart_wrapper_0_0_synth_1: C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/design_1_uart_wrapper_0_0_synth_1/runme.log
+[Sun May 21 18:21:05 2023] Launched synth_1...
+Run output will be captured here: C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/synth_1/runme.log
+validate_bd_design -force
+INFO: [xilinx.com:ip:clk_wiz:6.0-1] /clk_wiz_0 clk_wiz propagate
+save_bd_design
+Wrote  : <C:\Users\mfall\Desktop\sandbox\projects\rmii_rx\vivado\project_1.srcs\sources_1\bd\design_1\design_1.bd> 
+Wrote  : <C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.srcs/sources_1/bd/design_1/ui/bd_1f5defd0.ui> 
+exit
+INFO: [Common 17-206] Exiting Vivado at Sun May 21 18:21:55 2023...
+INFO: [filemgmt 56-326] User Interrupt. Could not getCurrentGraph()

@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Sun May 21 18:21:58 2023
+# Process ID: 4952
+# Current directory: C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent8848 C:\Users\mfall\Desktop\sandbox\projects\rmii_rx\vivado\project_1.xpr
+# Log file: C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/vivado.log
+# Journal file: C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.xpr

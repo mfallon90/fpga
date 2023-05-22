@@ -1,0 +1,312 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Thu May 18 15:01:03 2023
+# Process ID: 16092
+# Current directory: C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent14760 C:\Users\mfall\Desktop\sandbox\projects\rmii_rx\vivado\project_1.xpr
+# Log file: C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/vivado.log
+# Journal file: C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.xpr
+update_compile_order -fileset sources_1
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+set_property PROGRAM.FILE {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/impl_1/design_1_wrapper.bit} [get_hw_devices xc7a35t_0]
+current_hw_device [get_hw_devices xc7a35t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a35t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/impl_1/design_1_wrapper.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+open_bd_design {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.srcs/sources_1/bd/design_1/design_1.bd}
+add_files -norecurse C:/Users/mfall/Desktop/sandbox/primitives/eth_rx_fsm/hdl/eth_rx_fsm.sv
+update_compile_order -fileset sources_1
+update_module_reference design_1_wrapper_0_0
+set_property name data_out_vld [get_bd_ports sys_byte_vld]
+startgroup
+connect_bd_net [get_bd_ports data_out_vld] [get_bd_pins wrapper_0/data_out_vld]
+endgroup
+set_property name data_out [get_bd_ports sys_byte]
+startgroup
+connect_bd_net [get_bd_ports data_out] [get_bd_pins wrapper_0/data_out]
+endgroup
+set_property name ctrl_vld [get_bd_ports sys_data_vld]
+startgroup
+connect_bd_net [get_bd_ports ctrl_vld] [get_bd_pins wrapper_0/ctrl_vld]
+endgroup
+regenerate_bd_layout
+save_bd_design
+validate_bd_design
+save_bd_design
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+update_module_reference design_1_wrapper_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/impl_1/design_1_wrapper.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+open_bd_design {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.srcs/sources_1/bd/design_1/design_1.bd}
+update_module_reference design_1_wrapper_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/impl_1/design_1_wrapper.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+open_bd_design {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.srcs/sources_1/bd/design_1/design_1.bd}
+update_module_reference design_1_wrapper_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/impl_1/design_1_wrapper.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+open_bd_design {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.srcs/sources_1/bd/design_1/design_1.bd}
+update_module_reference design_1_wrapper_0_0
+validate_bd_design
+save_bd_design
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/impl_1/design_1_wrapper.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+open_bd_design {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.srcs/sources_1/bd/design_1/design_1.bd}
+update_module_reference design_1_wrapper_0_0
+validate_bd_design
+save_bd_design
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+update_module_reference design_1_wrapper_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/impl_1/design_1_wrapper.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+open_bd_design {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.srcs/sources_1/bd/design_1/design_1.bd}
+update_module_reference design_1_wrapper_0_0
+set_property name data_probe_vld [get_bd_ports data_out_vld]
+set_property name data_probe [get_bd_ports data_out]
+set_property name data_probe_rdy [get_bd_ports ctrl_vld]
+delete_bd_objs [get_bd_nets wrapper_0_crc_vld] [get_bd_ports crc_vld]
+connect_bd_net [get_bd_ports data_probe] [get_bd_pins wrapper_0/data_probe]
+connect_bd_net [get_bd_ports data_probe_vld] [get_bd_pins wrapper_0/data_probe_vld]
+connect_bd_net [get_bd_ports data_probe_rdy] [get_bd_pins wrapper_0/data_probe_rdy]
+regenerate_bd_layout
+save_bd_design
+validate_bd_design
+save_bd_design
+validate_bd_design -force
+save_bd_design
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+add_files -norecurse {C:/Users/mfall/Desktop/sandbox/primitives/fifo/hdl/modn_counter.v C:/Users/mfall/Desktop/sandbox/primitives/fifo/hdl/fifo.v}
+update_compile_order -fileset sources_1
+update_module_reference design_1_wrapper_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+add_files -norecurse C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/hdl/counter.sv
+update_compile_order -fileset sources_1
+update_module_reference design_1_wrapper_0_0
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+update_module_reference design_1_wrapper_0_0
+update_module_reference design_1_wrapper_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/impl_1/design_1_wrapper.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+open_bd_design {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.srcs/sources_1/bd/design_1/design_1.bd}
+update_module_reference design_1_wrapper_0_0
+startgroup
+delete_bd_objs [get_bd_nets wrapper_0_sys_byte_vld]
+delete_bd_objs [get_bd_nets wrapper_0_sys_data_vld]
+endgroup
+connect_bd_net [get_bd_ports data_probe_vld] [get_bd_pins wrapper_0/fifo_wr_vld]
+connect_bd_net [get_bd_ports data_probe_rdy] [get_bd_pins wrapper_0/fifo_rd_vld]
+save_bd_design
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/impl_1/design_1_wrapper.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+update_module_reference design_1_wrapper_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/impl_1/design_1_wrapper.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+open_bd_design {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.srcs/sources_1/bd/design_1/design_1.bd}
+update_module_reference design_1_wrapper_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/impl_1/design_1_wrapper.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+open_bd_design {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.srcs/sources_1/bd/design_1/design_1.bd}
+update_module_reference design_1_wrapper_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/impl_1/design_1_wrapper.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+open_bd_design {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.srcs/sources_1/bd/design_1/design_1.bd}
+update_module_reference design_1_wrapper_0_0
+startgroup
+make_bd_pins_external  [get_bd_pins wrapper_0/wr_ptr_probe]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins wrapper_0/rd_ptr_probe]
+endgroup
+set_property name wr_ptr_probe [get_bd_ports wr_ptr_probe_0]
+set_property name rd_ptr_probe [get_bd_ports rd_ptr_probe_0]
+save_bd_design
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/impl_1/design_1_wrapper.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+open_bd_design {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.srcs/sources_1/bd/design_1/design_1.bd}
+update_module_reference design_1_wrapper_0_0
+regenerate_bd_layout
+startgroup
+make_bd_pins_external  [get_bd_pins wrapper_0/wr_en_probe] [get_bd_pins wrapper_0/wr_vld_probe] [get_bd_pins wrapper_0/wr_full_probe]
+endgroup
+set_property name wr_vld_probe [get_bd_ports wr_vld_probe_0]
+set_property name wr_en_probe [get_bd_ports wr_en_probe_0]
+set_property name wr_full_probe [get_bd_ports wr_full_probe_0]
+update_module_reference design_1_wrapper_0_0
+validate_bd_design
+save_bd_design
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+update_module_reference design_1_wrapper_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/impl_1/design_1_wrapper.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+open_bd_design {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.srcs/sources_1/bd/design_1/design_1.bd}
+update_module_reference design_1_wrapper_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+update_module_reference design_1_wrapper_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/impl_1/design_1_wrapper.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+update_module_reference design_1_wrapper_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+update_module_reference design_1_wrapper_0_0
+reset_run impl_1
+startgroup
+delete_bd_objs [get_bd_nets wrapper_0_fifo_wr_vld]
+delete_bd_objs [get_bd_nets wrapper_0_fifo_rd_vld]
+endgroup
+startgroup
+connect_bd_net [get_bd_ports data_probe_vld] [get_bd_pins wrapper_0/data_probe_vld]
+connect_bd_net [get_bd_ports data_probe_rdy] [get_bd_pins wrapper_0/data_probe_vld]
+endgroup
+delete_bd_objs [get_bd_nets wrapper_0_data_probe_vld]
+connect_bd_net [get_bd_ports data_probe_vld] [get_bd_pins wrapper_0/data_probe_vld]
+connect_bd_net [get_bd_ports data_probe_rdy] [get_bd_pins wrapper_0/data_probe_rdy]
+regenerate_bd_layout
+save_bd_design
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/impl_1/design_1_wrapper.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+update_module_reference design_1_wrapper_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/impl_1/design_1_wrapper.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+open_bd_design {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.srcs/sources_1/bd/design_1/design_1.bd}
+update_module_reference design_1_wrapper_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/impl_1/design_1_wrapper.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+open_bd_design {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.srcs/sources_1/bd/design_1/design_1.bd}
+startgroup
+make_bd_pins_external  [get_bd_pins wrapper_0/fifo_wr_vld]
+endgroup
+set_property name fifo_wr_vld [get_bd_ports fifo_wr_vld_0]
+delete_bd_objs [get_bd_nets wrapper_0_wr_en_probe] [get_bd_nets wrapper_0_wr_full_probe] [get_bd_nets wrapper_0_wr_vld_probe] [get_bd_ports wr_en_probe] [get_bd_ports wr_full_probe] [get_bd_ports wr_vld_probe]
+save_bd_design
+update_module_reference design_1_wrapper_0_0
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.runs/impl_1/design_1_wrapper.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+open_bd_design {C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.srcs/sources_1/bd/design_1/design_1.bd}

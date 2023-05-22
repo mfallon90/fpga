@@ -1,0 +1,58 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Sat May 20 18:55:36 2023
+[*]
+[dumpfile] "C:\Users\mfall\Desktop\sandbox\projects\rmii_rx\test\sim_build\wrapper.vcd"
+[dumpfile_mtime] "Sat May 20 18:21:59 2023"
+[dumpfile_size] 562050
+[savefile] "C:\Users\mfall\Desktop\sandbox\projects\rmii_rx\test\waveforms\fifo_control.gtkw"
+[timestart] 0
+[size] 958 1008
+[pos] 770 -183
+*-23.357670 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] wrapper.
+[sst_width] 197
+[signals_width] 195
+[sst_expanded] 1
+[sst_vpaned_height] 296
+@28
+wrapper.fifo_control.clk
+wrapper.fifo_control.rst_n
+@200
+-
+-Inputs
+@28
+wrapper.fifo_control.cnt_vld
+@25
+wrapper.fifo_control.cnt[10:0]
+@200
+-
+-Internal
+@28
+wrapper.fifo_control.state
+@25
+wrapper.fifo_control.max_val[10:0]
+@c00025
+wrapper.fifo_control.count[10:0]
+@28
+(0)wrapper.fifo_control.count[10:0]
+(1)wrapper.fifo_control.count[10:0]
+(2)wrapper.fifo_control.count[10:0]
+(3)wrapper.fifo_control.count[10:0]
+(4)wrapper.fifo_control.count[10:0]
+(5)wrapper.fifo_control.count[10:0]
+(6)wrapper.fifo_control.count[10:0]
+(7)wrapper.fifo_control.count[10:0]
+(8)wrapper.fifo_control.count[10:0]
+(9)wrapper.fifo_control.count[10:0]
+(10)wrapper.fifo_control.count[10:0]
+@1401205
+-group_end
+@200
+-
+-Outputs
+@28
+wrapper.fifo_control.cnt_rdy
+wrapper.fifo_control.data_rdy
+[pattern_trace] 1
+[pattern_trace] 0

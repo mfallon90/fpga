@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Wed May 17 17:14:38 2023
+| Date         : Sun May 21 19:45:00 2023
 | Host         : LAPTOP-DJJCMLUK running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file design_1_wrapper_control_sets_placed.rpt
 | Design       : design_1_wrapper
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |     9 |
-|    Minimum number of control sets                        |     9 |
+| Total control sets                                       |    22 |
+|    Minimum number of control sets                        |    22 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    23 |
+| Unused register locations in slices containing registers |    81 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,15 +39,15 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |     9 |
+| Total control sets |    22 |
 | >= 0 to < 4        |     0 |
-| >= 4 to < 6        |     2 |
+| >= 4 to < 6        |     4 |
 | >= 6 to < 8        |     2 |
-| >= 8 to < 10       |     0 |
-| >= 10 to < 12      |     0 |
-| >= 12 to < 14      |     0 |
+| >= 8 to < 10       |     1 |
+| >= 10 to < 12      |     4 |
+| >= 12 to < 14      |     1 |
 | >= 14 to < 16      |     0 |
-| >= 16              |     5 |
+| >= 16              |    10 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,30 +58,43 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              49 |           15 |
+| No           | No                    | No                     |             142 |           35 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |             100 |           28 |
-| Yes          | No                    | No                     |               0 |            0 |
+| No           | Yes                   | No                     |             172 |           52 |
+| Yes          | No                    | No                     |              27 |            9 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              44 |           13 |
+| Yes          | Yes                   | No                     |             210 |           59 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+-------------------------------------+-----------------------------------------------+------------------------------------------------------+------------------+----------------+--------------+
-|             Clock Signal            |                 Enable Signal                 |                   Set/Reset Signal                   | Slice Load Count | Bel Load Count | Bels / Slice |
-+-------------------------------------+-----------------------------------------------+------------------------------------------------------+------------------+----------------+--------------+
-|  design_1_i/clk_wiz_0/inst/clk_out1 |                                               | design_1_i/proc_sys_reset_2/U0/EXT_LPF/lpf_int       |                1 |              4 |         4.00 |
-|  rmii_rx_clk_IBUF_BUFG              |                                               | design_1_i/proc_sys_reset_1/U0/EXT_LPF/lpf_int       |                2 |              4 |         2.00 |
-|  design_1_i/clk_wiz_0/inst/clk_out1 | design_1_i/proc_sys_reset_2/U0/SEQ/seq_cnt_en | design_1_i/proc_sys_reset_2/U0/SEQ/SEQ_COUNTER/clear |                1 |              6 |         6.00 |
-|  rmii_rx_clk_IBUF_BUFG              | design_1_i/proc_sys_reset_1/U0/SEQ/seq_cnt_en | design_1_i/proc_sys_reset_1/U0/SEQ/SEQ_COUNTER/clear |                1 |              6 |         6.00 |
-|  design_1_i/clk_wiz_0/inst/clk_out1 |                                               |                                                      |                7 |             25 |         3.57 |
-|  rmii_rx_clk_IBUF_BUFG              |                                               |                                                      |               10 |             26 |         2.60 |
-|  design_1_i/clk_wiz_0/inst/clk_out1 | design_1_i/wrapper_0/inst/fifo/sys_byte_vld   | design_1_i/wrapper_0/inst/fifo/fifo_module/SS[0]     |               11 |             32 |         2.91 |
-|  design_1_i/clk_wiz_0/inst/clk_out1 |                                               | design_1_i/wrapper_0/inst/fifo/rd_ptr_calc/SR[0]     |               12 |             44 |         3.67 |
-|  rmii_rx_clk_IBUF_BUFG              |                                               | design_1_i/wrapper_0/inst/fifo/wr_ptr_calc/SR[0]     |               13 |             48 |         3.69 |
-+-------------------------------------+-----------------------------------------------+------------------------------------------------------+------------------+----------------+--------------+
++-------------------------------------+------------------------------------------------------------+-----------------------------------------------------------------+------------------+----------------+--------------+
+|             Clock Signal            |                        Enable Signal                       |                         Set/Reset Signal                        | Slice Load Count | Bel Load Count | Bels / Slice |
++-------------------------------------+------------------------------------------------------------+-----------------------------------------------------------------+------------------+----------------+--------------+
+|  rmii_rx_clk_IBUF_BUFG              |                                                            | design_1_i/proc_sys_reset_1/U0/EXT_LPF/lpf_int                  |                3 |              4 |         1.33 |
+|  rmii_rx_clk_IBUF_BUFG              |                                                            | design_1_i/rmii_rx/inst/state_i_1_n_0                           |                2 |              4 |         2.00 |
+|  design_1_i/clk_wiz_0/inst/clk_out1 |                                                            | design_1_i/proc_sys_reset_2/U0/EXT_LPF/lpf_int                  |                3 |              4 |         1.33 |
+|  design_1_i/clk_wiz_0/inst/clk_out1 | design_1_i/uart_wrapper_0/inst/uart/bits0                  | design_1_i/uart_wrapper_0/inst/uart/bits[3]_i_1_n_0             |                1 |              4 |         4.00 |
+|  rmii_rx_clk_IBUF_BUFG              | design_1_i/proc_sys_reset_1/U0/SEQ/seq_cnt_en              | design_1_i/proc_sys_reset_1/U0/SEQ/SEQ_COUNTER/clear            |                1 |              6 |         6.00 |
+|  design_1_i/clk_wiz_0/inst/clk_out1 | design_1_i/proc_sys_reset_2/U0/SEQ/seq_cnt_en              | design_1_i/proc_sys_reset_2/U0/SEQ/SEQ_COUNTER/clear            |                1 |              6 |         6.00 |
+|  design_1_i/clk_wiz_0/inst/clk_out1 | design_1_i/uart_wrapper_0/inst/uart/state_reg_0            | design_1_i/uart_wrapper_0/inst/uart_fifo/wr_ptr_calc/clear      |                3 |              8 |         2.67 |
+|  design_1_i/clk_wiz_0/inst/clk_out1 | design_1_i/uart_wrapper_0/inst/uart/temp[9]_i_1_n_0        |                                                                 |                4 |             10 |         2.50 |
+|  design_1_i/clk_wiz_0/inst/clk_out1 |                                                            | design_1_i/eth_rx_wrapper_0/inst/fifo_control/count[10]_i_1_n_0 |                3 |             11 |         3.67 |
+|  design_1_i/clk_wiz_0/inst/clk_out1 | design_1_i/eth_rx_wrapper_0/inst/cdc_fifo/CO[0]            | design_1_i/eth_rx_wrapper_0/inst/crc32/SR[0]                    |                3 |             11 |         3.67 |
+|  design_1_i/clk_wiz_0/inst/clk_out1 | design_1_i/eth_rx_wrapper_0/inst/fifo_control/ctrl_4_rdy   | design_1_i/eth_rx_wrapper_0/inst/rx_fsm/sys_rst_n_0             |                3 |             11 |         3.67 |
+|  design_1_i/clk_wiz_0/inst/clk_out1 | design_1_i/eth_rx_wrapper_0/inst/cdc_fifo/rd_ptr_calc/E[0] | design_1_i/eth_rx_wrapper_0/inst/rx_fsm/sys_rst_n_0             |                5 |             12 |         2.40 |
+|  rmii_rx_clk_IBUF_BUFG              |                                                            |                                                                 |                9 |             26 |         2.89 |
+|  design_1_i/clk_wiz_0/inst/clk_out1 |                                                            | design_1_i/uart_wrapper_0/inst/uart_fifo/wr_ptr_calc/clear      |                9 |             29 |         3.22 |
+|  design_1_i/clk_wiz_0/inst/clk_out1 | design_1_i/eth_rx_wrapper_0/inst/cdc_fifo/CO[0]            | design_1_i/eth_rx_wrapper_0/inst/cdc_fifo/fifo_module/SS[0]     |               11 |             32 |         2.91 |
+|  design_1_i/clk_wiz_0/inst/clk_out1 | design_1_i/eth_rx_wrapper_0/inst/cdc_fifo/CO[0]            |                                                                 |                5 |             34 |         6.80 |
+|  rmii_rx_clk_IBUF_BUFG              |                                                            | design_1_i/eth_rx_wrapper_0/inst/cdc_fifo/wr_ptr_calc/SR[0]     |               11 |             44 |         4.00 |
+|  design_1_i/clk_wiz_0/inst/clk_out1 | design_1_i/eth_rx_wrapper_0/inst/rx_fsm/ctrl[123]_i_1_n_0  | design_1_i/eth_rx_wrapper_0/inst/rx_fsm/sys_rst_n_0             |               15 |             52 |         3.47 |
+|  design_1_i/clk_wiz_0/inst/clk_out1 | design_1_i/eth_rx_wrapper_0/inst/cdc_fifo/CO[0]            | design_1_i/eth_rx_wrapper_0/inst/rx_fsm/sys_rst_n_0             |               16 |             68 |         4.25 |
+|  design_1_i/clk_wiz_0/inst/clk_out1 |                                                            | design_1_i/eth_rx_wrapper_0/inst/rx_fsm/sys_rst_n_0             |               21 |             76 |         3.62 |
+|  design_1_i/clk_wiz_0/inst/clk_out1 | design_1_i/eth_rx_wrapper_0/inst/rx_fsm/wr_en              |                                                                 |               11 |             88 |         8.00 |
+|  design_1_i/clk_wiz_0/inst/clk_out1 |                                                            |                                                                 |               28 |            118 |         4.21 |
++-------------------------------------+------------------------------------------------------------+-----------------------------------------------------------------+------------------+----------------+--------------+
 
 

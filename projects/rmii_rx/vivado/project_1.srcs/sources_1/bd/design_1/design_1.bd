@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xF4FD3B92E785663",
+      "boundary_crc": "0x62BF502F9DDDF1E4",
       "device": "xc7a35ticsg324-1L",
       "gen_directory": "../../../../project_1.gen/sources_1/bd/design_1",
       "name": "design_1",
@@ -14,19 +14,17 @@
       "proc_sys_reset_1": "",
       "clk_wiz_0": "",
       "proc_sys_reset_2": "",
-      "wrapper_0": ""
+      "rmii_rx": "",
+      "eth_rx_wrapper_0": "",
+      "uart_wrapper_0": ""
     },
     "ports": {
       "sys_clk": {
         "type": "clk",
         "direction": "I",
         "parameters": {
-          "ASSOCIATED_RESET": {
-            "value": "reset",
-            "value_src": "default"
-          },
           "CLK_DOMAIN": {
-            "value": "design_1_sys_clock",
+            "value": "design_1_sys_clk",
             "value_src": "default"
           },
           "FREQ_HZ": {
@@ -45,10 +43,10 @@
           }
         }
       },
-      "sys_byte_vld": {
+      "data_vld": {
         "direction": "O"
       },
-      "sys_byte": {
+      "data": {
         "direction": "O",
         "left": "7",
         "right": "0"
@@ -58,7 +56,7 @@
         "direction": "I",
         "parameters": {
           "CLK_DOMAIN": {
-            "value": "design_1_rmii_rx_clk_0",
+            "value": "design_1_rmii_rx_clk",
             "value_src": "default"
           },
           "FREQ_HZ": {
@@ -96,6 +94,38 @@
       "rmii_col": {
         "direction": "I"
       },
+      "rmii_rx_rstn": {
+        "type": "rst",
+        "direction": "O",
+        "left": "0",
+        "right": "0",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "const_prop"
+          }
+        }
+      },
+      "reset": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW"
+          }
+        }
+      },
+      "uart_tx": {
+        "direction": "O"
+      },
       "rmii_ref_clk": {
         "type": "clk",
         "direction": "O",
@@ -120,67 +150,6 @@
             "value_src": "ip_prop"
           }
         }
-      },
-      "rmii_rx_rstn": {
-        "type": "rst",
-        "direction": "O",
-        "left": "0",
-        "right": "0",
-        "parameters": {
-          "INSERT_VIP": {
-            "value": "0",
-            "value_src": "default"
-          },
-          "POLARITY": {
-            "value": "ACTIVE_LOW",
-            "value_src": "const_prop"
-          }
-        }
-      },
-      "sys_clk_test": {
-        "type": "clk",
-        "direction": "O",
-        "parameters": {
-          "CLK_DOMAIN": {
-            "value": "/clk_wiz_0_clk_out1",
-            "value_src": "ip_prop"
-          },
-          "FREQ_HZ": {
-            "value": "25000000",
-            "value_src": "ip_prop"
-          },
-          "FREQ_TOLERANCE_HZ": {
-            "value": "0",
-            "value_src": "default"
-          },
-          "INSERT_VIP": {
-            "value": "0",
-            "value_src": "default"
-          },
-          "PHASE": {
-            "value": "0.0",
-            "value_src": "ip_prop"
-          }
-        }
-      },
-      "reset": {
-        "type": "rst",
-        "direction": "I",
-        "parameters": {
-          "INSERT_VIP": {
-            "value": "0",
-            "value_src": "default"
-          },
-          "POLARITY": {
-            "value": "ACTIVE_LOW"
-          }
-        }
-      },
-      "sys_data_vld": {
-        "direction": "O"
-      },
-      "crc_vld": {
-        "direction": "O"
       }
     },
     "components": {
@@ -239,32 +208,32 @@
         "xci_path": "ip\\design_1_proc_sys_reset_1_0\\design_1_proc_sys_reset_1_0.xci",
         "inst_hier_path": "proc_sys_reset_2"
       },
-      "wrapper_0": {
-        "vlnv": "xilinx.com:module_ref:wrapper:1.0",
-        "xci_name": "design_1_wrapper_0_0",
-        "xci_path": "ip\\design_1_wrapper_0_0\\design_1_wrapper_0_0.xci",
-        "inst_hier_path": "wrapper_0",
+      "rmii_rx": {
+        "vlnv": "xilinx.com:module_ref:rmii_rx:1.0",
+        "xci_name": "design_1_rmii_rx_0",
+        "xci_path": "ip\\design_1_rmii_rx_0\\design_1_rmii_rx_0.xci",
+        "inst_hier_path": "rmii_rx",
         "reference_info": {
           "ref_type": "hdl",
-          "ref_name": "wrapper",
+          "ref_name": "rmii_rx",
           "boundary_crc": "0x0"
         },
         "ports": {
-          "rmii_rx_clk": {
+          "rx_clk": {
             "type": "clk",
             "direction": "I",
             "parameters": {
               "ASSOCIATED_RESET": {
-                "value": "rmii_rx_rst_n",
+                "value": "rx_rst_n",
                 "value_src": "constant"
               },
               "CLK_DOMAIN": {
-                "value": "design_1_rmii_rx_clk_0",
+                "value": "design_1_rmii_rx_clk",
                 "value_src": "default_prop"
               }
             }
           },
-          "rmii_rx_rst_n": {
+          "rx_rst_n": {
             "type": "rst",
             "direction": "I",
             "parameters": {
@@ -274,21 +243,74 @@
               }
             }
           },
-          "rmii_rx_data": {
+          "rx_data": {
             "direction": "I",
             "left": "3",
             "right": "0"
           },
-          "rmii_rx_dv": {
+          "rx_dv": {
             "direction": "I"
           },
-          "rmii_rx_er": {
+          "rx_er": {
             "direction": "I"
           },
-          "rmii_crs": {
+          "crs": {
             "direction": "I"
           },
-          "rmii_col": {
+          "col": {
+            "direction": "I"
+          },
+          "rx_byte": {
+            "direction": "O",
+            "left": "8",
+            "right": "0"
+          },
+          "rx_byte_vld": {
+            "direction": "O"
+          }
+        }
+      },
+      "eth_rx_wrapper_0": {
+        "vlnv": "xilinx.com:module_ref:eth_rx_wrapper:1.0",
+        "xci_name": "design_1_eth_rx_wrapper_0_0",
+        "xci_path": "ip\\design_1_eth_rx_wrapper_0_0\\design_1_eth_rx_wrapper_0_0.xci",
+        "inst_hier_path": "eth_rx_wrapper_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "eth_rx_wrapper",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "phy_clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "phy_rst_n",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "design_1_rmii_rx_clk",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "phy_rst_n": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_LOW",
+                "value_src": "constant"
+              }
+            }
+          },
+          "phy_data_in": {
+            "direction": "I",
+            "left": "8",
+            "right": "0"
+          },
+          "phy_data_in_vld": {
             "direction": "I"
           },
           "sys_clk": {
@@ -323,18 +345,93 @@
               }
             }
           },
-          "sys_byte_vld": {
-            "direction": "O"
-          },
-          "sys_data_vld": {
-            "direction": "O"
-          },
-          "sys_byte": {
+          "data_drop": {
             "direction": "O",
             "left": "7",
             "right": "0"
           },
-          "crc_vld": {
+          "data_drop_vld": {
+            "direction": "O"
+          },
+          "data_broadcast": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "data_broadcast_vld": {
+            "direction": "O"
+          },
+          "data_for_me": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "data_for_me_vld": {
+            "direction": "O"
+          },
+          "data_not_for_me": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "data_not_for_me_vld": {
+            "direction": "O"
+          }
+        }
+      },
+      "uart_wrapper_0": {
+        "vlnv": "xilinx.com:module_ref:uart_wrapper:1.0",
+        "xci_name": "design_1_uart_wrapper_0_0",
+        "xci_path": "ip\\design_1_uart_wrapper_0_0\\design_1_uart_wrapper_0_0.xci",
+        "inst_hier_path": "uart_wrapper_0",
+        "parameters": {
+          "P_DEPTH": {
+            "value": "8192"
+          }
+        },
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "uart_wrapper",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "25000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "/clk_wiz_0_clk_out1",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "rst_n": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_LOW",
+                "value_src": "constant"
+              }
+            }
+          },
+          "data_in": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "data_in_vld": {
+            "direction": "I"
+          },
+          "uart_tx": {
             "direction": "O"
           }
         }
@@ -347,75 +444,66 @@
           "clk_wiz_0/clk_in1"
         ]
       },
-      "wrapper_0_sys_byte_vld": {
-        "ports": [
-          "wrapper_0/sys_byte_vld",
-          "sys_byte_vld"
-        ]
-      },
-      "wrapper_0_sys_byte": {
-        "ports": [
-          "wrapper_0/sys_byte",
-          "sys_byte"
-        ]
-      },
       "rmii_rx_clk_0_1": {
         "ports": [
           "rmii_rx_clk",
           "proc_sys_reset_1/slowest_sync_clk",
-          "wrapper_0/rmii_rx_clk"
+          "rmii_rx/rx_clk",
+          "eth_rx_wrapper_0/phy_clk"
         ]
       },
       "proc_sys_reset_1_peripheral_aresetn": {
         "ports": [
           "proc_sys_reset_1/peripheral_aresetn",
-          "wrapper_0/rmii_rx_rst_n"
+          "rmii_rx/rx_rst_n",
+          "eth_rx_wrapper_0/phy_rst_n"
         ]
       },
       "rmii_rx_data_0_1": {
         "ports": [
           "rmii_rx_data",
-          "wrapper_0/rmii_rx_data"
+          "rmii_rx/rx_data"
         ]
       },
       "rmii_rx_dv_0_1": {
         "ports": [
           "rmii_rx_dv",
-          "wrapper_0/rmii_rx_dv"
+          "rmii_rx/rx_dv"
         ]
       },
       "rmii_rx_er_0_1": {
         "ports": [
           "rmii_rx_er",
-          "wrapper_0/rmii_rx_er"
+          "rmii_rx/rx_er"
         ]
       },
       "rmii_crs_0_1": {
         "ports": [
           "rmii_crs",
-          "wrapper_0/rmii_crs"
+          "rmii_rx/crs"
         ]
       },
       "rmii_col_0_1": {
         "ports": [
           "rmii_col",
-          "wrapper_0/rmii_col"
+          "rmii_rx/col"
         ]
       },
       "clk_wiz_0_clk_out1": {
         "ports": [
           "clk_wiz_0/clk_out1",
-          "rmii_ref_clk",
           "proc_sys_reset_2/slowest_sync_clk",
-          "sys_clk_test",
-          "wrapper_0/sys_clk"
+          "rmii_ref_clk",
+          "eth_rx_wrapper_0/sys_clk",
+          "uart_wrapper_0/clk"
         ]
       },
       "proc_sys_reset_2_peripheral_aresetn": {
         "ports": [
           "proc_sys_reset_2/peripheral_aresetn",
           "rmii_rx_rstn",
-          "wrapper_0/sys_rst_n"
+          "eth_rx_wrapper_0/sys_rst_n",
+          "uart_wrapper_0/rst_n"
         ]
       },
       "reset_1": {
@@ -426,16 +514,36 @@
           "proc_sys_reset_2/ext_reset_in"
         ]
       },
-      "wrapper_0_sys_data_vld": {
+      "uart_wrapper_0_uart_tx": {
         "ports": [
-          "wrapper_0/sys_data_vld",
-          "sys_data_vld"
+          "uart_wrapper_0/uart_tx",
+          "uart_tx"
         ]
       },
-      "wrapper_0_crc_vld": {
+      "rmii_rx_rx_byte_vld": {
         "ports": [
-          "wrapper_0/crc_vld",
-          "crc_vld"
+          "rmii_rx/rx_byte_vld",
+          "eth_rx_wrapper_0/phy_data_in_vld"
+        ]
+      },
+      "rmii_rx_rx_byte": {
+        "ports": [
+          "rmii_rx/rx_byte",
+          "eth_rx_wrapper_0/phy_data_in"
+        ]
+      },
+      "eth_rx_wrapper_0_data_for_me": {
+        "ports": [
+          "eth_rx_wrapper_0/data_for_me",
+          "uart_wrapper_0/data_in"
+        ]
+      },
+      "eth_rx_wrapper_0_data_for_me_vld": {
+        "ports": [
+          "eth_rx_wrapper_0/data_for_me_vld",
+          "data_vld",
+          "data",
+          "uart_wrapper_0/data_in_vld"
         ]
       }
     }

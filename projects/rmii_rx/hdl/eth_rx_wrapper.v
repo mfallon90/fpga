@@ -28,92 +28,71 @@ module eth_rx_wrapper #(
     parameter   integer P_WIDTH = 8,
     parameter   [31:0]  P_RESIDUE = 32'hC704DD7B
     )(
-    // RMII signals
-    input   wire            rmii_rx_clk,
-    input   wire            rmii_rx_rst_n,
-    input   wire    [3:0]   rmii_rx_data,
-    input   wire            rmii_rx_dv,
-    input   wire            rmii_rx_er,
-    input   wire            rmii_crs,
-    input   wire            rmii_col,
+    // Ethernet data in
+    input   wire            phy_clk,
+    input   wire            phy_rst_n,
+    input   wire    [8:0]   phy_data_in,
+    input   wire            phy_data_in_vld,
 
     // System Signals
     input   wire            sys_clk,
     input   wire            sys_rst_n,
-    output  wire    [7:0]   data_probe,
-    output  wire            data_vld_probe
+
+    output  wire    [7:0]   data_drop,
+    output  wire            data_drop_vld,
+    output  wire    [7:0]   data_broadcast,
+    output  wire            data_broadcast_vld,
+    output  wire    [7:0]   data_for_me,
+    output  wire            data_for_me_vld,
+    output  wire    [7:0]   data_not_for_me,
+    output  wire            data_not_for_me_vld
     );
 
-    // RMII signals
-    wire    [7:0]   rx_byte;
-    wire            rx_byte_vld;
-    wire            rx_data_vld;
-    wire            crc_vld_i;
+    // Input to async fifo
+    wire    [8:0]   data_0;
+    wire            data_0_vld;
 
-    // Signals between async fifo and crc/buffer
-    wire    [7:0]   sys_byte;
-    wire            sys_byte_vld;
-    wire            sys_data_vld;
+    // Async fifo to crc/delay
+    wire    [8:0]   data_1;
+    wire            data_1_vld;
 
-    // Signals between buffer and fsm
-    wire    [7:0]   sys_byte_del;
-    wire            sys_data_vld_del;
+    // crc/delay to fsm
+    wire    [8:0]   data_2;
+    wire            data_2_vld;
+    wire            crc_vld;
 
-    // Signals between rx FSM and data fifo
-    wire    [7:0]   data_out;
-    wire            data_out_vld;
-    wire            data_rdy;
-    wire    [7:0]   data;
+    // FSM to data/control fifos
+    wire    [7:0]   data_3;
+    wire            data_3_vld;
+    wire    [123:0] ctrl_3;
+    wire            ctrl_3_vld;
 
-    // Signals between rx FSM and control fifo
-    wire    [123:0] ctrl;
-    wire            ctrl_vld;
-
-    // Signals after control fifo
-    wire    [10:0]  cnt;
-    wire    [112:0] ctrl_less_cnt;
-    wire            ctrl_out_vld;
-    wire            ctrl_out_rdy;
-
-    // Signals after demux
-    wire    [8:0]   data_drop;
-    wire    [8:0]   data_broadcast;
-    wire    [8:0]   data_for_me;
-    wire    [8:0]   data_not_for_me;
+    // FSM to data/control fifos
+    wire    [7:0]   data_4;
+    wire            data_4_vld;
+    wire            data_4_rdy;
+    wire    [123:0] ctrl_4;
+    wire            ctrl_4_vld;
 
 
-    assign crc_vld = crc_vld_i;
+    assign  data_0      = phy_data_in;
+    assign  data_0_vld  = phy_data_in_vld;
+    assign  data_2_vld  = data_1_vld;
 
-    assign data_vld_probe = data_for_me[8];
-    assign data_probe = data_for_me[7:0];
-
-    rmii_rx
-        rmii (
-            .rx_clk         (rmii_rx_clk),
-            .rx_rst_n       (rmii_rx_rst_n),
-            .rx_data        (rmii_rx_data),
-            .rx_dv          (rmii_rx_dv),
-            .rx_er          (rmii_rx_er),
-            .crs            (rmii_crs),
-            .col            (rmii_col),
-            .rx_byte_vld    (rx_byte_vld),
-            .rx_data_vld    (rx_data_vld),
-            .rx_byte        (rx_byte)
-        );
 
     async_fifo #(
             .P_DEPTH (P_DEPTH),
             .P_WIDTH (P_WIDTH+1))
         cdc_fifo (
-            .wr_clk     (rmii_rx_clk),
-            .wr_rst_n   (rmii_rx_rst_n),
-            .wr_data    ({rx_data_vld,rx_byte}),
-            .wr_vld     (rx_byte_vld),
+            .wr_clk     (phy_clk),
+            .wr_rst_n   (phy_rst_n),
+            .wr_data    (data_0),
+            .wr_vld     (data_0_vld),
             .wr_rdy     (),
             .rd_clk     (sys_clk),
             .rd_rst_n   (sys_rst_n),
-            .rd_data    ({sys_data_vld,sys_byte}),
-            .rd_vld     (sys_byte_vld),
+            .rd_data    (data_1),
+            .rd_vld     (data_1_vld),
             .rd_rdy     (1'b1)
         );
 
@@ -122,10 +101,10 @@ module eth_rx_wrapper #(
         crc32 (
             .clk            (sys_clk),
             .rst_n          (sys_rst_n),
-            .data_in        (sys_byte),
-            .data_in_vld    (sys_data_vld),
-            .byte_in_vld    (sys_byte_vld),
-            .crc_vld        (crc_vld_i)
+            .data_in        (data_1[7:0]),
+            .data_in_vld    (data_1[8]),
+            .byte_in_vld    (data_1_vld),
+            .crc_vld        (crc_vld)
         );
 
     buffer #(
@@ -134,23 +113,23 @@ module eth_rx_wrapper #(
         delay (
             .clk        (sys_clk),
             .rst_n      (sys_rst_n),
-            .en         (sys_byte_vld),
-            .data_in    ({sys_data_vld,sys_byte}),
-            .data_out   ({sys_data_vld_del,sys_byte_del})
+            .en         (data_1_vld),
+            .data_in    (data_1),
+            .data_out   (data_2)
         );
 
     eth_rx_fsm 
         rx_fsm (
             .clk            (sys_clk),
             .rst_n          (sys_rst_n),
-            .data_in        (sys_byte_del),
-            .data_in_vld    (sys_data_vld_del),
-            .byte_in_vld    (sys_byte_vld),
-            .crc_vld        (crc_vld_i),
-            .data_out       (data_out),
-            .data_out_vld   (data_out_vld),
-            .ctrl           (ctrl),
-            .ctrl_vld       (ctrl_vld)
+            .data_in        (data_2[7:0]),
+            .data_in_vld    (data_2[8]),
+            .byte_in_vld    (data_2_vld),
+            .crc_vld        (crc_vld),
+            .data_out       (data_3),
+            .data_out_vld   (data_3_vld),
+            .ctrl           (ctrl_3),
+            .ctrl_vld       (ctrl_3_vld)
         );
 
 
@@ -160,12 +139,12 @@ module eth_rx_wrapper #(
         data_fifo (
             .clk        (sys_clk),
             .rst_n      (sys_rst_n),
-            .wr_data    (data_out),
-            .wr_vld     (data_out_vld),
+            .wr_data    (data_3),
+            .wr_vld     (data_3_vld),
             .wr_rdy     (),
-            .rd_data    (data),
-            .rd_vld     (data_vld),
-            .rd_rdy     (data_rdy)
+            .rd_data    (data_4),
+            .rd_vld     (data_4_vld),
+            .rd_rdy     (data_4_rdy)
         );
 
 
@@ -175,22 +154,22 @@ module eth_rx_wrapper #(
         control_fifo (
             .clk        (sys_clk),
             .rst_n      (sys_rst_n),
-            .wr_data    (ctrl),
-            .wr_vld     (ctrl_vld),
+            .wr_data    (ctrl_3),
+            .wr_vld     (ctrl_3_vld),
             .wr_rdy     (),
-            .rd_data    ({ctrl_less_cnt, cnt}),
-            .rd_vld     (ctrl_out_vld),
-            .rd_rdy     (ctrl_out_rdy)
+            .rd_data    (ctrl_4),
+            .rd_vld     (ctrl_4_vld),
+            .rd_rdy     (ctrl_4_rdy)
         );
 
     fifo_ctrl 
         fifo_control (
             .clk        (sys_clk),
             .rst_n      (sys_rst_n),
-            .cnt_rdy    (ctrl_out_rdy),
-            .cnt_vld    (ctrl_out_vld),
-            .cnt        (cnt),
-            .data_rdy   (data_rdy)
+            .cnt_rdy    (ctrl_4_rdy),
+            .cnt_vld    (ctrl_4_vld),
+            .cnt        (ctrl_4[10:0]),
+            .data_rdy   (data_4_rdy)
         );
 
 
@@ -199,13 +178,13 @@ module eth_rx_wrapper #(
         demultiplexer (
             .clk                (sys_clk),
             .rst_n              (sys_rst_n),
-            .data_in            ({(data_rdy & data_vld),data}),
-            .ctrl               (ctrl_less_cnt),
-            .ctrl_vld           (ctrl_out_vld),
-            .data_drop          (data_drop),
-            .data_broadcast     (data_broadcast),
-            .data_for_me        (data_for_me),
-            .data_not_for_me    (data_not_for_me)
+            .data_in            ({(data_4_rdy & data_4_vld),data_4}),
+            .ctrl               (ctrl_4[123:11]),
+            .ctrl_vld           (ctrl_4_vld),
+            .data_drop          ({data_drop_vld, data_drop}),
+            .data_broadcast     ({data_broadcast_vld, data_broadcast}),
+            .data_for_me        ({data_for_me_vld, data_for_me}),
+            .data_not_for_me    ({data_not_for_me_vld, data_not_for_me})
         );
 
     initial begin

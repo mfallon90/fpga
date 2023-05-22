@@ -105,7 +105,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>12101184</spirit:value>
+            <spirit:value>2de459ea</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -118,7 +118,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>12101184</spirit:value>
+            <spirit:value>2de459ea</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -254,33 +254,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>sys_byte_vld</spirit:name>
-        <spirit:wire>
-          <spirit:direction>out</spirit:direction>
-          <spirit:wireTypeDefs>
-            <spirit:wireTypeDef>
-              <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
-            </spirit:wireTypeDef>
-          </spirit:wireTypeDefs>
-        </spirit:wire>
-      </spirit:port>
-      <spirit:port>
-        <spirit:name>sys_data_vld</spirit:name>
-        <spirit:wire>
-          <spirit:direction>out</spirit:direction>
-          <spirit:wireTypeDefs>
-            <spirit:wireTypeDef>
-              <spirit:typeName>wire</spirit:typeName>
-              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
-            </spirit:wireTypeDef>
-          </spirit:wireTypeDefs>
-        </spirit:wire>
-      </spirit:port>
-      <spirit:port>
-        <spirit:name>sys_byte</spirit:name>
+        <spirit:name>data_probe</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
@@ -297,7 +271,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>crc_vld</spirit:name>
+        <spirit:name>data_vld_probe</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
@@ -311,7 +285,12 @@
       </spirit:port>
     </spirit:ports>
     <spirit:modelParameters>
-      <spirit:modelParameter xsi:type="spirit:nameValueTypeType" spirit:dataType="integer">
+      <spirit:modelParameter xsi:type="spirit:nameValueTypeType" spirit:dataType="std_logic_vector">
+        <spirit:name>P_MY_MAC</spirit:name>
+        <spirit:displayName>P My Mac</spirit:displayName>
+        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.P_MY_MAC" spirit:bitStringLength="48">0x00183E02523A</spirit:value>
+      </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>P_DEPTH</spirit:name>
         <spirit:displayName>P Depth</spirit:displayName>
         <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.P_DEPTH">1024</spirit:value>
@@ -319,7 +298,7 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>P_WIDTH</spirit:name>
         <spirit:displayName>P Width</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.P_WIDTH">9</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.P_WIDTH">8</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>P_RESIDUE</spirit:name>
@@ -341,13 +320,18 @@
       <spirit:file>
         <spirit:name>xgui/wrapper_v1_0.tcl</spirit:name>
         <spirit:fileType>tclSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_3ef3b408</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_49998e6f</spirit:userFileType>
         <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
   </spirit:fileSets>
   <spirit:description>xilinx.com:module_ref:wrapper:1.0</spirit:description>
   <spirit:parameters>
+    <spirit:parameter>
+      <spirit:name>P_MY_MAC</spirit:name>
+      <spirit:displayName>P My Mac</spirit:displayName>
+      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.P_MY_MAC" spirit:bitStringLength="48">0x00183E02523A</spirit:value>
+    </spirit:parameter>
     <spirit:parameter>
       <spirit:name>P_DEPTH</spirit:name>
       <spirit:displayName>P Depth</spirit:displayName>
@@ -356,7 +340,7 @@
     <spirit:parameter>
       <spirit:name>P_WIDTH</spirit:name>
       <spirit:displayName>P Width</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.P_WIDTH">9</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.P_WIDTH">8</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>P_RESIDUE</spirit:name>
@@ -383,7 +367,7 @@
         <xilinx:designToolContext>IPI</xilinx:designToolContext>
       </xilinx:designToolContexts>
       <xilinx:coreRevision>1</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2023-05-18T00:12:04Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2023-05-22T01:41:36Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2020.2</xilinx:xilinxVersion>

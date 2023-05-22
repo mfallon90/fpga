@@ -40,7 +40,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 # The design that will be created by this Tcl script contains the following 
 # module references:
-# wrapper
+# eth_rx_wrapper, rmii_rx, uart_wrapper
 
 # Please add the sources of those modules before sourcing this Tcl script.
 
@@ -165,7 +165,8 @@ proc create_root_design { parentCell } {
   # Create interface ports
 
   # Create ports
-  set crc_vld [ create_bd_port -dir O crc_vld ]
+  set data [ create_bd_port -dir O -from 7 -to 0 data ]
+  set data_vld [ create_bd_port -dir O data_vld ]
   set reset [ create_bd_port -dir I -type rst reset ]
   set_property -dict [ list \
    CONFIG.POLARITY {ACTIVE_LOW} \
@@ -181,14 +182,11 @@ proc create_root_design { parentCell } {
   set rmii_rx_dv [ create_bd_port -dir I rmii_rx_dv ]
   set rmii_rx_er [ create_bd_port -dir I rmii_rx_er ]
   set rmii_rx_rstn [ create_bd_port -dir O -from 0 -to 0 -type rst rmii_rx_rstn ]
-  set sys_byte [ create_bd_port -dir O -from 7 -to 0 sys_byte ]
-  set sys_byte_vld [ create_bd_port -dir O sys_byte_vld ]
   set sys_clk [ create_bd_port -dir I -type clk -freq_hz 100000000 sys_clk ]
   set_property -dict [ list \
    CONFIG.PHASE {0.000} \
  ] $sys_clk
-  set sys_clk_test [ create_bd_port -dir O -type clk sys_clk_test ]
-  set sys_data_vld [ create_bd_port -dir O sys_data_vld ]
+  set uart_tx [ create_bd_port -dir O uart_tx ]
 
   # Create instance: clk_wiz_0, and set properties
   set clk_wiz_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:6.0 clk_wiz_0 ]
@@ -204,6 +202,17 @@ proc create_root_design { parentCell } {
    CONFIG.USE_BOARD_FLOW {true} \
  ] $clk_wiz_0
 
+  # Create instance: eth_rx_wrapper_0, and set properties
+  set block_name eth_rx_wrapper
+  set block_cell_name eth_rx_wrapper_0
+  if { [catch {set eth_rx_wrapper_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $eth_rx_wrapper_0 eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
   # Create instance: proc_sys_reset_1, and set properties
   set proc_sys_reset_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 proc_sys_reset_1 ]
   set_property -dict [ list \
@@ -214,33 +223,48 @@ proc create_root_design { parentCell } {
   # Create instance: proc_sys_reset_2, and set properties
   set proc_sys_reset_2 [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 proc_sys_reset_2 ]
 
-  # Create instance: wrapper_0, and set properties
-  set block_name wrapper
-  set block_cell_name wrapper_0
-  if { [catch {set wrapper_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+  # Create instance: rmii_rx, and set properties
+  set block_name rmii_rx
+  set block_cell_name rmii_rx
+  if { [catch {set rmii_rx [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
      catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
-   } elseif { $wrapper_0 eq "" } {
+   } elseif { $rmii_rx eq "" } {
      catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    }
   
+  # Create instance: uart_wrapper_0, and set properties
+  set block_name uart_wrapper
+  set block_cell_name uart_wrapper_0
+  if { [catch {set uart_wrapper_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $uart_wrapper_0 eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+    set_property -dict [ list \
+   CONFIG.P_DEPTH {8192} \
+ ] $uart_wrapper_0
+
   # Create port connections
-  connect_bd_net -net clk_wiz_0_clk_out1 [get_bd_ports rmii_ref_clk] [get_bd_ports sys_clk_test] [get_bd_pins clk_wiz_0/clk_out1] [get_bd_pins proc_sys_reset_2/slowest_sync_clk] [get_bd_pins wrapper_0/sys_clk]
-  connect_bd_net -net proc_sys_reset_1_peripheral_aresetn [get_bd_pins proc_sys_reset_1/peripheral_aresetn] [get_bd_pins wrapper_0/rmii_rx_rst_n]
-  connect_bd_net -net proc_sys_reset_2_peripheral_aresetn [get_bd_ports rmii_rx_rstn] [get_bd_pins proc_sys_reset_2/peripheral_aresetn] [get_bd_pins wrapper_0/sys_rst_n]
+  connect_bd_net -net clk_wiz_0_clk_out1 [get_bd_ports rmii_ref_clk] [get_bd_pins clk_wiz_0/clk_out1] [get_bd_pins eth_rx_wrapper_0/sys_clk] [get_bd_pins proc_sys_reset_2/slowest_sync_clk] [get_bd_pins uart_wrapper_0/clk]
+  connect_bd_net -net eth_rx_wrapper_0_data_for_me [get_bd_pins eth_rx_wrapper_0/data_for_me] [get_bd_pins uart_wrapper_0/data_in]
+  connect_bd_net -net eth_rx_wrapper_0_data_for_me_vld [get_bd_ports data] [get_bd_ports data_vld] [get_bd_pins eth_rx_wrapper_0/data_for_me_vld] [get_bd_pins uart_wrapper_0/data_in_vld]
+  connect_bd_net -net proc_sys_reset_1_peripheral_aresetn [get_bd_pins eth_rx_wrapper_0/phy_rst_n] [get_bd_pins proc_sys_reset_1/peripheral_aresetn] [get_bd_pins rmii_rx/rx_rst_n]
+  connect_bd_net -net proc_sys_reset_2_peripheral_aresetn [get_bd_ports rmii_rx_rstn] [get_bd_pins eth_rx_wrapper_0/sys_rst_n] [get_bd_pins proc_sys_reset_2/peripheral_aresetn] [get_bd_pins uart_wrapper_0/rst_n]
   connect_bd_net -net reset_1 [get_bd_ports reset] [get_bd_pins clk_wiz_0/resetn] [get_bd_pins proc_sys_reset_1/ext_reset_in] [get_bd_pins proc_sys_reset_2/ext_reset_in]
-  connect_bd_net -net rmii_col_0_1 [get_bd_ports rmii_col] [get_bd_pins wrapper_0/rmii_col]
-  connect_bd_net -net rmii_crs_0_1 [get_bd_ports rmii_crs] [get_bd_pins wrapper_0/rmii_crs]
-  connect_bd_net -net rmii_rx_clk_0_1 [get_bd_ports rmii_rx_clk] [get_bd_pins proc_sys_reset_1/slowest_sync_clk] [get_bd_pins wrapper_0/rmii_rx_clk]
-  connect_bd_net -net rmii_rx_data_0_1 [get_bd_ports rmii_rx_data] [get_bd_pins wrapper_0/rmii_rx_data]
-  connect_bd_net -net rmii_rx_dv_0_1 [get_bd_ports rmii_rx_dv] [get_bd_pins wrapper_0/rmii_rx_dv]
-  connect_bd_net -net rmii_rx_er_0_1 [get_bd_ports rmii_rx_er] [get_bd_pins wrapper_0/rmii_rx_er]
+  connect_bd_net -net rmii_col_0_1 [get_bd_ports rmii_col] [get_bd_pins rmii_rx/col]
+  connect_bd_net -net rmii_crs_0_1 [get_bd_ports rmii_crs] [get_bd_pins rmii_rx/crs]
+  connect_bd_net -net rmii_rx_clk_0_1 [get_bd_ports rmii_rx_clk] [get_bd_pins eth_rx_wrapper_0/phy_clk] [get_bd_pins proc_sys_reset_1/slowest_sync_clk] [get_bd_pins rmii_rx/rx_clk]
+  connect_bd_net -net rmii_rx_data_0_1 [get_bd_ports rmii_rx_data] [get_bd_pins rmii_rx/rx_data]
+  connect_bd_net -net rmii_rx_dv_0_1 [get_bd_ports rmii_rx_dv] [get_bd_pins rmii_rx/rx_dv]
+  connect_bd_net -net rmii_rx_er_0_1 [get_bd_ports rmii_rx_er] [get_bd_pins rmii_rx/rx_er]
+  connect_bd_net -net rmii_rx_rx_byte [get_bd_pins eth_rx_wrapper_0/phy_data_in] [get_bd_pins rmii_rx/rx_byte]
+  connect_bd_net -net rmii_rx_rx_byte_vld [get_bd_pins eth_rx_wrapper_0/phy_data_in_vld] [get_bd_pins rmii_rx/rx_byte_vld]
   connect_bd_net -net sys_clock_1 [get_bd_ports sys_clk] [get_bd_pins clk_wiz_0/clk_in1]
-  connect_bd_net -net wrapper_0_crc_vld [get_bd_ports crc_vld] [get_bd_pins wrapper_0/crc_vld]
-  connect_bd_net -net wrapper_0_sys_byte [get_bd_ports sys_byte] [get_bd_pins wrapper_0/sys_byte]
-  connect_bd_net -net wrapper_0_sys_byte_vld [get_bd_ports sys_byte_vld] [get_bd_pins wrapper_0/sys_byte_vld]
-  connect_bd_net -net wrapper_0_sys_data_vld [get_bd_ports sys_data_vld] [get_bd_pins wrapper_0/sys_data_vld]
+  connect_bd_net -net uart_wrapper_0_uart_tx [get_bd_ports uart_tx] [get_bd_pins uart_wrapper_0/uart_tx]
 
   # Create address segments
 
