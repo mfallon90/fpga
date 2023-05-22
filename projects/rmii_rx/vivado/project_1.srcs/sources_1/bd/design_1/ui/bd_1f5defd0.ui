@@ -1,47 +1,50 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.76408",
-   "Default View_TopLeft":"-156,-96",
+   "Default View_ScaleFactor":"0.682886",
+   "Default View_TopLeft":"-157,-25",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:10.0 non-TLS
 #  -string -flagsOSRD
-preplace port sys_clk -pg 1 -lvl 0 -x 0 -y 540 -defaultsOSRD
-preplace port data_vld -pg 1 -lvl 5 -x 1310 -y 50 -defaultsOSRD
-preplace port rmii_rx_clk -pg 1 -lvl 0 -x 0 -y 60 -defaultsOSRD
-preplace port rmii_rx_dv -pg 1 -lvl 0 -x 0 -y 230 -defaultsOSRD
-preplace port rmii_rx_er -pg 1 -lvl 0 -x 0 -y 250 -defaultsOSRD
-preplace port rmii_crs -pg 1 -lvl 0 -x 0 -y 270 -defaultsOSRD
-preplace port rmii_col -pg 1 -lvl 0 -x 0 -y 290 -defaultsOSRD
-preplace port reset -pg 1 -lvl 0 -x 0 -y 80 -defaultsOSRD
-preplace port uart_tx -pg 1 -lvl 5 -x 1310 -y 140 -defaultsOSRD
-preplace port rmii_ref_clk -pg 1 -lvl 5 -x 1310 -y 250 -defaultsOSRD
-preplace portBus data -pg 1 -lvl 5 -x 1310 -y 30 -defaultsOSRD
-preplace portBus rmii_rx_data -pg 1 -lvl 0 -x 0 -y 210 -defaultsOSRD
-preplace portBus rmii_rx_rstn -pg 1 -lvl 5 -x 1310 -y 230 -defaultsOSRD
-preplace inst proc_sys_reset_1 -pg 1 -lvl 1 -x 200 -y 100 -defaultsOSRD
-preplace inst clk_wiz_0 -pg 1 -lvl 3 -x 860 -y 530 -defaultsOSRD
-preplace inst proc_sys_reset_2 -pg 1 -lvl 3 -x 860 -y 380 -defaultsOSRD
-preplace inst rmii_rx -pg 1 -lvl 2 -x 520 -y 230 -defaultsOSRD
-preplace inst eth_rx_wrapper_0 -pg 1 -lvl 3 -x 860 -y 140 -defaultsOSRD
-preplace inst uart_wrapper_0 -pg 1 -lvl 4 -x 1170 -y 140 -defaultsOSRD
-preplace netloc sys_clock_1 1 0 3 NJ 540 NJ 540 NJ
-preplace netloc rmii_rx_clk_0_1 1 0 3 30 210 380 90 NJ
-preplace netloc proc_sys_reset_1_peripheral_aresetn 1 1 2 390 110 NJ
-preplace netloc rmii_rx_data_0_1 1 0 2 20J 220 390J
-preplace netloc rmii_rx_dv_0_1 1 0 2 NJ 230 NJ
-preplace netloc rmii_rx_er_0_1 1 0 2 NJ 250 NJ
-preplace netloc rmii_crs_0_1 1 0 2 NJ 270 NJ
-preplace netloc rmii_col_0_1 1 0 2 NJ 290 NJ
-preplace netloc clk_wiz_0_clk_out1 1 2 3 680 280 1040 250 NJ
-preplace netloc proc_sys_reset_2_peripheral_aresetn 1 2 3 690 270 1050 230 NJ
-preplace netloc reset_1 1 0 3 20 200 370J 80 660
-preplace netloc uart_wrapper_0_uart_tx 1 4 1 NJ 140
-preplace netloc rmii_rx_rx_byte_vld 1 2 1 670 150n
-preplace netloc rmii_rx_rx_byte 1 2 1 650 130n
-preplace netloc eth_rx_wrapper_0_data_for_me 1 3 1 N 150
-preplace netloc eth_rx_wrapper_0_data_for_me_vld 1 3 2 1030 50 1290J
-levelinfo -pg 1 0 200 520 860 1170 1310
-pagesize -pg 1 -db -bbox -sgen -160 0 1470 600
+preplace port sys_clk -pg 1 -lvl 0 -x 0 -y 480 -defaultsOSRD
+preplace port data_vld -pg 1 -lvl 5 -x 1490 -y 160 -defaultsOSRD
+preplace port rmii_rx_clk -pg 1 -lvl 0 -x 0 -y 300 -defaultsOSRD
+preplace port rmii_rx_dv -pg 1 -lvl 0 -x 0 -y 220 -defaultsOSRD
+preplace port rmii_rx_er -pg 1 -lvl 0 -x 0 -y 240 -defaultsOSRD
+preplace port rmii_crs -pg 1 -lvl 0 -x 0 -y 260 -defaultsOSRD
+preplace port rmii_col -pg 1 -lvl 0 -x 0 -y 280 -defaultsOSRD
+preplace port reset -pg 1 -lvl 0 -x 0 -y 360 -defaultsOSRD
+preplace port uart_tx -pg 1 -lvl 5 -x 1490 -y 280 -defaultsOSRD
+preplace port rmii_ref_clk -pg 1 -lvl 5 -x 1490 -y 460 -defaultsOSRD
+preplace portBus data -pg 1 -lvl 5 -x 1490 -y 140 -defaultsOSRD
+preplace portBus rmii_rx_data -pg 1 -lvl 0 -x 0 -y 200 -defaultsOSRD
+preplace portBus rmii_rx_rstn -pg 1 -lvl 5 -x 1490 -y 600 -defaultsOSRD
+preplace inst rst_phy_clk -pg 1 -lvl 1 -x 190 -y 380 -defaultsOSRD
+preplace inst rst_sys_clk -pg 1 -lvl 2 -x 550 -y 590 -defaultsOSRD
+preplace inst rmii_rx -pg 1 -lvl 2 -x 550 -y 220 -defaultsOSRD
+preplace inst eth_rx_wrapper -pg 1 -lvl 3 -x 930 -y 130 -defaultsOSRD
+preplace inst uart_wrapper -pg 1 -lvl 4 -x 1300 -y 280 -defaultsOSRD
+preplace inst pll_sys_ref_clk -pg 1 -lvl 3 -x 930 -y 470 -defaultsOSRD
+preplace inst rst_ref_clk -pg 1 -lvl 4 -x 1300 -y 560 -defaultsOSRD
+preplace netloc sys_clock_1 1 0 3 NJ 480 NJ 480 NJ
+preplace netloc rmii_rx_clk_0_1 1 0 3 20 160 360 80 NJ
+preplace netloc proc_sys_reset_1_peripheral_aresetn 1 1 2 370 100 NJ
+preplace netloc rmii_rx_data_0_1 1 0 2 NJ 200 NJ
+preplace netloc rmii_rx_dv_0_1 1 0 2 NJ 220 NJ
+preplace netloc rmii_rx_er_0_1 1 0 2 NJ 240 NJ
+preplace netloc rmii_crs_0_1 1 0 2 NJ 260 NJ
+preplace netloc rmii_col_0_1 1 0 2 NJ 280 NJ
+preplace netloc proc_sys_reset_2_peripheral_aresetn 1 2 2 750 270 N
+preplace netloc reset_1 1 0 4 20 490 360 460 760 400 1100J
+preplace netloc uart_wrapper_0_uart_tx 1 4 1 NJ 280
+preplace netloc rmii_rx_rx_byte_vld 1 2 1 730 140n
+preplace netloc rmii_rx_rx_byte 1 2 1 720 120n
+preplace netloc eth_rx_wrapper_0_data_for_me 1 3 1 1120 140n
+preplace netloc eth_rx_wrapper_0_data_for_me_vld 1 3 2 1130 160 1470J
+preplace netloc clk_wiz_1_clk_out1 1 1 3 380 340 740 260 1110
+preplace netloc proc_sys_reset_3_peripheral_aresetn 1 4 1 NJ 600
+preplace netloc sys_clk_clk_out2 1 3 2 1130 460 NJ
+levelinfo -pg 1 0 190 550 930 1300 1490
+pagesize -pg 1 -db -bbox -sgen -160 0 1650 690
 "
 }
 0

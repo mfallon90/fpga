@@ -71,7 +71,7 @@ proc create_report { reportName command } {
 }
 OPTRACE "design_1_proc_sys_reset_1_0_synth_1" START { ROLLUP_AUTO }
 set_param chipscope.maxJobs 2
-set_msg_config -id {HDL-1065} -limit 10000
+set_param xicom.use_bs_reader 1
 set_param project.vivado.isBlockSynthRun true
 set_msg_config -msgmgr_mode ooc_run
 OPTRACE "Creating in-memory project" START { }
@@ -91,7 +91,7 @@ set_property ip_output_repo c:/Users/mfall/Desktop/sandbox/projects/rmii_rx/viva
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_ip -quiet c:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.srcs/sources_1/bd/design_1/ip/design_1_proc_sys_reset_1_0/design_1_proc_sys_reset_1_0.xci
+read_ip -quiet C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.srcs/sources_1/bd/design_1/ip/design_1_proc_sys_reset_1_0/design_1_proc_sys_reset_1_0.xci
 set_property used_in_implementation false [get_files -all c:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.gen/sources_1/bd/design_1/ip/design_1_proc_sys_reset_1_0/design_1_proc_sys_reset_1_0_board.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.gen/sources_1/bd/design_1/ip/design_1_proc_sys_reset_1_0/design_1_proc_sys_reset_1_0.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.gen/sources_1/bd/design_1/ip/design_1_proc_sys_reset_1_0/design_1_proc_sys_reset_1_0_ooc.xdc]

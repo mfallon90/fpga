@@ -1,7 +1,7 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-// Date        : Sun May 21 19:43:42 2023
+// Date        : Mon May 22 09:53:04 2023
 // Host        : LAPTOP-DJJCMLUK running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.gen/sources_1/bd/design_1/ip/design_1_uart_wrapper_0_0/design_1_uart_wrapper_0_0_sim_netlist.v
@@ -21,7 +21,7 @@ module design_1_uart_wrapper_0_0
     data_in,
     data_in_vld,
     uart_tx);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 25000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0" *) input clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 150000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /pll_sys_ref_clk_clk_out1, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst_n RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst_n, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input rst_n;
   input [7:0]data_in;
   input data_in_vld;
@@ -142,8 +142,8 @@ module design_1_uart_wrapper_0_0_fifo
         ._carry(wr_ptr_reg[11:0]),
         .bram_reg_1(bram_reg_1),
         .clk(clk),
-        .\cnt_curr_reg[12]_0 (rd_ptr_calc_n_10),
-        .\cnt_curr_reg[13]_0 (p_0_in),
+        .\cnt_curr_reg[13]_0 (rd_ptr_calc_n_10),
+        .\cnt_curr_reg[13]_1 (p_0_in),
         .out(cnt_curr_reg),
         .rd_addr(rd_ptr_cmb),
         .\wr_ptr_del_reg[11] ({rd_ptr_calc_n_6,rd_ptr_calc_n_7,rd_ptr_calc_n_8,rd_ptr_calc_n_9}));
@@ -718,24 +718,24 @@ module design_1_uart_wrapper_0_0_modn_counter
    (S,
     out,
     \wr_ptr_del_reg[11] ,
-    \cnt_curr_reg[12]_0 ,
+    \cnt_curr_reg[13]_0 ,
     rd_addr,
     _carry,
     Q,
     bram_reg_1,
     CO,
-    \cnt_curr_reg[13]_0 ,
+    \cnt_curr_reg[13]_1 ,
     clk);
   output [3:0]S;
   output [1:0]out;
   output [3:0]\wr_ptr_del_reg[11] ;
-  output [0:0]\cnt_curr_reg[12]_0 ;
+  output [0:0]\cnt_curr_reg[13]_0 ;
   output [12:0]rd_addr;
   input [11:0]_carry;
   input [13:0]Q;
   input bram_reg_1;
   input [0:0]CO;
-  input \cnt_curr_reg[13]_0 ;
+  input \cnt_curr_reg[13]_1 ;
   input clk;
 
   wire [0:0]CO;
@@ -767,11 +767,11 @@ module design_1_uart_wrapper_0_0_modn_counter
   wire \cnt_curr_reg[0]_i_1__0_n_5 ;
   wire \cnt_curr_reg[0]_i_1__0_n_6 ;
   wire \cnt_curr_reg[0]_i_1__0_n_7 ;
-  wire [0:0]\cnt_curr_reg[12]_0 ;
   wire \cnt_curr_reg[12]_i_1__0_n_3 ;
   wire \cnt_curr_reg[12]_i_1__0_n_6 ;
   wire \cnt_curr_reg[12]_i_1__0_n_7 ;
-  wire \cnt_curr_reg[13]_0 ;
+  wire [0:0]\cnt_curr_reg[13]_0 ;
+  wire \cnt_curr_reg[13]_1 ;
   wire \cnt_curr_reg[4]_i_1__0_n_0 ;
   wire \cnt_curr_reg[4]_i_1__0_n_1 ;
   wire \cnt_curr_reg[4]_i_1__0_n_2 ;
@@ -883,7 +883,7 @@ module design_1_uart_wrapper_0_0_modn_counter
         .CE(1'b1),
         .D(\cnt_curr_reg[0]_i_1__0_n_7 ),
         .Q(cnt_curr_reg[0]),
-        .R(\cnt_curr_reg[13]_0 ));
+        .R(\cnt_curr_reg[13]_1 ));
   (* ADDER_THRESHOLD = "11" *) 
   CARRY4 \cnt_curr_reg[0]_i_1__0 
        (.CI(1'b0),
@@ -897,19 +897,19 @@ module design_1_uart_wrapper_0_0_modn_counter
         .CE(1'b1),
         .D(\cnt_curr_reg[8]_i_1__0_n_5 ),
         .Q(cnt_curr_reg[10]),
-        .R(\cnt_curr_reg[13]_0 ));
+        .R(\cnt_curr_reg[13]_1 ));
   FDRE \cnt_curr_reg[11] 
        (.C(clk),
         .CE(1'b1),
         .D(\cnt_curr_reg[8]_i_1__0_n_4 ),
         .Q(cnt_curr_reg[11]),
-        .R(\cnt_curr_reg[13]_0 ));
+        .R(\cnt_curr_reg[13]_1 ));
   FDRE \cnt_curr_reg[12] 
        (.C(clk),
         .CE(1'b1),
         .D(\cnt_curr_reg[12]_i_1__0_n_7 ),
         .Q(out[0]),
-        .R(\cnt_curr_reg[13]_0 ));
+        .R(\cnt_curr_reg[13]_1 ));
   (* ADDER_THRESHOLD = "11" *) 
   CARRY4 \cnt_curr_reg[12]_i_1__0 
        (.CI(\cnt_curr_reg[8]_i_1__0_n_0 ),
@@ -923,31 +923,31 @@ module design_1_uart_wrapper_0_0_modn_counter
         .CE(1'b1),
         .D(\cnt_curr_reg[12]_i_1__0_n_6 ),
         .Q(out[1]),
-        .R(\cnt_curr_reg[13]_0 ));
+        .R(\cnt_curr_reg[13]_1 ));
   FDRE \cnt_curr_reg[1] 
        (.C(clk),
         .CE(1'b1),
         .D(\cnt_curr_reg[0]_i_1__0_n_6 ),
         .Q(cnt_curr_reg[1]),
-        .R(\cnt_curr_reg[13]_0 ));
+        .R(\cnt_curr_reg[13]_1 ));
   FDRE \cnt_curr_reg[2] 
        (.C(clk),
         .CE(1'b1),
         .D(\cnt_curr_reg[0]_i_1__0_n_5 ),
         .Q(cnt_curr_reg[2]),
-        .R(\cnt_curr_reg[13]_0 ));
+        .R(\cnt_curr_reg[13]_1 ));
   FDRE \cnt_curr_reg[3] 
        (.C(clk),
         .CE(1'b1),
         .D(\cnt_curr_reg[0]_i_1__0_n_4 ),
         .Q(cnt_curr_reg[3]),
-        .R(\cnt_curr_reg[13]_0 ));
+        .R(\cnt_curr_reg[13]_1 ));
   FDRE \cnt_curr_reg[4] 
        (.C(clk),
         .CE(1'b1),
         .D(\cnt_curr_reg[4]_i_1__0_n_7 ),
         .Q(cnt_curr_reg[4]),
-        .R(\cnt_curr_reg[13]_0 ));
+        .R(\cnt_curr_reg[13]_1 ));
   (* ADDER_THRESHOLD = "11" *) 
   CARRY4 \cnt_curr_reg[4]_i_1__0 
        (.CI(\cnt_curr_reg[0]_i_1__0_n_0 ),
@@ -961,25 +961,25 @@ module design_1_uart_wrapper_0_0_modn_counter
         .CE(1'b1),
         .D(\cnt_curr_reg[4]_i_1__0_n_6 ),
         .Q(cnt_curr_reg[5]),
-        .R(\cnt_curr_reg[13]_0 ));
+        .R(\cnt_curr_reg[13]_1 ));
   FDRE \cnt_curr_reg[6] 
        (.C(clk),
         .CE(1'b1),
         .D(\cnt_curr_reg[4]_i_1__0_n_5 ),
         .Q(cnt_curr_reg[6]),
-        .R(\cnt_curr_reg[13]_0 ));
+        .R(\cnt_curr_reg[13]_1 ));
   FDRE \cnt_curr_reg[7] 
        (.C(clk),
         .CE(1'b1),
         .D(\cnt_curr_reg[4]_i_1__0_n_4 ),
         .Q(cnt_curr_reg[7]),
-        .R(\cnt_curr_reg[13]_0 ));
+        .R(\cnt_curr_reg[13]_1 ));
   FDRE \cnt_curr_reg[8] 
        (.C(clk),
         .CE(1'b1),
         .D(\cnt_curr_reg[8]_i_1__0_n_7 ),
         .Q(cnt_curr_reg[8]),
-        .R(\cnt_curr_reg[13]_0 ));
+        .R(\cnt_curr_reg[13]_1 ));
   (* ADDER_THRESHOLD = "11" *) 
   CARRY4 \cnt_curr_reg[8]_i_1__0 
        (.CI(\cnt_curr_reg[4]_i_1__0_n_0 ),
@@ -993,15 +993,15 @@ module design_1_uart_wrapper_0_0_modn_counter
         .CE(1'b1),
         .D(\cnt_curr_reg[8]_i_1__0_n_6 ),
         .Q(cnt_curr_reg[9]),
-        .R(\cnt_curr_reg[13]_0 ));
+        .R(\cnt_curr_reg[13]_1 ));
   LUT4 #(
     .INIT(16'h9009)) 
     i__carry__0_i_1
-       (.I0(out[0]),
-        .I1(Q[12]),
-        .I2(out[1]),
-        .I3(Q[13]),
-        .O(\cnt_curr_reg[12]_0 ));
+       (.I0(out[1]),
+        .I1(Q[13]),
+        .I2(out[0]),
+        .I3(Q[12]),
+        .O(\cnt_curr_reg[13]_0 ));
   LUT6 #(
     .INIT(64'h9009000000009009)) 
     i__carry_i_1
@@ -1121,7 +1121,7 @@ module design_1_uart_wrapper_0_0_modn_counter_0
         .O(WEA));
   LUT1 #(
     .INIT(2'h1)) 
-    \cnt[7]_i_1 
+    \cnt[10]_i_1 
        (.I0(rst_n),
         .O(clear));
   LUT3 #(
@@ -1271,15 +1271,16 @@ module design_1_uart_wrapper_0_0_uart_transmitter
   wire \bits[3]_i_1_n_0 ;
   wire [3:0]bits_reg;
   wire clk;
-  wire [7:0]cnt;
-  wire \cnt[6]_i_2_n_0 ;
-  wire \cnt[7]_i_3_n_0 ;
+  wire [10:0]cnt;
+  wire \cnt[10]_i_3_n_0 ;
+  wire \cnt[10]_i_4_n_0 ;
+  wire \cnt[9]_i_2_n_0 ;
   wire p_0_in;
   wire [3:0]p_0_in__0;
   wire [9:0]p_1_in;
   wire [7:0]rd_data;
   wire rst_n;
-  wire [7:0]sel0;
+  wire [10:0]sel0;
   wire state_i_1_n_0;
   wire state_reg_0;
   wire \temp[9]_i_1_n_0 ;
@@ -1297,20 +1298,21 @@ module design_1_uart_wrapper_0_0_uart_transmitter
   wire uart_tx_i_1_n_0;
   wire uart_tx_i_2_n_0;
   wire uart_tx_i_3_n_0;
+  wire uart_tx_i_4_n_0;
 
   LUT1 #(
     .INIT(2'h1)) 
     \bits[0]_i_1 
        (.I0(bits_reg[0]),
         .O(p_0_in__0[0]));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \bits[1]_i_1 
        (.I0(bits_reg[0]),
         .I1(bits_reg[1]),
         .O(p_0_in__0[1]));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \bits[2]_i_1 
@@ -1365,17 +1367,41 @@ module design_1_uart_wrapper_0_0_uart_transmitter
         .D(p_0_in__0[3]),
         .Q(bits_reg[3]),
         .R(\bits[3]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h00000000FFFFFEFF)) 
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  LUT1 #(
+    .INIT(2'h1)) 
     \cnt[0]_i_1 
-       (.I0(\cnt[7]_i_3_n_0 ),
-        .I1(sel0[2]),
-        .I2(sel0[1]),
-        .I3(sel0[7]),
-        .I4(sel0[5]),
-        .I5(sel0[0]),
+       (.I0(sel0[0]),
         .O(cnt[0]));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  LUT6 #(
+    .INIT(64'h8288888888888888)) 
+    \cnt[10]_i_2 
+       (.I0(uart_tx_i_2_n_0),
+        .I1(sel0[10]),
+        .I2(\cnt[10]_i_3_n_0 ),
+        .I3(sel0[7]),
+        .I4(sel0[9]),
+        .I5(\cnt[10]_i_4_n_0 ),
+        .O(cnt[10]));
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  LUT4 #(
+    .INIT(16'h7FFF)) 
+    \cnt[10]_i_3 
+       (.I0(sel0[4]),
+        .I1(sel0[0]),
+        .I2(sel0[2]),
+        .I3(sel0[8]),
+        .O(\cnt[10]_i_3_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  LUT4 #(
+    .INIT(16'h8000)) 
+    \cnt[10]_i_4 
+       (.I0(sel0[5]),
+        .I1(sel0[1]),
+        .I2(sel0[3]),
+        .I3(sel0[6]),
+        .O(\cnt[10]_i_4_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT3 #(
     .INIT(8'h28)) 
     \cnt[1]_i_1 
@@ -1399,68 +1425,86 @@ module design_1_uart_wrapper_0_0_uart_transmitter
        (.I0(uart_tx_i_2_n_0),
         .I1(sel0[3]),
         .I2(sel0[1]),
-        .I3(sel0[0]),
-        .I4(sel0[2]),
+        .I3(sel0[2]),
+        .I4(sel0[0]),
         .O(cnt[3]));
   LUT6 #(
     .INIT(64'h2888888888888888)) 
     \cnt[4]_i_1 
        (.I0(uart_tx_i_2_n_0),
         .I1(sel0[4]),
-        .I2(sel0[2]),
-        .I3(sel0[0]),
-        .I4(sel0[1]),
-        .I5(sel0[3]),
+        .I2(sel0[3]),
+        .I3(sel0[1]),
+        .I4(sel0[2]),
+        .I5(sel0[0]),
         .O(cnt[4]));
   LUT5 #(
-    .INIT(32'h28888888)) 
+    .INIT(32'h88882888)) 
     \cnt[5]_i_1 
        (.I0(uart_tx_i_2_n_0),
         .I1(sel0[5]),
-        .I2(\cnt[6]_i_2_n_0 ),
-        .I3(sel0[4]),
-        .I4(sel0[3]),
+        .I2(sel0[3]),
+        .I3(sel0[1]),
+        .I4(\cnt[9]_i_2_n_0 ),
         .O(cnt[5]));
   LUT6 #(
-    .INIT(64'h2888888888888888)) 
+    .INIT(64'h8888888828888888)) 
     \cnt[6]_i_1 
        (.I0(uart_tx_i_2_n_0),
         .I1(sel0[6]),
-        .I2(sel0[3]),
-        .I3(sel0[4]),
-        .I4(sel0[5]),
-        .I5(\cnt[6]_i_2_n_0 ),
-        .O(cnt[6]));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
-  LUT3 #(
-    .INIT(8'h80)) 
-    \cnt[6]_i_2 
-       (.I0(sel0[1]),
-        .I1(sel0[0]),
-        .I2(sel0[2]),
-        .O(\cnt[6]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h9AAAAAAAAAAAAAA8)) 
-    \cnt[7]_i_2 
-       (.I0(sel0[7]),
-        .I1(\cnt[7]_i_3_n_0 ),
         .I2(sel0[5]),
-        .I3(sel0[2]),
+        .I3(sel0[1]),
+        .I4(sel0[3]),
+        .I5(\cnt[9]_i_2_n_0 ),
+        .O(cnt[6]));
+  LUT6 #(
+    .INIT(64'h2888888888888888)) 
+    \cnt[7]_i_1 
+       (.I0(uart_tx_i_2_n_0),
+        .I1(sel0[7]),
+        .I2(\cnt[10]_i_4_n_0 ),
+        .I3(sel0[4]),
         .I4(sel0[0]),
-        .I5(sel0[1]),
+        .I5(sel0[2]),
         .O(cnt[7]));
+  LUT5 #(
+    .INIT(32'h82888888)) 
+    \cnt[8]_i_1 
+       (.I0(uart_tx_i_2_n_0),
+        .I1(sel0[8]),
+        .I2(\cnt[9]_i_2_n_0 ),
+        .I3(sel0[7]),
+        .I4(\cnt[10]_i_4_n_0 ),
+        .O(cnt[8]));
+  LUT6 #(
+    .INIT(64'h8288888888888888)) 
+    \cnt[9]_i_1 
+       (.I0(uart_tx_i_2_n_0),
+        .I1(sel0[9]),
+        .I2(\cnt[9]_i_2_n_0 ),
+        .I3(sel0[8]),
+        .I4(sel0[7]),
+        .I5(\cnt[10]_i_4_n_0 ),
+        .O(cnt[9]));
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT3 #(
     .INIT(8'h7F)) 
-    \cnt[7]_i_3 
-       (.I0(sel0[4]),
-        .I1(sel0[3]),
-        .I2(sel0[6]),
-        .O(\cnt[7]_i_3_n_0 ));
+    \cnt[9]_i_2 
+       (.I0(sel0[2]),
+        .I1(sel0[0]),
+        .I2(sel0[4]),
+        .O(\cnt[9]_i_2_n_0 ));
   FDRE \cnt_reg[0] 
        (.C(clk),
         .CE(state_reg_0),
         .D(cnt[0]),
         .Q(sel0[0]),
+        .R(p_0_in));
+  FDRE \cnt_reg[10] 
+       (.C(clk),
+        .CE(state_reg_0),
+        .D(cnt[10]),
+        .Q(sel0[10]),
         .R(p_0_in));
   FDRE \cnt_reg[1] 
        (.C(clk),
@@ -1504,6 +1548,18 @@ module design_1_uart_wrapper_0_0_uart_transmitter
         .D(cnt[7]),
         .Q(sel0[7]),
         .R(p_0_in));
+  FDRE \cnt_reg[8] 
+       (.C(clk),
+        .CE(state_reg_0),
+        .D(cnt[8]),
+        .Q(sel0[8]),
+        .R(p_0_in));
+  FDRE \cnt_reg[9] 
+       (.C(clk),
+        .CE(state_reg_0),
+        .D(cnt[9]),
+        .Q(sel0[9]),
+        .R(p_0_in));
   LUT4 #(
     .INIT(16'hEFE0)) 
     state_i_1
@@ -1518,7 +1574,7 @@ module design_1_uart_wrapper_0_0_uart_transmitter
         .D(state_i_1_n_0),
         .Q(state_reg_0),
         .R(p_0_in));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT3 #(
     .INIT(8'h80)) 
     \temp[0]_i_1 
@@ -1574,7 +1630,7 @@ module design_1_uart_wrapper_0_0_uart_transmitter
         .I2(rst_n),
         .I3(state_reg_0),
         .O(p_1_in[6]));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT4 #(
     .INIT(16'hA0C0)) 
     \temp[7]_i_1 
@@ -1583,7 +1639,7 @@ module design_1_uart_wrapper_0_0_uart_transmitter
         .I2(rst_n),
         .I3(state_reg_0),
         .O(p_1_in[7]));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT4 #(
     .INIT(16'hA0C0)) 
     \temp[8]_i_1 
@@ -1601,7 +1657,7 @@ module design_1_uart_wrapper_0_0_uart_transmitter
         .I3(state_reg_0),
         .I4(uart_tx_i_2_n_0),
         .O(\temp[9]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \temp[9]_i_2 
@@ -1679,14 +1735,14 @@ module design_1_uart_wrapper_0_0_uart_transmitter
         .I5(uart_tx_i_3_n_0),
         .O(uart_tx_i_1_n_0));
   LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFFEFF)) 
+    .INIT(64'hFFFFFFFFFFFDFFFF)) 
     uart_tx_i_2
-       (.I0(\cnt[7]_i_3_n_0 ),
-        .I1(sel0[2]),
+       (.I0(sel0[10]),
+        .I1(sel0[9]),
         .I2(sel0[1]),
-        .I3(sel0[7]),
-        .I4(sel0[5]),
-        .I5(sel0[0]),
+        .I3(uart_tx_i_4_n_0),
+        .I4(sel0[8]),
+        .I5(\cnt[9]_i_2_n_0 ),
         .O(uart_tx_i_2_n_0));
   (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT4 #(
@@ -1697,6 +1753,15 @@ module design_1_uart_wrapper_0_0_uart_transmitter
         .I2(bits_reg[2]),
         .I3(bits_reg[3]),
         .O(uart_tx_i_3_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  LUT4 #(
+    .INIT(16'hFFFE)) 
+    uart_tx_i_4
+       (.I0(sel0[5]),
+        .I1(sel0[3]),
+        .I2(sel0[7]),
+        .I3(sel0[6]),
+        .O(uart_tx_i_4_n_0));
   FDRE uart_tx_reg
        (.C(clk),
         .CE(1'b1),

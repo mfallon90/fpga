@@ -10,7 +10,7 @@ set_property -dict { PACKAGE_PIN E3    IOSTANDARD LVCMOS33 } [get_ports { sys_cl
 create_clock -add -name sys_clk -period 10.00 -waveform {0 5} [get_ports { sys_clk }];
 create_clock -add -name rmii_rx_clk -period 40.00 -waveform {0 5} [get_ports { rmii_rx_clk}];
 # create_clock -add -name eth_tx_clk -period 40.00 -waveform {0 5} [get_ports { eth_tx_clk}];
-0
+
 # set_false_path -from [get_clocks clk_out2_design_1_clk_wiz_0_1] -to [get_clocks rmii_rx_clk]
 # set_false_path -from [get_clocks rmii_rx_clk] -to [get_clocks clk_out2_design_1_clk_wiz_0_1]
 

@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Sun May 21 19:45:19 2023
+| Date         : Mon May 22 09:54:54 2023
 | Host         : LAPTOP-DJJCMLUK running 64-bit major release  (build 9200)
 | Command      : report_methodology -file design_1_wrapper_methodology_drc_routed.rpt -pb design_1_wrapper_methodology_drc_routed.pb -rpx design_1_wrapper_methodology_drc_routed.rpx
 | Design       : design_1_wrapper
@@ -37,22 +37,22 @@ Table of Contents
 -----------------
 TIMING-6#1 Critical Warning
 No common primary clock between related clocks  
-The clocks clk_out1_design_1_clk_wiz_0_1 and rmii_rx_clk are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks clk_out1_design_1_clk_wiz_0_1] -to [get_clocks rmii_rx_clk]
+The clocks clk_out1_design_1_clk_wiz_0_2 and rmii_rx_clk are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks clk_out1_design_1_clk_wiz_0_2] -to [get_clocks rmii_rx_clk]
 Related violations: <none>
 
 TIMING-6#2 Critical Warning
 No common primary clock between related clocks  
-The clocks rmii_rx_clk and clk_out1_design_1_clk_wiz_0_1 are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks rmii_rx_clk] -to [get_clocks clk_out1_design_1_clk_wiz_0_1]
+The clocks rmii_rx_clk and clk_out1_design_1_clk_wiz_0_2 are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks rmii_rx_clk] -to [get_clocks clk_out1_design_1_clk_wiz_0_2]
 Related violations: <none>
 
 TIMING-7#1 Critical Warning
 No common node between related clocks  
-The clocks clk_out1_design_1_clk_wiz_0_1 and rmii_rx_clk are related (timed together) but they have no common node. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks clk_out1_design_1_clk_wiz_0_1] -to [get_clocks rmii_rx_clk]
+The clocks clk_out1_design_1_clk_wiz_0_2 and rmii_rx_clk are related (timed together) but they have no common node. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks clk_out1_design_1_clk_wiz_0_2] -to [get_clocks rmii_rx_clk]
 Related violations: <none>
 
 TIMING-7#2 Critical Warning
 No common node between related clocks  
-The clocks rmii_rx_clk and clk_out1_design_1_clk_wiz_0_1 are related (timed together) but they have no common node. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks rmii_rx_clk] -to [get_clocks clk_out1_design_1_clk_wiz_0_1]
+The clocks rmii_rx_clk and clk_out1_design_1_clk_wiz_0_2 are related (timed together) but they have no common node. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks rmii_rx_clk] -to [get_clocks clk_out1_design_1_clk_wiz_0_2]
 Related violations: <none>
 
 TIMING-18#1 Warning
@@ -89,7 +89,7 @@ XDCC-1#1 Warning
 Scoped Clock constraint overwritten with the same name  
 A new clock constraint create_clock overrides a previous scoped clock constraint with the same name. It is not recommended to override a scoped (typically an IP) clock constraint and could result in unexpected behaviors.
 New: create_clock -period 10.000 -name sys_clk -waveform {0.000 5.000} -add [get_ports sys_clk] (Source: C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/constraints/arty_constraints.xdc (Line: 10))
-Previous: create_clock -period 10.000 [get_ports sys_clk] (Source: c:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.gen/sources_1/bd/design_1/ip/design_1_clk_wiz_0_1/design_1_clk_wiz_0_1.xdc (Line: 56))
+Previous: create_clock -period 10.000 [get_ports sys_clk] (Source: c:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.gen/sources_1/bd/design_1/ip/design_1_clk_wiz_0_2/design_1_clk_wiz_0_2.xdc (Line: 56))
 Related violations: <none>
 
 

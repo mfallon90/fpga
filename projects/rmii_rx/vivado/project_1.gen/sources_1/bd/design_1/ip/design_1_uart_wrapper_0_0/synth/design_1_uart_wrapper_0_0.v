@@ -52,7 +52,7 @@
 
 (* X_CORE_INFO = "uart_wrapper,Vivado 2020.2" *)
 (* CHECK_LICENSE_TYPE = "design_1_uart_wrapper_0_0,uart_wrapper,{}" *)
-(* CORE_GENERATION_INFO = "design_1_uart_wrapper_0_0,uart_wrapper,{x_ipProduct=Vivado 2020.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=uart_wrapper,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,P_DEPTH=8192,P_WIDTH=8,P_CLK_FREQ=25,P_BAUD_RATE=115200,P_NUM_STOP=1,P_PARITY=0}" *)
+(* CORE_GENERATION_INFO = "design_1_uart_wrapper_0_0,uart_wrapper,{x_ipProduct=Vivado 2020.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=uart_wrapper,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,P_DEPTH=8192,P_WIDTH=8,P_CLK_FREQ=150,P_BAUD_RATE=115200,P_NUM_STOP=1,P_PARITY=0}" *)
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module design_1_uart_wrapper_0_0 (
@@ -63,7 +63,7 @@ module design_1_uart_wrapper_0_0 (
   uart_tx
 );
 
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 25000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 150000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /pll_sys_ref_clk_clk_out1, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 input wire clk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst_n, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
@@ -76,7 +76,7 @@ output wire uart_tx;
   uart_wrapper #(
     .P_DEPTH(8192),
     .P_WIDTH(8),
-    .P_CLK_FREQ(25),
+    .P_CLK_FREQ(150),
     .P_BAUD_RATE(115200),
     .P_NUM_STOP(1),
     .P_PARITY(0)
