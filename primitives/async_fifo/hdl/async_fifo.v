@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 
 `define PTR_BITS ($clog2(P_DEPTH))
-`define WR_PTR_INV ({~wr_ptr_gry[`PTR_BITS-:1], wr_ptr_gry[`PTR_BITS-2:0]})
+`define WR_PTR_INV ({~wr_ptr_gry[`PTR_BITS:`PTR_BITS-1], wr_ptr_gry[`PTR_BITS-2:0]})
 
 
 /*
@@ -181,10 +181,10 @@ module async_fifo #(
             .gry_cnt_reg    (rd_ptr_gry)
         );
 
-    initial begin
-        $dumpfile("async_fifo.vcd");
-        $dumpvars();
-    end
+    // initial begin
+    //     $dumpfile("async_fifo.vcd");
+    //     $dumpvars();
+    // end
 
 
 endmodule

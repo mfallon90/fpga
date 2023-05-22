@@ -39,7 +39,7 @@ module fifo_bram #(
     integer i;
 
     initial begin
-        for (i=0; i<P_DEPTH-1; i=i+1) begin
+        for (i=0; i<P_DEPTH; i=i+1) begin
             bram[i] = 0;
         end
     end
