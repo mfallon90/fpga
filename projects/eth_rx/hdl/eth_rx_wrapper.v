@@ -38,14 +38,9 @@ module eth_rx_wrapper #(
     input   wire            sys_clk,
     input   wire            sys_rst_n,
 
-    output  wire    [7:0]   data_drop,
-    output  wire            data_drop_vld,
-    output  wire    [7:0]   data_broadcast,
-    output  wire            data_broadcast_vld,
-    output  wire    [7:0]   data_for_me,
-    output  wire            data_for_me_vld,
-    output  wire    [7:0]   data_not_for_me,
-    output  wire            data_not_for_me_vld
+    output  wire    [8:0]   drop,
+    output  wire    [8:0]   for_me,
+    output  wire    [8:0]   arp
     );
 
     // Input to async fifo
@@ -176,15 +171,14 @@ module eth_rx_wrapper #(
     eth_decoder #(
             .P_MY_MAC (P_MY_MAC))
         demultiplexer (
-            .clk                (sys_clk),
-            .rst_n              (sys_rst_n),
-            .data_in            ({(data_4_rdy & data_4_vld),data_4}),
-            .ctrl               (ctrl_4[123:11]),
-            .ctrl_vld           (ctrl_4_vld),
-            .data_drop          ({data_drop_vld, data_drop}),
-            .data_broadcast     ({data_broadcast_vld, data_broadcast}),
-            .data_for_me        ({data_for_me_vld, data_for_me}),
-            .data_not_for_me    ({data_not_for_me_vld, data_not_for_me})
+            .clk            (sys_clk),
+            .rst_n          (sys_rst_n),
+            .data_in        ({(data_4_rdy & data_4_vld),data_4}),
+            .ctrl           (ctrl_4[123:11]),
+            .ctrl_vld       (ctrl_4_vld),
+            .drop           (drop),
+            .for_me         (for_me),
+            .arp            (arp)
         );
 
     initial begin

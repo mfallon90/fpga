@@ -32,45 +32,45 @@ module eth_decoder #(
     input   wire    [8:0]       data_in,
     input   wire    [112:0]     ctrl,
     input   wire                ctrl_vld,
-    output  reg     [8:0]       data_drop,
-    output  reg     [8:0]       data_broadcast,
-    output  reg     [8:0]       data_for_me,
-    output  reg     [8:0]       data_not_for_me
+    output  reg     [8:0]       drop,
+    output  reg     [8:0]       for_me,
+    output  reg     [8:0]       arp
     );
 
     localparam [1:0]    C_DROP_FRAME    = 2'b00;
-    localparam [1:0]    C_BROADCAST     = 2'b01;
-    localparam [1:0]    C_FOR_ME        = 2'b10;
-    localparam [1:0]    C_NOT_FOR_ME    = 2'b11;
+    localparam [1:0]    C_FOR_ME        = 2'b01;
+    localparam [1:0]    C_ARP_REQUEST   = 2'b10;
 
     reg     [1:0]   ctrl_next;
     reg     [1:0]   ctrl_sel;
 
     // Demultiplexer case statement
     always @(*) begin
-        data_drop           = 0;
-        data_broadcast      = 0;
-        data_for_me         = 0;
-        data_not_for_me     = 0;
+        drop        = 0;
+        for_me      = 0;
+        arp         = 0;
         case (ctrl_sel)
-            C_DROP_FRAME:   data_drop       = data_in;
-            C_BROADCAST:    data_broadcast  = data_in;
-            C_FOR_ME:       data_for_me     = data_in;
-            C_NOT_FOR_ME:   data_not_for_me = data_in;
+            C_DROP_FRAME:   drop    = data_in;
+            C_FOR_ME:       for_me  = data_in;
+            C_ARP_REQUEST:  arp     = data_in;
         endcase
     end
 
     // Calculate next select signal
     always @(*) begin
         if (`FRAME_GOOD) begin
-            case(`DST_MAC)
-                48'hFFFFFFFFFFFF:   ctrl_next = C_BROADCAST;
-                P_MY_MAC:           ctrl_next = C_FOR_ME;
-                default:            ctrl_next = C_NOT_FOR_ME;
-            endcase
-        end
-        else begin
-            ctrl_next   = C_DROP_FRAME;
+
+            if ((`DST_MAC == ~0) && (`TYPE == 16'h0806)) begin
+                ctrl_next   = C_ARP_REQUEST;
+            end
+
+            else if (`DST_MAC == P_MY_MAC) begin
+                ctrl_next   = C_FOR_ME;
+            end
+
+            else begin
+                ctrl_next   = C_DROP_FRAME;
+            end
         end
     end
 
