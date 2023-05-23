@@ -27,53 +27,25 @@
 #
 # 3. The following remote source files that were added to the original project:-
 #
-#    "C:/Users/mfall/Desktop/sandbox/primitives/async_fifo/hdl/async_fifo.v"
-#    "C:/Users/mfall/Desktop/sandbox/primitives/async_fifo/hdl/bin_gry_ctr.v"
-#    "C:/Users/mfall/Desktop/sandbox/projects/eth_rx/hdl/buffer.v"
-#    "C:/Users/mfall/Desktop/sandbox/projects/eth_rx/hdl/eth_decoder.v"
-#    "C:/Users/mfall/Desktop/sandbox/primitives/fifo/hdl/fifo.v"
-#    "C:/Users/mfall/Desktop/sandbox/primitives/async_fifo/hdl/fifo_bram.v"
-#    "C:/Users/mfall/Desktop/sandbox/primitives/fifo/hdl/modn_counter.v"
-#    "C:/Users/mfall/Desktop/sandbox/primitives/crc_8/hdl/crc_8.sv"
-#    "C:/Users/mfall/Desktop/sandbox/primitives/eth_rx_fsm/hdl/eth_rx_fsm.sv"
-#    "C:/Users/mfall/Desktop/sandbox/projects/eth_rx/hdl/fifo_ctrl.sv"
-#    "C:/Users/mfall/Desktop/sandbox/projects/eth_rx/hdl/eth_rx_wrapper.v"
-#    "C:/Users/mfall/Desktop/sandbox/primitives/rmii/hdl/rmii_rx.v"
-#    "C:/Users/mfall/Desktop/sandbox/primitives/uart/tx/hdl/uart_transmitter.v"
-#    "C:/Users/mfall/Desktop/sandbox/projects/eth_rx/hdl/uart_wrapper.v"
-#    "C:/Users/mfall/Desktop/sandbox/projects/eth_rx/constraints/arty_constraints.xdc"
+#    "${origin_dir}/../../../primitives/async_fifo/hdl/async_fifo.v"
+#    "${origin_dir}/../../../primitives/async_fifo/hdl/bin_gry_ctr.v"
+#    "${origin_dir}/../../../projects/eth_rx/hdl/buffer.v"
+#    "${origin_dir}/../../../projects/eth_rx/hdl/eth_decoder.v"
+#    "${origin_dir}/../../../primitives/fifo/hdl/fifo.v"
+#    "${origin_dir}/../../../primitives/async_fifo/hdl/fifo_bram.v"
+#    "${origin_dir}/../../../primitives/fifo/hdl/modn_counter.v"
+#    "${origin_dir}/../../../primitives/crc_8/hdl/crc_8.sv"
+#    "${origin_dir}/../../../primitives/eth_rx_fsm/hdl/eth_rx_fsm.sv"
+#    "${origin_dir}/../../../projects/eth_rx/hdl/fifo_ctrl.sv"
+#    "${origin_dir}/../../../projects/eth_rx/hdl/eth_rx_wrapper.v"
+#    "${origin_dir}/../../../primitives/rmii/hdl/rmii_rx.v"
+#    "${origin_dir}/../../../primitives/uart/tx/hdl/uart_transmitter.v"
+#    "${origin_dir}/../../../projects/eth_rx/hdl/uart_wrapper.v"
+#    "${origin_dir}/../../../projects/eth_rx/constraints/arty_constraints.xdc"
 #
 #*****************************************************************************************
 
-# Check file required for this script exists
-proc checkRequiredFiles { origin_dir} {
-  set status true
-  set files [list \
-   "C:/Users/mfall/Desktop/sandbox/primitives/async_fifo/hdl/async_fifo.v" \
-   "C:/Users/mfall/Desktop/sandbox/primitives/async_fifo/hdl/bin_gry_ctr.v" \
-   "C:/Users/mfall/Desktop/sandbox/projects/eth_rx/hdl/buffer.v" \
-   "C:/Users/mfall/Desktop/sandbox/projects/eth_rx/hdl/eth_decoder.v" \
-   "C:/Users/mfall/Desktop/sandbox/primitives/fifo/hdl/fifo.v" \
-   "C:/Users/mfall/Desktop/sandbox/primitives/async_fifo/hdl/fifo_bram.v" \
-   "C:/Users/mfall/Desktop/sandbox/primitives/fifo/hdl/modn_counter.v" \
-   "C:/Users/mfall/Desktop/sandbox/primitives/crc_8/hdl/crc_8.sv" \
-   "C:/Users/mfall/Desktop/sandbox/primitives/eth_rx_fsm/hdl/eth_rx_fsm.sv" \
-   "C:/Users/mfall/Desktop/sandbox/projects/eth_rx/hdl/fifo_ctrl.sv" \
-   "C:/Users/mfall/Desktop/sandbox/projects/eth_rx/hdl/eth_rx_wrapper.v" \
-   "C:/Users/mfall/Desktop/sandbox/primitives/rmii/hdl/rmii_rx.v" \
-   "C:/Users/mfall/Desktop/sandbox/primitives/uart/tx/hdl/uart_transmitter.v" \
-   "C:/Users/mfall/Desktop/sandbox/projects/eth_rx/hdl/uart_wrapper.v" \
-   "C:/Users/mfall/Desktop/sandbox/projects/eth_rx/constraints/arty_constraints.xdc" \
-  ]
-  foreach ifile $files {
-    if { ![file isfile $ifile] } {
-      puts " Could not find remote file $ifile "
-      set status false
-    }
-  }
 
-  return $status
-}
 # Set the reference directory for source file relative paths (by default the value is script directory path)
 set origin_dir "."
 
@@ -264,60 +236,6 @@ set obj [get_filesets utils_1]
 
 # Set 'utils_1' fileset properties
 set obj [get_filesets utils_1]
-
-
-# Adding sources referenced in BDs, if not already added
-if { [get_files async_fifo.v] == "" } {
-  import_files -quiet -fileset sources_1 C:/Users/mfall/Desktop/sandbox/primitives/async_fifo/hdl/async_fifo.v
-}
-if { [get_files bin_gry_ctr.v] == "" } {
-  import_files -quiet -fileset sources_1 C:/Users/mfall/Desktop/sandbox/primitives/async_fifo/hdl/bin_gry_ctr.v
-}
-if { [get_files buffer.v] == "" } {
-  import_files -quiet -fileset sources_1 C:/Users/mfall/Desktop/sandbox/projects/eth_rx/hdl/buffer.v
-}
-if { [get_files eth_decoder.v] == "" } {
-  import_files -quiet -fileset sources_1 C:/Users/mfall/Desktop/sandbox/projects/eth_rx/hdl/eth_decoder.v
-}
-if { [get_files fifo.v] == "" } {
-  import_files -quiet -fileset sources_1 C:/Users/mfall/Desktop/sandbox/primitives/fifo/hdl/fifo.v
-}
-if { [get_files fifo_bram.v] == "" } {
-  import_files -quiet -fileset sources_1 C:/Users/mfall/Desktop/sandbox/primitives/async_fifo/hdl/fifo_bram.v
-}
-if { [get_files modn_counter.v] == "" } {
-  import_files -quiet -fileset sources_1 C:/Users/mfall/Desktop/sandbox/primitives/fifo/hdl/modn_counter.v
-}
-if { [get_files crc_8.sv] == "" } {
-  import_files -quiet -fileset sources_1 C:/Users/mfall/Desktop/sandbox/primitives/crc_8/hdl/crc_8.sv
-}
-if { [get_files eth_rx_fsm.sv] == "" } {
-  import_files -quiet -fileset sources_1 C:/Users/mfall/Desktop/sandbox/primitives/eth_rx_fsm/hdl/eth_rx_fsm.sv
-}
-if { [get_files fifo_ctrl.sv] == "" } {
-  import_files -quiet -fileset sources_1 C:/Users/mfall/Desktop/sandbox/projects/eth_rx/hdl/fifo_ctrl.sv
-}
-if { [get_files eth_rx_wrapper.v] == "" } {
-  import_files -quiet -fileset sources_1 C:/Users/mfall/Desktop/sandbox/projects/eth_rx/hdl/eth_rx_wrapper.v
-}
-if { [get_files rmii_rx.v] == "" } {
-  import_files -quiet -fileset sources_1 C:/Users/mfall/Desktop/sandbox/primitives/rmii/hdl/rmii_rx.v
-}
-if { [get_files fifo.v] == "" } {
-  import_files -quiet -fileset sources_1 C:/Users/mfall/Desktop/sandbox/primitives/fifo/hdl/fifo.v
-}
-if { [get_files fifo_bram.v] == "" } {
-  import_files -quiet -fileset sources_1 C:/Users/mfall/Desktop/sandbox/primitives/async_fifo/hdl/fifo_bram.v
-}
-if { [get_files modn_counter.v] == "" } {
-  import_files -quiet -fileset sources_1 C:/Users/mfall/Desktop/sandbox/primitives/fifo/hdl/modn_counter.v
-}
-if { [get_files uart_transmitter.v] == "" } {
-  import_files -quiet -fileset sources_1 C:/Users/mfall/Desktop/sandbox/primitives/uart/tx/hdl/uart_transmitter.v
-}
-if { [get_files uart_wrapper.v] == "" } {
-  import_files -quiet -fileset sources_1 C:/Users/mfall/Desktop/sandbox/projects/eth_rx/hdl/uart_wrapper.v
-}
 
 
 # Proc to create BD design_1
@@ -634,7 +552,7 @@ if { $obj != "" } {
 
 }
 set obj [get_runs synth_1]
-set_property -name "auto_incremental_checkpoint.directory" -value "C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.srcs/utils_1/imports/synth_1" -objects $obj
+set_property -name "auto_incremental_checkpoint.directory" -value "${origin_dir}/project_1.srcs/utils_1/imports/synth_1" -objects $obj
 set_property -name "strategy" -value "Vivado Synthesis Defaults" -objects $obj
 
 # set the current synth run
@@ -848,7 +766,7 @@ set_property -name "options.warn_on_violation" -value "1" -objects $obj
 
 }
 set obj [get_runs impl_1]
-set_property -name "auto_incremental_checkpoint.directory" -value "C:/Users/mfall/Desktop/sandbox/projects/rmii_rx/vivado/project_1.srcs/utils_1/imports/impl_1" -objects $obj
+set_property -name "auto_incremental_checkpoint.directory" -value "${origin_dir}/project_1.srcs/utils_1/imports/impl_1" -objects $obj
 set_property -name "strategy" -value "Vivado Implementation Defaults" -objects $obj
 set_property -name "steps.write_bitstream.args.readback_file" -value "0" -objects $obj
 set_property -name "steps.write_bitstream.args.verbose" -value "0" -objects $obj
